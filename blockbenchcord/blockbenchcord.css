@@ -1,62 +1,62 @@
 @font-face{
-  font-family:"gg sans";
-  font-style:normal;
-  font-weight:400;
-  src:url(http://localhost:8000/b9811218b3a54ad59fb2.woff2)format("woff2")
+  font-family: "gg sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggsans400.woff2") format("woff2")
 }
 @font-face{
-  font-family:"gg sans";
-  font-style:italic;
-  font-weight:400;
-  src:url(http://localhost:8000/15551c6c9d4d1a96ba76.woff2)format("woff2")
+  font-family: "gg sans";
+  font-style: italic;
+  font-weight: 400;
+  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggsans400italic.woff2") format("woff2")
 }
 @font-face{
-  font-family:"gg sans";
-  font-style:normal;
-  font-weight:500;
-  src:url(http://localhost:8000/f84e3e81b8d0718cd917.woff2)format("woff2")
+  font-family: "gg sans";
+  font-style: normal;
+  font-weight: 500;
+  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggsans500.woff2") format("woff2")
 }
 @font-face{
-  font-family:"gg sans";
-  font-style:italic;
-  font-weight:500;
-  src:url(http://localhost:8000/099b34f1948afe9d15e4.woff2)format("woff2")
+  font-family: "gg sans";
+  font-style: italic;
+  font-weight: 500;
+  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggsans500italic.woff2") format("woff2")
 }
 @font-face{
-  font-family:"gg sans";
-  font-style:normal;
-  font-weight:600;
-  src:url(http://localhost:8000/20ac37ed2576dd48d7dc.woff2)format("woff2")
+  font-family: "gg sans";
+  font-style: normal;
+  font-weight: 600;
+  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggsans600.woff2") format("woff2")
 }
 @font-face{
-  font-family:"gg sans";
-  font-style:italic;
-  font-weight:600;
-  src:url(http://localhost:8000/36a7c3603a9c96bce18d.woff2)format("woff2")
+  font-family: "gg sans";
+  font-style: italic;
+  font-weight: 600;
+  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggsans600italic.woff2") format("woff2")
 }
 @font-face{
-  font-family:"gg sans";
-  font-style:normal;
-  font-weight:700;
-  src:url(http://localhost:8000/3f46bbecb4287c0a829f.woff2)format("woff2")
+  font-family: "gg sans";
+  font-style: normal;
+  font-weight: 700;
+  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggsans700.woff2") format("woff2")
 }
 @font-face{
-  font-family:"gg sans";
-  font-style:italic;
-  font-weight:700;
-  src:url(http://localhost:8000/6191b2ecd48873bed773.woff2)format("woff2")
+  font-family: "gg sans";
+  font-style: italic;
+  font-weight: 700;
+  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggsans700italic.woff2") format("woff2")
 }
 @font-face{
-  font-family:"gg sans";
-  font-style:normal;
-  font-weight:800;
-  src:url(http://localhost:8000/f65e087dae83a0fdc637.woff2)format("woff2")
+  font-family: "gg sans";
+  font-style: normal;
+  font-weight: 800;
+  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggsans800.woff2") format("woff2")
 }
 @font-face{
-  font-family:"gg sans";
-  font-style:italic;
-  font-weight:800;
-  src:url(http://localhost:8000/d5c9d3b86fab5ccc8ef2.woff2)format("woff2")
+  font-family: "gg sans";
+  font-style: italic;
+  font-weight: 800;
+  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggsans800italic.woff2") format("woff2")
 }
 
 :root {
