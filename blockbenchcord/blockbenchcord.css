@@ -1270,14 +1270,14 @@ h3.markdown {
   background-color: #8F2022;
 }
 
-.start_screen_right:has([href="https://ewanhowell.com/"]) > :last-child > :nth-last-child(2) > a:first-child {
-  background-color: #DA373C;
+.start_screen_right:has([href="https://ewanhowell.com/"]) > :last-child > :nth-last-child(2) > a:nth-child(2) {
+  background-color: var(--color-accent);
 }
 
-.start_screen_right:has([href="https://ewanhowell.com/"]) > :last-child > :nth-last-child(2) > a:first-child:hover {
-  background-color: #A12828;
+.start_screen_right:has([href="https://ewanhowell.com/"]) > :last-child > :nth-last-child(2) > a:nth-child(2):hover {
+  background-color: #4752C4;
 }
 
-.start_screen_right:has([href="https://ewanhowell.com/"]) > :last-child > :nth-last-child(2) > a:first-child:active {
-  background-color: #8F2022;
+.start_screen_right:has([href="https://ewanhowell.com/"]) > :last-child > :nth-last-child(2) > a:nth-child(2):active {
+  background-color: #3C45A5;
 }
