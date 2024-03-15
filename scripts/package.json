@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "dependencies": {
+    "csso": "^5.0.5"
+  }
+}

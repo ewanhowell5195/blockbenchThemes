@@ -1,0 +1,28 @@
+{
+	"name": "Blockbenchcord",
+	"author": "Ewan Howell",
+	"borders": false,
+	"main_font": "gg sans",
+	"headline_font": "",
+	"code_font": "",
+	"css": "\n",
+	"colors": {
+		"ui": "#2b2d31",
+		"back": "#232428",
+		"dark": "#1a1b1e",
+		"border": "#1e1f22",
+		"selected": "#6d6f78",
+		"button": "#4e5058",
+		"bright_ui": "#ffffff",
+		"accent": "#5865f2",
+		"frame": "#1e1f22",
+		"text": "#dcdee1",
+		"light": "#ffffff",
+		"accent_text": "#060607",
+		"bright_ui_text": "#060607",
+		"subtle_text": "#949ba4",
+		"grid": "#4e5058",
+		"wireframe": "#6d6f78",
+		"checkerboard": "#232428"
+	}
+}
