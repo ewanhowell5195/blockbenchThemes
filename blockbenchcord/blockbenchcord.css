@@ -1281,3 +1281,83 @@ h3.markdown {
 .start_screen_right:has([href="https://ewanhowell.com/"]) > :last-child > :nth-last-child(2) > a:nth-child(2):active {
   background-color: #3C45A5;
 }
+
+.contextMenu {
+  padding: 8px;
+  background-color: #111214;
+  border-radius: 4px;
+  box-shadow: #0000003D 0px 8px 16px 0px;
+  z-index: 99;
+}
+
+.contextMenu > li {
+  padding: 6px 8px !important;
+  margin: 2px 0;
+  align-items: center;
+  line-height: normal;
+  font-size: 14px;
+  font-weight: 500;
+  color: #B5BAC1 !important;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.contextMenu > li:is(.focused, .opened) {
+  color: var(--color-light) !important;
+}
+
+.contextMenu > li:active {
+  background-color: #3C45A5;
+  color: var(--color-light) !important;
+}
+
+.contextMenu > li::after {
+  font-size: 12px !important;
+  width: 18px;
+  margin: 0 0 0 8px !important;
+  display: flex !important;
+  justify-content: center;
+}
+
+.contextMenu > li > :first-child {
+  order: 1;
+}
+
+.contextMenu > li > :first-child {
+  margin: 0 0 0 8px;
+  font-size: 18px;
+}
+
+.contextMenu > li.parent > :first-child {
+  display: none;
+}
+
+.contextMenu > li > .keybinding_label {
+  display: none;
+}
+
+.contextMenu > li.menu_separator {
+  padding: 0 !important;
+  margin: 4px;
+  border-bottom: 1px solid #2E2F34;
+  height: 0;
+  width: initial;
+  border-radius: 0;
+}
+
+.contextMenu > li > .sub {
+  transform: translate(20px, -12px);
+  align-self: flex-start;
+}
+
+.contextMenu > li > .sub[style*="left: -"] {
+  transform: translate(-20px, -12px);
+}
+
+.contextMenu > li > .sub[style*="margin-top: -"] {
+  transform: translate(20px, -8px);
+}
+
+.contextMenu > li > .sub[style*="left: -"][style*="margin-top: -"] {
+  transform: translate(-20px, -8px);
+}
