@@ -59,10 +59,6 @@
   src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggsans800italic.woff2") format("woff2")
 }
 
-:root {
-  --discord-radius-xs: 4px;
-}
-
 * {
   --color-confirm: #57F287 !important;
   --color-warning: #FEE75C !important;
@@ -503,7 +499,11 @@ body:has(#page_wrapper)::after {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #1A1B1E
+  background-color: #1A1B1E;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #1A1B1E !important;
 }
 
 #start_files > .start_screen_format_page::-webkit-scrollbar-thumb {
@@ -1570,6 +1570,10 @@ h3.markdown {
     color: var(--color-light);
     background-color: var(--color-accent);
   }
+
+  &.hidden {
+    display: none;
+  }
 }
 
 
@@ -1815,9 +1819,9 @@ dialog#settings {
 
   .dialog_content {
     background-color: #313338;
-    max-height: initial;
     margin: 0;
     max-width: calc(740px + (100vw - 221px - 740px) / 2);
+    max-height: calc(100vh - 22px);
 
     > div {
       width: calc(min(100vw - 221px, 740px) - 36px);
@@ -1843,18 +1847,94 @@ dialog#settings {
     overflow-y: initial;
 
     > li {
-      &:not(:last-child) {
+      justify-content: space-between;
+      padding: 24px 0 20px;
+      position: relative;
+
+      &:not(:last-child)::after {
+        content: "";
+        display: flex;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
         border-bottom: 1px solid #3F4147;
-        padding: 30px 0 20px;
       }
 
       &:has(> .setting_element) {
         display: flex;
+      }
 
-        .setting_element {
-          order: 1;
+      > :is(.bar_select, input[type="text"]) {
+        margin-top: 8px !important;
+      }
+
+      &:has(.setting_icon) {
+        background-color: #232428;
+        padding: 16px;
+        height: 68px;
+        border-radius: 8px;
+        margin: 24px 0 29px;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color .17s;
+
+        & * {
+          cursor: pointer;
+        }
+
+        .setting_icon {
+          order: 0;
+
+          > i {
+            display: flex;
+            width: 32px;
+            height: 32px;
+            font-size: 32px;
+            margin: 0 16px 0 0;
+            transition: color .17s;
+          }
+        }
+
+        .setting_name {
+          font-weight: 600;
+          font-size: 16px;
+          transition: color .17s;
+        }
+
+        .setting_description {
+          font-size: 12px;
+          line-height: 16px;
+          margin: 0;
+        }
+
+        &:hover {
+          background-color: #1E1F22;
+
+          .setting_name {
+            color: var(--color-light);
+          }
+        }
+
+        &:not(:last-child)::after {
+          bottom: -25px;
         }
       }
+    }
+
+    .setting_element {
+      order: 1;
+      width: initial;
+      margin: 0;
+    }
+
+    .setting_label {
+      margin: 0 10px 0 0;
+    }
+
+    & input[type="text"] {
+      margin: 0;
+      width: 100% !important;
     }
 
     .setting_name {
@@ -1867,6 +1947,11 @@ dialog#settings {
       margin-top: 8px;
       font-size: 14px;
       line-height: 20px;
+      color: #B5BAC1;
+    }
+
+    .numeric_input {
+      max-width: 77px;
     }
   }
 
@@ -1916,13 +2001,26 @@ dialog#settings {
     position: absolute !important;
     top: 64px;
     right: 40px;
+    font-weight: 600;
+
+    & i {
+      cursor: pointer;
+      color: var(--color-text) !important;
+    }
+  }
+
+  .bar_select {
+    margin: 0;
+    width: initial;
   }
 }
 
-input[type="text"] {
+input:is([type="text"], :not([type])) {
   background-color: #1E1F22;
   height: 40px;
   border-radius: 4px;
+  padding: 10px;
+  display: flex;
 
   &::placeholder {
     color: #87898C;
@@ -1930,7 +2028,7 @@ input[type="text"] {
   }
 }
 
-.search_bar {
+.search_bar, .minecraft-texture-search {
   & input {
     height: 34px;
     padding: 0 10px;
@@ -1938,7 +2036,8 @@ input[type="text"] {
 
   & i {
     font-size: 25px;
-    right: 0;
+    right: 0 !important;
+    top: initial !important;
     min-width: 34px;
     min-height: 34px;
     margin: 0;
@@ -1954,7 +2053,7 @@ input[type="text"] {
   }
 }
 
-input[type="checkbox"] {
+.setting_element > input[type="checkbox"] {
   width: 40px;
   height: 24px;
   background-color: #80848E;
@@ -1962,25 +2061,15 @@ input[type="checkbox"] {
   position: relative;
   cursor: pointer;
   transition: background-color .3s;
-
-  /*&::before {
-    content: "" !important;
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%2380848E"><path d="M5.132 6.73l1.591-1.591 8.132 8.132-1.591 1.591L5.132 6.73z"/><path d="M13.27 5.139l1.591 1.591-8.132 8.132-1.591-1.591 8.132-8.132z"/></svg>');
-    width: 20px;
-    height: 20px;
-    display: flex;
-    background-size: contain;
-    background-color: var(--color-light);
-    border-radius: 200px;
-  }*/
+  margin: 0;
 
   &::before, &::after {
     content: "" !important;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     display: flex;
     position: absolute;
-    top: 2px;
+    top: 3px;
     left: 12px;
     color: #80848E;
   }
@@ -1994,12 +2083,10 @@ input[type="checkbox"] {
 
   &::after {
     background-color: inherit;
-    mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="red"><path transform="translate(10, -4.15) rotate(45)" d="M13.27 5.139l1.591 1.591-8.132 8.132-1.591-1.591 8.132-8.132z"/></svg>'), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="red"><path transform="translate(10, -4.15) rotate(45)" d="M5.132 6.73l1.591-1.591 8.132 8.132-1.591 1.591L5.132 6.73z"/></svg>');
-    -webkit-mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="red"><path transform="translate(10, -4.15) rotate(45)" d="M13.27 5.139l1.591 1.591-8.132 8.132-1.591-1.591 8.132-8.132z"/></svg>'), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="red"><path transform="translate(10, -4.15) rotate(45)" d="M5.132 6.73l1.591-1.591 8.132 8.132-1.591 1.591L5.132 6.73z"/></svg>');
+    mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAQMAAACQp+OdAAAABlBMVEX/////AADrWueTAAAAAXRSTlMAQObYZgAAABNJREFUeF5joBzI/xiqjFEGxQAAPmI2fxoBv/YAAAAASUVORK5CYII='), url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAQMAAACQp+OdAAAABlBMVEX/////AADrWueTAAAAAXRSTlMAQObYZgAAABRJREFUeF5jGIGA8T8YNFCfMfIAANzbQM899tcIAAAAAElFTkSuQmCC');
+    -webkit-mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAQMAAACQp+OdAAAABlBMVEX/////AADrWueTAAAAAXRSTlMAQObYZgAAABNJREFUeF5joBzI/xiqjFEGxQAAPmI2fxoBv/YAAAAASUVORK5CYII='), url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAQMAAACQp+OdAAAABlBMVEX/////AADrWueTAAAAAXRSTlMAQObYZgAAABRJREFUeF5jGIGA8T8YNFCfMfIAANzbQM899tcIAAAAAElFTkSuQmCC');
     mask-repeat: no-repeat;
     -webkit-mask-repeat: no-repeat;
-    mask-position: 50%;
-    -webkit-mask-position: 50%;
     transform: translateX(-50%) rotate(-45deg);
     animation: discord-toggle-fg .3s forwards reverse;
   }
@@ -2020,50 +2107,56 @@ input[type="checkbox"] {
 @keyframes discord-toggle-bg {
   0% {
     left: 12px;
-    width: 20px;
+    width: 18px;
   }
   50% {
-    width: 30px;
+    width: 25px;
   }
   100% {
     left: 28px;
-    width: 20px;
+    width: 18px;
   }
 }
 
 @keyframes discord-toggle-bg2 {
   0% {
     left: 12px;
-    width: 20px;
+    width: 18px;
   }
   50% {
-    width: 30px;
+    width: 25px;
   }
   100% {
     left: 28px;
-    width: 20px;
+    width: 18px;
   }
 }
 
 @keyframes discord-toggle-fg {
   0% {
     left: 12px;
-    width: 20px;
-    mask-size: 20px, 20px;
-    -webkit-mask-size: 20px, 20px;
+    width: 18px;
+    mask-size: 14px 14px, 14px 14px;
+    -webkit-mask-size: 14px 14px, 14px 14px;
+    mask-position: 50% 50%, 50% 50%;
+    -webkit-mask-position: 50% 50%, 50% 50%;
     transform: translateX(-50%) rotate(-45deg);
   }
   50% {
     width: 25px;
-    mask-size: 10px, 0;
-    -webkit-mask-size: 10px, 0;
+    mask-size: 14px 0, 7px 14px;
+    -webkit-mask-size: 14px 0, 7px 14px;
+    mask-position: 50% 50%, 50% 50%;
+    -webkit-mask-position: 50% 50%, 50% 50%;
     transform: translateX(-50%);
   }
   100% {
     left: 28px;
-    width: 20px;
-    mask-size: 20px, 20px;
-    -webkit-mask-size: 20px, 20px;
+    width: 18px;
+    mask-size: 14px 7px, 14px 12px;
+    -webkit-mask-size: 14px 7px, 14px 12px;
+    mask-position: -60% 40%, 50% 60%;
+    -webkit-mask-position: -60% 40%, 50% 60%;
     transform: translateX(-50%) rotate(-45deg);
   }
 }
@@ -2071,22 +2164,95 @@ input[type="checkbox"] {
 @keyframes discord-toggle-fg2 {
   0% {
     left: 12px;
-    width: 20px;
-    mask-size: 20px, 20px;
-    -webkit-mask-size: 20px, 20px;
+    width: 18px;
+    mask-size: 14px 14px, 14px 14px;
+    -webkit-mask-size: 14px 14px, 14px 14px;
+    mask-position: 50% 50%, 50% 50%;
+    -webkit-mask-position: 50% 50%, 50% 50%;
     transform: translateX(-50%) rotate(-45deg);
   }
   50% {
     width: 25px;
-    mask-size: 10px, 0;
-    -webkit-mask-size: 10px, 0;
+    mask-size: 14px 0, 7px 14px;
+    -webkit-mask-size: 14px 0, 7px 14px;
+    mask-position: 50% 50%, 50% 50%;
+    -webkit-mask-position: 50% 50%, 50% 50%;
     transform: translateX(-50%);
   }
   100% {
     left: 28px;
-    width: 20px;
-    mask-size: 20px, 20px;
-    -webkit-mask-size: 20px, 20px;
+    width: 18px;
+    mask-size: 14px 7px, 14px 12px;
+    -webkit-mask-size: 14px 7px, 14px 12px;
+    mask-position: -60% 40%, 60% 60%;
+    -webkit-mask-position: -60% 40%, 60% 60%;
     transform: translateX(-50%) rotate(-45deg);
+  }
+}
+
+bb-select {
+  background-color: #1E1F22;
+  color: var(--color-text) !important;
+  padding: 0 24.8px 0 12.8px;
+  height: 18px;
+  box-sizing: initial;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 36px;
+  display: flex !important;
+
+  &::before {
+    content: "expand_more";
+    font-family: "Material Icons";
+    right: 12px;
+    top: 6px;
+  }
+}
+
+.numeric_input > input {
+  height: 36px;
+}
+
+.numeric_input_slider {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  width: 30px !important;
+  right: 0 !important;
+  color: var(--color-text) !important;
+  background-color: #1E1F22;
+  border-radius: 4px;
+
+  > i {
+    margin: 0 0 0 2px !important;
+  }
+}
+
+#quick_message_box {
+  top: 36px;
+  background-color: var(--color-border);
+  color: #F2F3F5;
+  max-width: calc(100vw - 40px);
+  padding: 16px;
+  border-radius: 32px;
+  animation: discord-message-box 1s forwards;
+  box-shadow: none;
+}
+
+@keyframes discord-message-box {
+  0% {
+    transform: translateY(-100px);
+  }
+  15% {
+    transform: translateY(0);
+  }
+  85% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100px);
   }
 }
