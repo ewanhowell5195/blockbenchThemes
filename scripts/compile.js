@@ -1,4 +1,4 @@
-import { minify } from "csso"
+// import { minify } from "csso"
 import path from "node:path"
 import fs from "node:fs"
 
@@ -10,7 +10,7 @@ for (const folder of fs.readdirSync("../")) {
     if (fs.existsSync(css)) {
       const themeData = JSON.parse(fs.readFileSync(theme))
       const cssData = fs.readFileSync(css, "utf-8")
-      themeData.css = minify(cssData).css
+      themeData.css = cssData // minify(cssData).css
       fs.writeFileSync(output, JSON.stringify(themeData, null, 2))
     } else {
       fs.copyFileSync(theme, output)
