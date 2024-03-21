@@ -1,4 +1,4 @@
-// import { minify } from "csso"
+import { transform } from "lightningcss"
 import path from "node:path"
 import fs from "node:fs"
 
@@ -10,7 +10,10 @@ for (const folder of fs.readdirSync("../")) {
     if (fs.existsSync(css)) {
       const themeData = JSON.parse(fs.readFileSync(theme))
       const cssData = fs.readFileSync(css, "utf-8")
-      themeData.css = cssData // minify(cssData).css
+      themeData.css = `/*\n\nBlockbenchcord\nBy Ewan Howell - https://ewanhowell.com/\n\n*/\n` + transform({
+        code: Buffer.from(cssData),
+        minify: true
+      }).code.toString()
       fs.writeFileSync(output, JSON.stringify(themeData, null, 2))
     } else {
       fs.copyFileSync(theme, output)

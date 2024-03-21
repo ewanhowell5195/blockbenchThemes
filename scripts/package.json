@@ -1,6 +1,6 @@
 {
   "type": "module",
   "dependencies": {
-    "csso": "^5.0.5"
+    "lightningcss": "^1.24.1"
   }
 }
