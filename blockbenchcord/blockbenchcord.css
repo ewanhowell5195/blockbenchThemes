@@ -1541,7 +1541,7 @@ h3.markdown {
   transform: translateY(-1px);
 }
 
-#menu_bar > .opened {
+#menu_bar > .opened, #menu_bar > :hover {
   color: var(--color-light);
 }
 
@@ -3094,4 +3094,22 @@ dialog#cem_template_loader {
 .dialog_bar {
   display: flex;
   align-items: center;
+}
+
+#web_download_button {
+  color: #949BA4;
+  font-weight: 700;
+  font-size: 12px;
+  margin-top: 1px;
+
+  > a {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 4px;
+  }
+
+  & i {
+    font-size: 14px;
+  }
 }
