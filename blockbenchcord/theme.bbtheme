@@ -5,7 +5,7 @@
 	"main_font": "gg sans",
 	"headline_font": "",
 	"code_font": "",
-	"css": "\n",
+	"css": "",
 	"colors": {
 		"ui": "#2b2d31",
 		"back": "#232428",
