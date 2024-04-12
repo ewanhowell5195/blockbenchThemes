@@ -3969,6 +3969,7 @@ body:has(#page_wrapper).is_mobile::before {
 
   & p {
     margin-bottom: 40px !important;
+    text-align: left;
   }
 
   & button {
