@@ -416,6 +416,59 @@ body:has(#page_wrapper)::after {
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
+
+  &:not(:has(#splash_screen)) {
+    &::before {
+      content: "";
+      display: flex;
+      width: 240px;
+      height: 135px;
+      background-image: linear-gradient(#0006, #0000 43%), url("assets/splash_art/1.png");
+      background-size: cover;
+      background-position: 50% 50%;
+    }
+
+    &::after {
+      content: "Blockbench";
+      position: absolute;
+      top: 13px;
+      left: 16px;
+      color: var(--color-light);
+      margin-right: 4px;
+      font-weight: 600;
+      line-height: 20px;
+      text-decoration: none;
+      font-size: 16px !important;
+      filter: drop-shadow(0 1px 1px #000c);
+    }
+  }
+}
+
+#start_screen > content:not(:has(#splash_screen)) {
+  &::before {
+    content: "";
+    display: flex;
+    width: 240px;
+    height: 135px;
+    background-image: linear-gradient(#0006, #0000 43%), url("assets/splash_art/1.png");
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+
+  &::after {
+    content: "Blockbenchcord";
+    position: absolute;
+    top: 13px;
+    left: 16px;
+    color: var(--color-light);
+    margin-right: 4px;
+    font-weight: 600;
+    line-height: 20px;
+    text-decoration: none;
+    font-size: 16px !important;
+    filter: drop-shadow(0 1px 1px #000c);
+  }
 }
 
 #splash_screen {
@@ -467,6 +520,7 @@ body:has(#page_wrapper)::after {
 
 #start_files {
   flex: 1;
+  position: absolute;
 }
 
 #start_files > .start_screen_left {
@@ -679,7 +733,7 @@ body:has(#page_wrapper)::after {
 
 #start_screen_view_menu > .search_bar > i {
   left: 13px;
-  top: 11px;
+  top: 11px !important;
   transform: scaleX(-1);
   font-size: 24px;
   color: #B5BAC1;
@@ -2635,9 +2689,9 @@ bb-select {
     color: var(--color-light) !important;
     font-size: 14px;
     font-weight: 500;
-    padding: 2px 16px;
+    padding: 2px 7px;
     height: 38px;
-    min-width: 96px;
+    min-width: 78px;
     background-color: transparent;
     text-decoration: none;
 
@@ -2647,6 +2701,8 @@ bb-select {
 
     &.confirm_btn {
       order: 1;
+      padding: 2px 16px;
+      min-width: 96px;
       background-color: var(--color-accent);
       border-radius: 3px;
       text-decoration: none;
@@ -2659,6 +2715,16 @@ bb-select {
       &:active {
         background-color: #3C45A5;
       }
+    }
+
+    &:last-child:nth-child(2) {
+      padding: 2px 16px;
+      min-width: 96px;
+    }
+
+    &:last-child:not(:nth-child(2)) {
+      padding: 2px 16px 2px 7px;
+      min-width: 87px;
     }
   }
 }
@@ -4000,4 +4066,217 @@ body:has(#page_wrapper).is_mobile::before {
 
 dialog#screenshot {
   min-width: 425px;
+
+  & center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > :first-child {
+      order: 1;
+      margin-top: 16px;
+    }
+
+    > img {
+      border-radius: 8px;
+      border: none;
+    }
+  }
+}
+
+dialog#about {
+  .dialog_handle {
+    margin-bottom: 14px;
+  }
+
+  .dialog_title::before {
+    display: none;
+  }
+
+  .dialog_content {
+    margin-bottom: 50px !important;
+    max-height: calc(100vh - 222px);
+
+    > div {
+      display: flex;
+      flex-direction: column;
+
+      > :first-child {
+        order: 0;
+      }
+
+      &::before {
+        content: "BLOCKBENCH";
+        order: 1;
+        margin: 40px 0 0;
+        padding: 0;
+        border: none;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: left;
+        color: #949CF7;
+      }
+
+      &::after {
+        content: "";
+        order: 1;
+        height: 1px;
+        background-color: #949CF7;
+        margin: -11px 0 31px 107px;
+      }
+
+      > :not(:first-child) {
+        order: 2;
+      }
+
+      > :nth-child(2) {
+        position: absolute;
+        top: 43px;
+        color: #C4C9CE;
+        pointer-events: none;
+        font-size: 0;
+
+        > span {
+          font-size: 12px;
+
+          &::before {
+            content: "v";
+          }
+        }
+      }
+
+      > :nth-child(4) {
+        margin: -190px auto 166px;
+        z-index: 1;
+        filter: drop-shadow(0 0 2px black) drop-shadow(0 0 5px #00000040);
+        width: 128px;
+        overflow: hidden;
+        white-space: nowrap;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      > :nth-child(5), > ul > li, > :nth-child(9) {
+        list-style: initial;
+        text-align: left;
+        margin: 0 0 8px 17px;
+        color: #C4C9CE !important;
+        line-height: 20px;
+        display: list-item;
+      }
+
+      > :nth-child(9) {
+        font-weight: 700;
+      }
+
+      > :nth-child(11), > :nth-child(12) {
+        position: absolute;
+        bottom: 17px;
+        font-size: 0;
+
+        > a {
+          color: var(--color-text) !important;
+          font-size: 12px;
+        }
+      }
+
+      > :nth-child(11) {
+        right: 104px;
+      }
+
+      > :nth-child(12) {
+        right: 16px;
+      }
+    }
+  }
+
+  .socials {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    padding: 0 16px !important;
+    background-color: var(--color-ui);
+    max-width: initial !important;
+    align-items: center;
+
+    > a {
+      max-width: 16px !important;
+      margin-right: 16px;
+      padding: 0 !important;
+      background-color: initial !important;
+
+      > label {
+        display: none;
+      }
+
+      > i {
+        font-size: 16px !important;
+        width: 16px;
+        color: #C4C9CE !important;
+      }
+    }
+  }
+
+  & h4 {
+    margin: 40px 0 20px;
+    padding: 0;
+    border: none;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    color: #2DC770;
+
+    &::after {
+      content: "";
+      flex: 1;
+      background-color: #2DC770;
+      height: 1px;
+    }
+
+    &:nth-of-type(2) {
+      color: #F0B132;
+
+      &::after {
+        background-color: #F0B132;
+      }
+    }
+  }
+}
+
+dialog#about div.socials a:hover i {
+  color: #C4C9CE !important;
+}
+
+#about_page_title {
+  height: 256px;
+  display: flex;
+  justify-content: center;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("https://raw.githubusercontent.com/JannisX11/blockbench.net/main/assets/background.jpg");
+    background-size: cover;
+    background-position: 50% 50%;
+    filter: blur(4px);
+  }
+
+  > img {
+    z-index: 1;
+    filter: drop-shadow(0 0 2px black) drop-shadow(0 0 5px #00000040);
+  }
+}
+
+.dialog_menu_button {
+  display: none;
 }
