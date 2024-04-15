@@ -811,6 +811,8 @@ body:has(#page_wrapper)::after {
 #start_screen_view_menu > li > i {
   margin: 0 !important;
   font-size: 18px;
+  min-width: 18px;
+  min-height: 18px;
 }
 
 #start_screen_view_menu > li:nth-child(2)::after {
@@ -1240,29 +1242,29 @@ blockquote {
   font-weight: 500;
 }
 
-#start_screen > content:has(> section[style="background-color: var(--color-back);"]) #start_files {
-  > .start_screen_left > ul {
-    max-height: calc(100vh - 226px - 36px);
-  }
-
-  > .start_screen_right > .recent_list_grid {
-    max-height: calc(100vh - 216px - 36px);
-  }
-
-  > .start_screen_right:has(#start_screen_view_menu > :last-child.selected) > ul {
-    max-height: calc(100vh - 216px - 36px) !important;
-  }
-
-  > .start_screen_format_page {
-    max-height: calc(100vh - 22px - 36px) !important;
-  }
-}
-
 #start_screen > content:has(> section[style="background-color: var(--color-back);"]) {
   margin-top: 36px;
   overflow: visible;
   height: calc(100% - 36px);
   position: relative;
+
+  #start_files {
+    > .start_screen_left > ul {
+      max-height: calc(100vh - 226px - 36px);
+    }
+
+    > .start_screen_right > .recent_list_grid {
+      max-height: calc(100vh - 216px - 36px);
+    }
+
+    > .start_screen_right:has(#start_screen_view_menu > :last-child.selected) > ul {
+      max-height: calc(100vh - 216px - 36px) !important;
+    }
+
+    > .start_screen_format_page {
+      max-height: calc(100vh - 22px - 36px) !important;
+    }
+  }
 }
 
 #start_screen > content > section[style="background-color: var(--color-back);"] {
@@ -1270,69 +1272,70 @@ blockquote {
   height: 36px;
   background-color: var(--color-error) !important;
   top: -36px;
-  box-shadow: #02020233 0px 1px 0px 0px, #0606070C 0px 1.5px 0px 0px, #0202020C 0px 2px 0px 0px;
-  z-index: 1;
-}
 
-#start_screen > content > section[style="background-color: var(--color-back);"] > .start_screen_close_button {
-  display: flex !important;
-  color: var(--color-light);
-  opacity: 1;
-  font-size: 20px;
-  right: 18px;
-}
+  .start_screen_close_button {
+    display: flex !important;
+    color: var(--color-light);
+    opacity: 1;
+    font-size: 20px;
+    right: 18px;
+  }
 
-#start_screen > content > section[style="background-color: var(--color-back);"] > .start_screen_right {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  justify-content: center;
-  padding: 0;
-}
+  .start_screen_right {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    justify-content: center;
+    padding: 0;
+  }
 
-#start_screen > content > section[style="background-color: var(--color-back);"] > .start_screen_right > h3 {
-  display: none;
-}
+  & h3 {
+    display: none;
+  }
 
-#start_screen > content > section[style="background-color: var(--color-back);"] > .start_screen_right * {
-  font-size: 14px;
-  line-height: 36px;
-  font-weight: 600;
-  padding: 0;
-}
+  & * {
+    font-size: 14px;
+    color: var(--color-light);
+    font-weight: 500;
+  }
 
-#start_screen > content > section[style="background-color: var(--color-back);"] > .start_screen_right > button {
-  margin: 0 0 0 2px;
-  background-color: transparent;
-  border: 1px solid var(--color-light);
-  border-radius: 3px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 22px;
-  padding: 0 10px;
-  min-width: initial;
-  transition: background-color .2s ease, color .2s ease;
-}
+  & button {
+    margin: 0 0 0 2px;
+    background-color: transparent;
+    border: 1px solid var(--color-light);
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 22px;
+    padding: 0 10px;
+    min-width: initial;
+    transition: background-color .2s ease, color .2s ease;
 
-#start_screen > content > section[style="background-color: var(--color-back);"] > .start_screen_right > button:hover {
-  color: var(--color-error) !important;
-  background-color: var(--color-light);
-}
+    &:hover {
+      background-color: var(--color-light);
 
-#start_screen > content > section[style="background-color: var(--color-back);"] > .start_screen_right > :last-child {
-  display: none;
-}
+      > p {
+        color: var(--color-error);
+      }
+    }
 
-#start_screen > content > section[style="background-color: var(--color-back);"] > .start_screen_left {
-  position: absolute;
-}
+    &:last-child {
+      display: none;
+    }
+  }
 
-#start_screen > content > section[style="background-color: var(--color-back);"] > .start_screen_left ::before {
-  position: absolute;
-  top: 12px;
-  left: 20px;
-  font-size: 14px;
+  .start_screen_left {
+    position: absolute;
+
+    ::before {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
 }
 
 .start_screen_right:has([href="https://ewanhowell.com/"]) {
@@ -2896,7 +2899,7 @@ bb-select {
     }
   }
 
-  .input_wrapper:has(#path) {
+  .input_wrapper:has(#path, #texture) {
     cursor: pointer;
 
     & input {
@@ -5200,4 +5203,75 @@ dialog#plugins {
     border-radius: 5px;
     transform: translateX(-7px);
   }
+}
+
+.dialog_message_box_checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 0;
+}
+
+.dialog_message_box_checkbox {
+  display: flex;
+
+  > :last-child {
+    padding-left: 8px;
+  }
+
+  & * {
+    cursor: pointer;
+  }
+}
+
+body:has(.toast_notification) #work_screen {
+  margin-top: 36px;
+  border-radius: 0;
+}
+
+#toast_notification_list {
+  position: fixed;
+  top: 22px;
+  left: 72px;
+  height: 36px;
+}
+
+.toast_notification {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  width: initial;
+  border-top-left-radius: 8px;
+  color: var(--color-text);
+
+  > span {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-light);
+  }
+
+  & i {
+    font-size: 20px;
+    color: var(--color-light);
+  }
+
+  > i {
+    margin: 8px 0 0 17px;
+  }
+}
+
+.toast_close_button {
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: initial;
+  max-height: 20px;
+  padding: 0;
 }
