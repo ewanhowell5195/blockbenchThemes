@@ -5026,3 +5026,58 @@ dialog#plugins {
     }
   }
 }
+
+.tool {
+  cursor: pointer;
+  color: #B5BAC1;
+  width: 40px;
+  height: 32px;
+  margin: 0;
+
+  &:hover {
+    color: var(--color-text);
+  }
+
+  &.enabled {
+    color: var(--color-light);
+    border: none;
+  }
+
+  & i {
+    font-size: 24px;
+    min-width: 24px;
+    min-height: 24px;
+    margin: 4px auto;
+
+    &.fa_big {
+      font-size: 22px;
+    }
+  }
+
+  .tooltip {
+    background-color: #111214;
+    color: var(--color-text);
+    box-shadow: #0000003D 0px 8px 16px 0px;
+    line-height: 20px;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 5px;
+    height: initial;
+    margin-top: 35px;
+
+    .keybinding_label:empty {
+      display: none;
+    }
+  }
+
+  .tooltip_description {
+    margin-top: 13px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border: none;
+    box-shadow: #0000003D 0px 8px 16px 0px;
+    background-color: #111214;
+    border-radius: 5px;
+    transform: translateX(-7px);
+  }
+}
