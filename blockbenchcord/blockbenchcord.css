@@ -60,6 +60,17 @@
   font-weight: 700;
   src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggmono700.woff2") format("woff2");
 }
+@font-face{
+  font-family: "ABC Ginto Nord";
+  font-weight: 800;
+  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/abcgintonord800.woff2") format("woff2");
+}
+@font-face{
+  font-family: "ABC Ginto Nord";
+  font-style: italic;
+  font-weight: 800;
+  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/abcgintonord800italic.woff2") format("woff2");
+}
 
 :root {
   --bb-avatar: url("data:image/png;base64,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");
@@ -4533,9 +4544,116 @@ dialog#plugins {
   }
 }
 
+#plugin_browser_start_page {
+  max-height: calc(100vh - 190px);
+  padding: 0 16px 16px;
+  position: relative;
+
+  > h1 {
+    font-family: "ABC Ginto Nord";
+    font-weight: 800;
+    font-size: 44px;
+    line-height: 44px;
+    width: 66.66%;
+    margin: 0 0 30px;
+    color: #F2F3F5;
+  }
+
+  > img {
+    width: 33.33%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+  }
+
+  > :nth-child(3) {
+    width: 66.66%;
+  }
+}
+
+@media screen and (width < 850px) {
+  #plugin_browser_start_page > h1 {
+    font-size: 32px;
+    line-height: 32px;
+  }
+}
+
+@media screen and (width < 650px) {
+  #plugin_browser_start_page > h1 {
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
+
+.plugins_suggested_row {
+  margin-top: 32px;
+
+  > h3 {
+    margin: 0 0 16px;
+    padding: 0;
+    color: #F2F3F5;
+    font-weight: 600;
+    line-height: 24px;
+  }
+
+  > ul {
+    margin: -1px 0 -8px;
+    padding: 1px 0 8px;
+    width: initial;
+    overflow-x: auto;
+    background-color: initial;
+  }
+
+  & li {
+    padding: 16px 16px 16px 80px !important;
+    border-radius: 8px;
+    width: 244px !important;
+    height: initial !important;
+    position: relative;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &:hover {
+      background-color: var(--color-back) !important;
+      transform: translateY(-1px);
+      box-shadow: #0000003D 0px 8px 16px 0px;
+    }
+
+    .plugin_icon_area {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 16px;
+      margin: 0;
+      padding: 0;
+      height: 48px;
+    }
+
+    .title {
+      height: initial !important;
+      text-align: left;
+      font-weight: 500 !important;
+      line-height: 20px !important;
+      margin-bottom: 12px;
+      color: #F2F3F5;
+    }
+
+    .author {
+      text-align: left;
+      font-size: 12px;
+      line-height: 16px;
+      color: #B5BAC1 !important;
+    }
+  }
+}
+
 #plugin_browser_page {
   max-height: calc(100vh - 190px);
   padding: 0 16px 16px;
+  overflow-y: auto;
 
   .button_bar {
     margin: 0;
@@ -4673,6 +4791,7 @@ dialog#plugins {
     margin-right: -8px;
     padding: 0 8px 0 0 !important;
     overflow-y: auto;
+    min-height: 128px;
   }
 
   .settings_list  {
@@ -4986,6 +5105,7 @@ dialog#plugins {
   background-color: var(--color-ui);
   border-radius: 8px;
   padding: 0;
+  min-height: 128px;
 
   &::-webkit-scrollbar-track {
     background-color: transparent;
