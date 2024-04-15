@@ -1092,22 +1092,74 @@ body:has(#page_wrapper)::after {
   padding: 0 !important;
 }
 
-h3.markdown, dialog#theme h2 {
+h1.markdown, .markdown h1, dialog#plugins #about-content h1 {
+  margin: 8px 0 !important;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 44px;
+
+  &:not(:first-child) {
+    margin-top: 16px !important;
+  }
+}
+
+h2.markdown, .markdown h2, dialog#plugins #about-content h2 {
+  margin: 8px 0 !important;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 38.5px;
+
+  &:not(:first-child) {
+    margin-top: 16px !important;
+  }
+}
+
+h3.markdown, .markdown h3, dialog#plugins #about-content h3 {
   margin: 8px 0 !important;
   font-size: 24px;
   font-weight: 700;
   line-height: 33px;
+
+  &:not(:first-child) {
+    margin-top: 16px !important;
+  }
 }
 
-dialog#theme h2 {
-  margin-top: 0 !important;
+h4.markdown, .markdown h4, dialog#plugins #about-content h4 {
+  margin: 8px 0 !important;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 27.5px;
+
+  &:not(:first-child) {
+    margin-top: 16px !important;
+  }
+}
+
+h5.markdown, .markdown h5, dialog#plugins #about-content h5 {
+  margin: 8px 0 !important;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22px;
+
+  &:not(:first-child) {
+    margin-top: 16px !important;
+  }
+}
+
+div.markdown > * {
+  padding: 2px 0;
+
+  &:first-child {
+    padding-top: 0;
+  }
 }
 
 .markdown p {
   margin: 0;
 }
 
-.markdown ul {
+.markdown ul, .markdown ol {
   margin: 4px 0 0 16px;
   padding: 0;
   line-height: 22px !important;
@@ -1120,10 +1172,28 @@ dialog#theme h2 {
 .markdown a {
   color: #00A8FC !important;
   text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
-.markdown a:hover {
-  text-decoration: underline;
+blockquote {
+  position: relative;
+  padding-left: 16px !important;
+  border: none;
+  background-color: transparent;
+
+  &::before {
+    content: "";
+    width: 4px;
+    background-color: var(--color-button);
+    border-radius: 2px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+  }
 }
 
 .start_screen_format_page:not(:has(.format_target)) {
@@ -3673,7 +3743,13 @@ dialog#cem_template_loader {
   color: #B5BAC1;
 }
 
-#theme {
+dialog#theme {
+  & h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+
   #color_wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(69px, 1fr));
@@ -4316,28 +4392,6 @@ dialog#plugins {
   padding: 16px 16px 0;
   height: 50px;
 
-  .tool {
-    width: 40px;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    > i {
-      font-size: 24px;
-      margin: 0;
-      width: 24px;
-      height: 24px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      &.fa_big {
-        font-size: 20px;
-      }
-    }
-  }
-
   .search_bar {
     margin: 0 8px;
   }
@@ -4347,11 +4401,11 @@ dialog#plugins {
   background-color: initial;
   max-height: calc(100vh - 255px);
   padding-top: 2px;
-  margin-top: -2px;
+  margin: -2px 8px 0 0;
 
   > li {
     background-color: #35373C;
-    margin: 12px 16px;
+    margin: 12px 16px 12px 16px;
     border-radius: 12px;
     transition: box-shadow .2s ease-out, transform .2s ease-out, background-color .2s ease-out;
     display: flex;
@@ -4614,6 +4668,87 @@ dialog#plugins {
       min-height: 32px;
     }
   }
+
+  > .about, > div:has(.settings_list), .features_list {
+    margin-right: -8px;
+    padding: 0 8px 0 0 !important;
+    overflow-y: auto;
+  }
+
+  .settings_list  {
+    &:empty::before {
+      content: "No settings to configure";
+    }
+
+    > :first-child {
+      padding-top: 8px !important;
+    }
+  }
+
+  .features_list {
+    > li:not(:first-child) {
+      margin-top: 16px;
+    }
+
+    & h4 {
+      margin: 0 0 8px 0;
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 24px;
+      color: #F2F3F5;
+    }
+
+    & ul {
+      background-color: var(--color-ui);
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      & li {
+        gap: 16px;
+        position: relative;
+
+        &:has(i) label {
+          padding-left: 39px;
+        }
+
+        &.clickable:hover label {
+          background-color: var(--color-button);
+        }
+      }
+
+      .description, .extra_info {
+        min-height: initial !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0;
+        color: var(--color-text);
+      }
+
+      .extra_info {
+        overflow: initial;
+      }
+
+      & label {
+        background-color: #313338;
+        padding: 10px 12px;
+        border: 1px solid #4E50587A;
+        color: #F2F3F5;
+        font-weight: 600;
+        border-radius: 4px;
+        transition: background-color .17s;
+      }
+
+      & i {
+        color: #F2F3F5;
+        position: absolute;
+        left: 15px;
+      }
+    }
+  }
 }
 
 #plugin_browser_sidebar .tab_bar, #plugin_browser_page_tab_bar {
@@ -4648,6 +4783,7 @@ dialog#plugins {
 
 #plugin_browser_page_tab_bar {
   margin: 24px 0 16px;
+  width: initial;
 }
 
 .plugin_browser_page_header {
@@ -4835,6 +4971,58 @@ dialog#plugins {
   }
 }
 
-blockquote p {
-  margin: 12px 0 !important;
+#plugin_page_background_decoration {
+  position: initial;
+  padding: 0;
+  font-size: 256px;
+  width: initial;
+  height: 100%;
+  text-align: center;
+}
+
+#plugin_browser_details {
+  overflow-y: auto;
+  display: flex;
+  background-color: var(--color-ui);
+  border-radius: 8px;
+  padding: 0;
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  > tbody {
+    flex: 1;
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    gap: 16px;
+    padding: 16px 16px 0;
+
+    &::after {
+      content: "";
+      display: flex;
+      height: 1px;
+      width: 1px;
+      margin-top: -1px;
+    }
+  }
+
+  & tr {
+    display: contents;
+  }
+
+  & td {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+
+    &:first-child {
+      background-color: #313338;
+      padding: 10px 12px;
+      border: 1px solid #4E50587A;
+      color: #F2F3F5;
+      font-weight: 600;
+      border-radius: 4px;
+    }
+  }
 }
