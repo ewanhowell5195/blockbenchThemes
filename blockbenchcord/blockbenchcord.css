@@ -472,25 +472,25 @@ body:has(#page_wrapper)::after {
   right: 16px;
   padding-left: 0 !important;
   filter: drop-shadow(#000c 0px 1px 1px);
-}
 
-.start_screen_graphic_description a {
-  font-size: 16px !important;
-  text-decoration: none;
-  font-weight: 600;
-  color: var(--color-light);
-  margin-right: 4px;
-  line-height: 20px;
-}
+  & a {
+    font-size: 16px !important;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--color-light) !important;
+    margin-right: 4px;
+    line-height: 20px;
 
-.start_screen_graphic_description a:first-child::before {
-  content: "By";
-  margin-right: 4px;
-}
+    &:first-child::before {
+      content: "By";
+      margin-right: 4px;
+    }
 
-.start_screen_graphic_description a:not(:first-child)::before {
-  content: "&";
-  margin-right: 4px;
+    &:not(:first-child)::before {
+      content: "&";
+      margin-right: 4px;
+    }
+  }
 }
 
 .splash_art_slideshow_image::before {
@@ -728,7 +728,7 @@ body:has(#page_wrapper)::after {
 #start_screen_view_menu input {
   width: 100%;
   background-color: #313338;
-  height: 58px;
+  height: 58px !important;
   border-radius: 12px;
   font-size: 20px;
   font-weight: 600;
@@ -2181,6 +2181,7 @@ dialog#settings, dialog#keybindings {
 
       .setting_icon {
         order: 0;
+        margin: 0;
 
         > i {
           display: flex;
@@ -3249,11 +3250,10 @@ dialog#scale .dialog_bar:first-child {
   gap: 8px;
 }
 
-.form_bar_pivot_options .dialog_form_buttons {
+.dialog_form_buttons {
   display: flex;
   gap: 8px;
-  transform: translateY(-16px);
-  width: 66.2%;
+  width: 100%;
 
   & a {
     height: 36px;
@@ -3266,7 +3266,7 @@ dialog#scale .dialog_bar:first-child {
     background-color: var(--color-button);
     border-radius: 3px;
     transition: background-color .17s;
-    margin: 0;
+    margin: 0 !important;
     text-decoration: none !important;
     flex: 1;
 
@@ -3278,6 +3278,11 @@ dialog#scale .dialog_bar:first-child {
       background-color: #80848E;
     }
   }
+}
+
+.form_bar_pivot_options .dialog_form_buttons {
+  transform: translateY(-16px);
+  width: 66.2%;
 }
 
 ::-webkit-slider-thumb {
@@ -3604,10 +3609,11 @@ dialog#cem_template_loader {
   }
 }
 
-.prism-editor-wrapper {
+.prism-editor-wrapper, textarea {
   background-color: var(--color-ui) !important;
   border-radius: 4px;
   padding: 0;
+  cursor: text;
 
   .prism-editor__line-numbers {
     background-color: var(--color-ui) !important;
@@ -3637,11 +3643,11 @@ dialog#cem_template_loader {
   }
 }
 
-.prism-editor-wrapper:not(:has(.prism-editor__line-numbers)) pre {
-  padding: 7px 7px 7px 7px;
+.prism-editor-wrapper:not(:has(.prism-editor__line-numbers)) pre, textarea {
+  padding: 7px;
 }
 
-.panel .prism-editor-wrapper {
+.panel .prism-editor-wrapper, textarea {
   background-color: var(--color-border) !important;
 
   .prism-editor__line-numbers, .prism-editor__line-number, pre {
@@ -5718,4 +5724,8 @@ dialog#predicate_overrides:has(.predicate_drag_handle[style="display: none;"]) .
       }
     }
   }
+}
+
+hr {
+  border-top-color: #3F4146;
 }
