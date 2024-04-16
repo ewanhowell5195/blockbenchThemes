@@ -2156,8 +2156,13 @@ dialog#settings, dialog#keybindings {
       display: flex;
     }
 
-    > :is(.bar_select, input[type="text"]) {
+    > :is(.bar_select, input:is([type="text"], [type="password"])) {
       margin-top: 8px !important;
+
+      + .password_toggle {
+        float: right;
+        margin-top: -40px;
+      }
     }
 
     &:has(.setting_icon) {
@@ -2223,7 +2228,7 @@ dialog#settings, dialog#keybindings {
     margin: 0 10px 0 0;
   }
 
-  & input[type="text"] {
+  & input:is([type="text"], [type="password"]) {
     margin: 0;
     width: 100% !important;
   }
@@ -2481,11 +2486,12 @@ dialog#settings, dialog#keybindings {
   font-size: 18px;
 }
 
-input:is([type="text"], :not([type])) {
-  background-color: var(--color-border);
-  height: 40px;
+input:is([type="text"], [type="password"], :not([type])) {
+  color: var(--color-text);
+  background-color: var(--color-border) !important;
+  height: 40px !important;
   border-radius: 4px;
-  padding: 10px;
+  padding: 10px !important;
   display: flex;
   font-size: 16px;
 
@@ -2493,12 +2499,37 @@ input:is([type="text"], :not([type])) {
     color: #87898C;
     opacity: 1;
   }
+
+  &::-webkit-calendar-picker-indicator {
+    transform: translate(3px, -4px);
+  }
+
+  + .password_toggle {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+
+    > i {
+      font-size: 18px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      color: #B5BAC1;
+    }
+
+    &:hover > i {
+      color: var(--color-text);
+    }
+  }
 }
 
 .search_bar, .minecraft-texture-search {
   & input {
-    height: 34px;
-    padding: 0 10px;
+    height: 34px !important;
+    padding: 0 10px !important;
   }
 
   & i {
@@ -2698,18 +2729,22 @@ bb-select {
   }
 }
 
-.numeric_input > input {
-  height: 36px;
+.numeric_input {
+  min-width: 72px;
+  height: 36px !important;
+
+  > input {
+    height: 36px !important;
+  }
 }
 
 .numeric_input_slider {
-  height: 100% !important;
+  height: 36px !important;
   display: flex;
   align-items: center;
   width: 30px !important;
   right: 0 !important;
   color: var(--color-text) !important;
-  background-color: var(--color-border);
   border-radius: 4px;
 
   > i {
@@ -2926,6 +2961,12 @@ bb-select {
     width: 22px !important;
     cursor: pointer;
     height: 22px !important;
+  }
+
+  .password_toggle {
+    position: absolute;
+    right: 0;
+    top: 24px;
   }
 }
 
@@ -3269,7 +3310,8 @@ dialog#scale .dialog_bar:first-child {
   height: 36px;
   border-radius: 4px;
   padding: 10px;
-  min-width: 70px;
+  min-width: 72px;
+  margin-left: 2px;
 }
 
 .sp-container {
@@ -4880,7 +4922,7 @@ dialog#plugins {
   }
 }
 
-#plugin_browser_sidebar .tab_bar, #plugin_browser_page_tab_bar {
+#plugin_browser_sidebar .tab_bar, #plugin_browser_page_tab_bar, .contrast_graph_selector {
   margin: 24px 16px 16px;
   border-bottom: 1px solid #3F4147;
   gap: 32px;
@@ -4906,6 +4948,7 @@ dialog#plugins {
       border-bottom: 2px solid #949CF7;
       color: var(--color-light);
       cursor: default;
+      background-color: transparent;
     }
   }
 }
@@ -5185,6 +5228,10 @@ dialog#plugins {
     }
   }
 
+  &:active .icon {
+    padding-top: 0;
+  }
+
   .tooltip {
     background-color: #111214;
     color: var(--color-text);
@@ -5385,4 +5432,290 @@ dialog#image_extruder canvas, dialog#share_model .dialog_content > img {
   margin: 0 auto;
   display: block;
   border-radius: 8px;
+}
+
+.slider_input_combo {
+  height: 42px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 4px 0;
+  margin: 0 !important;
+}
+
+.button_bar_checkbox {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-light);
+  height: 24px;
+  bottom: 23px !important;
+  left: 23px;
+
+  > label {
+    cursor: pointer;
+    padding-left: 8px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &:hover label {
+    text-decoration: underline;
+  }
+}
+
+.dialog_content:has(.texture_adjust_previews) > div {
+  display: flex;
+  flex-direction: column;
+
+  > * {
+    order: 3;
+  }
+}
+
+.texture_adjust_previews {
+  width: initial !important;
+  border-radius: 8px;
+  align-self: center;
+  max-width: 100%;
+  order: 2 !important;
+  margin-top: 8px;
+}
+
+.texture_adjust_preview_toggle {
+  order: 1 !important;
+  color: #F2F3F5 !important;
+
+  &::before {
+    content: "Textures";
+    font-size: 20px;
+    margin-right: 8px;
+  }
+}
+
+dialog#adjust_curves {
+  max-width: 444px;
+}
+
+#contrast_graph {
+  margin: 0 !important;
+  border-radius: 8px;
+  overflow: visible;
+}
+
+.contrast_graph_selector {
+  margin: 8px 0 16px;
+  width: 100%;
+
+  > div {
+    flex: 1 !important;
+  }
+}
+
+#predicate_override_add {
+  gap: 8px;
+}
+
+#predicate_override_add button, #predicate_override_generator  > .tool {
+  height: 36px;
+  color: var(--color-light) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 14px;
+  background-color: var(--color-button);
+  border-radius: 3px;
+  transition: background-color .17s;
+  margin: 0;
+  text-decoration: none;
+
+  &:hover {
+    background-color: var(--color-selected);
+  }
+
+  &:active {
+    background-color: #80848E;
+  }
+
+  > i {
+    font-size: 19px;
+    min-width: 19px;
+    min-height: 19px;
+    margin: 0 4px 0 0;
+  }
+}
+
+#predicate_overrides input[type="text"] {
+  height: 36px !important;
+}
+
+#predicate_override_add {
+  margin-top: 16px;
+}
+
+.predicate_override_top_bar {
+  min-height: 34px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > span {
+    color: var(--color-text);
+  }
+
+  + div {
+    margin: 0 40px 3px 34px;
+    gap: 40px;
+
+    > :first-child {
+      max-width: 240px;
+    }
+  }
+}
+
+dialog#predicate_overrides:has(.predicate_drag_handle[style="display: none;"]) .predicate_override_top_bar + div {
+  margin: 0 40px 3px 16px;
+}
+
+#predicate_override_list {
+  border-radius: 8px;
+  padding: 0;
+  overflow: auto;
+  min-height: 40px !important;
+
+  > li {
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  &:empty {
+    min-height: 40px !important;
+
+    &::before {
+      content: "No predicates...";
+      color: var(--color-subtle_text);
+      padding: 8px 12px;
+      display: flex;
+    }
+  }
+}
+
+.predicate_drag_handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  background-color: transparent;
+  padding-left: 8px;
+
+  &::before {
+    content: "drag_indicator";
+    font-family: "Material Icons";
+    color: #B5BAC1;
+  }
+
+  &:hover::before {
+    color: var(--color-text);
+  }
+}
+
+.predicate_model {
+  padding: 8px !important;
+  max-width: 256px;
+}
+
+.predicate_list {
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  > li {
+    padding: 0 !important;
+    align-items: center;
+    gap: 8px !important;
+
+    > input {
+      width: initial !important;
+    }
+  }
+
+  > .tool {
+    bottom: 10px !important;
+    left: -36px !important;
+  }
+
+  + .tool {
+    width: 32px;
+    margin-top: 10px !important;
+  }
+
+  .numeric_input {
+    max-width: 128px;
+  }
+}
+
+#predicate_override_generator {
+  border: none;
+  background-color: var(--color-ui);
+  border-radius: 6px;
+  margin: 48px 8px 60px 8px;
+  position: relative;
+  align-items: center;
+  gap: 8px;
+  display: grid;
+  grid-template-columns: 1fr min-content min-content 1fr;
+  grid-template-rows: repeat(2, auto);
+  grid-auto-flow: column;
+  height: initial;
+  padding: 8px;
+  text-align: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: var(--color-back);
+    inset: -8px;
+    border-radius: 8px;
+    z-index: -1;
+  }
+
+  > * {
+    order: 1;
+  }
+
+  &::after {
+    content: "Type";
+  }
+
+  > :nth-child(2n+3), &::after {
+    color: var(--color-subtle_text);
+    padding: 0;
+    margin: -62px 0 0;
+  }
+
+  > :nth-child(2n+2) {
+    margin-top: -8px;
+  }
+
+  > .tool {
+    position: absolute;
+    bottom: -60px;
+    width: calc(50% + 4px);
+    left: -8px;
+
+    &::after {
+      content: "Cancel Generation";
+    }
+
+    &:last-child {
+      left: initial;
+      right: -8px;
+
+      &::after {
+        content: "Cancel Generation";
+      }
+    }
+  }
 }
