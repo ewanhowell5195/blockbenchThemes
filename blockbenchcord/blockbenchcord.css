@@ -1482,7 +1482,7 @@ blockquote {
   inset: 1px 8px 8px 8px;
 }
 
-.contextMenu > :first-child:last-child:is(.focused, .opened):not(:has(> .menu_more_button).opened)::before {
+.contextMenu > :only-child:is(.focused, .opened):not(:has(> .menu_more_button).opened)::before {
   inset: 8px;
 }
 
@@ -2820,7 +2820,7 @@ bb-select {
       min-width: 96px;
     }
 
-    &:last-child:not(:nth-child(2)) {
+    &:last-child:not(:nth-child(2)):not(:first-child) {
       padding: 2px 16px 2px 7px;
       min-width: 87px;
     }
@@ -2849,6 +2849,7 @@ bb-select {
     letter-spacing: 0.24px;
     line-height: 16px;
     flex: 100%;
+    height: 16px;
   }
 
   & input {
@@ -3250,39 +3251,13 @@ dialog#scale .dialog_bar:first-child {
   gap: 8px;
 }
 
-.dialog_form_buttons {
-  display: flex;
-  gap: 8px;
-  width: 100%;
-
-  & a {
-    height: 36px;
-    color: var(--color-light) !important;
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    font-weight: 500;
-    font-size: 14px;
-    background-color: var(--color-button);
-    border-radius: 3px;
-    transition: background-color .17s;
-    margin: 0 !important;
-    text-decoration: none !important;
-    flex: 1;
-
-    &:hover {
-      background-color: var(--color-selected);
-    }
-
-    &:active {
-      background-color: #80848E;
-    }
-  }
-}
-
 .form_bar_pivot_options .dialog_form_buttons {
   transform: translateY(-16px);
   width: 66.2%;
+
+  > a {
+    flex: 1;
+  }
 }
 
 ::-webkit-slider-thumb {
@@ -4928,13 +4903,15 @@ dialog#plugins {
   }
 }
 
-#plugin_browser_sidebar .tab_bar, #plugin_browser_page_tab_bar, .contrast_graph_selector {
+#plugin_browser_sidebar .tab_bar, #plugin_browser_page_tab_bar, .contrast_graph_selector, #brush_preset_bar {
   margin: 24px 16px 16px;
   border-bottom: 1px solid #3F4147;
   gap: 32px;
   width: calc(100% - 32px);
   height: initial;
   padding: 0;
+  background-color: transparent !important;
+  height: 39px;
 
   > div, > li {
     flex: initial;
@@ -4944,6 +4921,7 @@ dialog#plugins {
     color: #B5BAC1;
     cursor: pointer;
     margin: 0;
+    height: 38px;
 
     &:hover {
       color: var(--color-text);
@@ -5214,20 +5192,20 @@ dialog#plugins {
   margin: 0;
   display: flex;
 
-  &:hover {
-    color: var(--color-text);
-  }
-
   &.enabled {
     color: var(--color-light);
     border: none;
+  }
+
+  &:hover {
+    color: var(--color-text);
   }
 
   & i {
     font-size: 24px;
     min-width: 24px;
     min-height: 24px;
-    margin: 4px auto;
+    margin: 4px 8px;
 
     &.fa_big {
       font-size: 22px;
@@ -5486,6 +5464,10 @@ dialog#image_extruder canvas, dialog#share_model .dialog_content > img {
   max-width: 100%;
   order: 2 !important;
   margin-top: 8px;
+
+  &:has(:nth-child(2)) + ::before {
+    content: "Textures";
+  }
 }
 
 .texture_adjust_preview_toggle {
@@ -5493,7 +5475,7 @@ dialog#image_extruder canvas, dialog#share_model .dialog_content > img {
   color: #F2F3F5 !important;
 
   &::before {
-    content: "Textures";
+    content: "Texture";
     font-size: 20px;
     margin-right: 8px;
   }
@@ -5509,7 +5491,7 @@ dialog#adjust_curves {
   overflow: visible;
 }
 
-.contrast_graph_selector {
+.contrast_graph_selector, #brush_preset_bar {
   margin: 8px 0 16px;
   width: 100%;
 
@@ -5518,14 +5500,17 @@ dialog#adjust_curves {
   }
 }
 
-#predicate_override_add {
+#predicate_override_add, .dialog_form_buttons {
+  display: flex;
   gap: 8px;
+  width: 100%;
+  justify-content: flex-start;
 }
 
-#predicate_override_add button, #predicate_override_generator  > .tool {
+#predicate_override_add button, #predicate_override_generator  > .tool, .dialog_form_buttons a {
   height: 36px;
   color: var(--color-light) !important;
-  display: flex;
+  display: flex !important;
   justify-content: center;
   align-items: center;
   font-weight: 500;
@@ -5533,8 +5518,9 @@ dialog#adjust_curves {
   background-color: var(--color-button);
   border-radius: 3px;
   transition: background-color .17s;
-  margin: 0;
-  text-decoration: none;
+  margin: 0 !important;
+  text-decoration: none !important;
+  padding: 0 16px;
 
   &:hover {
     background-color: var(--color-selected);
@@ -5544,7 +5530,7 @@ dialog#adjust_curves {
     background-color: #80848E;
   }
 
-  > i {
+  > i, &::before {
     font-size: 19px;
     min-width: 19px;
     min-height: 19px;
@@ -5728,4 +5714,119 @@ dialog#predicate_overrides:has(.predicate_drag_handle[style="display: none;"]) .
 
 hr {
   border-top-color: #3F4146;
+}
+
+.form_bar_reset .dialog_form_buttons a::before {
+  content: "replay";
+  font-family: "Material Icons";
+}
+
+dialog#brush_options .dialog_content > :is(:nth-child(6), :nth-child(10)) {
+  margin-top: -32px;
+
+  > label {
+    pointer-events: none;
+  }
+
+  .dialog_form_description {
+    display: none;
+  }
+}
+
+.add_brush_preset {
+  background-color: transparent !important;
+  border: none !important;
+  display: contents;
+
+  > i {
+    min-width: 40px;
+  }
+
+  &::before {
+    content: "";
+    flex: 1;
+    pointer-events: none;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 16px;
+    width: 38px;
+    height: 38px;
+  }
+}
+
+#bar_items_current {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  background-color: #303338;
+  border: none;
+  box-shadow: #02020233 0px 1px 0px 0px, #0606070C 0px 1.5px 0px 0px, #0202020C 0px 2px 0px 0px;
+  margin: -8px -16px 16px;
+
+  & li {
+    cursor: grab;
+  }
+
+  .icon_wrapper[style="opacity: 0.4;"] {
+    opacity: 1 !important;
+    color: #80848E;
+  }
+
+  .toolbar_separator:not(.spacer) {
+    background-color: var(--color-back) !important;
+    border-radius: 4px;
+    color: #B5BAC1;
+    margin: 0 4px;
+  }
+
+  .spacer {
+    padding: 0 8px;
+    
+    &::after {
+      border-color: #B5BAC1 !important;
+    }
+  }
+}
+
+#bar_item_list {
+  overflow-y: auto;
+  gap: 2px;
+  display: flex;
+  flex-direction: column;
+  
+  > li {
+    overflow: hidden;
+    padding: 6px 8px;
+    height: 34px;
+    border-radius: 4px;
+
+    > i {
+      display: initial !important;
+    }
+
+    &:hover {
+      background-color: #393C41;
+    }
+
+    &:active {
+      background-color: #3F4147;
+      color: var(--color-light);
+    }
+  }
+
+  & * {
+    cursor: pointer;
+  }
+
+  .add {
+    display: none !important;
+  }
+}
+
+dialog#toolbar_edit .search_bar {
+  margin: 8px 0;
 }
