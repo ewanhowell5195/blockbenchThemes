@@ -2552,7 +2552,7 @@ input:is([type="text"], [type="password"], :not([type])) {
   }
 }
 
-input[type="checkbox"] {
+input[type="checkbox"], #import_texture_list > li {
   min-width: 24px;
   padding: 0 !important;
   cursor: pointer;
@@ -2560,12 +2560,14 @@ input[type="checkbox"] {
   &::before {
     content: "" !important;
     display: flex;
-    width: 24px;
+    min-width: 24px;
     height: 24px;
     background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path d="M6.5 0A6.5 6.5 0 0 0 0 6.5v11A6.5 6.5 0 0 0 6.5 24h11a6.5 6.5 0 0 0 6.5-6.5v-11A6.5 6.5 0 0 0 17.5 0zm0 1h11C20.556 1 23 3.444 23 6.5v11c0 3.056-2.444 5.5-5.5 5.5h-11C3.444 23 1 20.556 1 17.5v-11C1 3.444 3.444 1 6.5 1z" fill="%2380848e"/></svg>');
+    background-color: #313338;
+    border-radius: 6px;
   }
 
-  &:checked::before {
+  &:checked::before, &.selected::before {
     background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M6.5.5h11a6 6 0 0 1 6 6v11a6 6 0 0 1-6 6h-11a6 6 0 0 1-6-6v-11a6 6 0 0 1 6-6z" fill="%235865f2"/><path d="M6.5,0A6.5,6.5,0,0,0,0,6.5v11A6.5,6.5,0,0,0,6.5,24h11A6.5,6.5,0,0,0,24,17.5V6.5A6.5,6.5,0,0,0,17.5,0Zm0,1h11A5.47,5.47,0,0,1,23,6.5v11A5.47,5.47,0,0,1,17.5,23H6.5A5.47,5.47,0,0,1,1,17.5V6.5A5.47,5.47,0,0,1,6.5,1Z" fill="%237983f5"/><path d="M19.28,7a.76.76,0,0,1,0,1l-9,9a.76.76,0,0,1-1,0l-4.5-4.5a.75.75,0,1,1,.9-1.2l.15.15,4,3.95L18.22,7a.74.74,0,0,1,1.05,0Z" fill="%23fff"/></svg>');
   }
 }
@@ -2969,6 +2971,14 @@ bb-select {
     &:hover i {
       color: var(--color-light);
     }
+
+    + .tool {
+      width: 32px;
+
+      > i {
+        margin: 4px;
+      }
+    }
   }
 
   :not(.numeric_input) > .tool {
@@ -2981,6 +2991,10 @@ bb-select {
     position: absolute;
     right: 0;
     top: 24px;
+  }
+
+  .range_input_label {
+    padding-top: 0;
   }
 }
 
@@ -3033,7 +3047,7 @@ bb-select {
   border-radius: 4px;
 }
 
-dialog#validator .validator_warning, .theme_backup_bar {
+dialog#validator :is(.validator_warning, .validator_error), .theme_backup_bar {
   margin-bottom: 16px;
   background-color: #444037;
   border: 1px solid #F0B132;
@@ -3043,7 +3057,7 @@ dialog#validator .validator_warning, .theme_backup_bar {
   align-items: flex-start;
   line-height: 22px;
 
-  &.validator_warning > i {
+  &:is(.validator_warning, .validator_error) > i {
     display: none;
   }
 
@@ -3098,8 +3112,29 @@ dialog#validator .validator_warning, .theme_backup_bar {
     margin-right: 10px;
   }
 
+  &.validator_error {
+    background-color: #433439;
+    border: 1px solid var(--color-error);
+
+    &::before {
+      color: var(--color-error);
+    }
+  }
+
   &:last-child {
     margin-bottom: 0;
+  }
+
+  .markdown > p {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  & code {
+    background-color: var(--color-ui);
+    padding: 7px;
+    border-radius: 4px;
   }
 }
 
@@ -3130,16 +3165,23 @@ dialog#action_selector {
   }
 
   > input {
-    background-color: var(--color-border);
     border: none;
     border-radius: 5px;
-    padding: 0 48px;
-    height: 70px;
+    padding: 0 48px !important;
+    height: 70px !important;
     width: 100%;
     font-size: 22px;
     line-height: 70px;
     margin-bottom: 16px;
   }
+}
+
+.action_selector_type_overlay {
+  top: 20px;
+  left: 68px;
+  height: 70px;
+  font-size: 22px;
+  background-color: var(--color-border);
 }
 
 #action_selector_list {
@@ -3596,11 +3638,12 @@ dialog#cem_template_loader {
   }
 }
 
-.prism-editor-wrapper, textarea {
+.prism-editor-wrapper, textarea, dialog#error_log p {
   background-color: var(--color-ui) !important;
   border-radius: 4px;
   padding: 0;
   cursor: text;
+  border: 1px solid var(--color-border);
 
   .prism-editor__line-numbers {
     background-color: var(--color-ui) !important;
@@ -3681,7 +3724,7 @@ dialog#cem_template_loader {
   width: calc(100% - 20px);
 }
 
-.form_bar .prism-editor-component {
+:is(.form_bar, .dialog_bar) .prism-editor-component {
   height: 83px;
   border-radius: 4px;
   display: flex;
@@ -5343,14 +5386,15 @@ select {
   cursor: pointer;
 }
 
-#view_backups_list {
+#view_backups_list, #model_select_list {
   max-height: calc(100vh - 288px) !important; 
   background-color: #313338;
   margin: 16px -8px 0 0 !important;
   padding-right: 8px;
+  overflow-y: auto;
 
   > li {
-    height: 50px;
+    min-height: 50px;
     display: flex;
     align-items: center;
     border-top: 1px solid #3F4147 !important;
@@ -5375,6 +5419,22 @@ select {
     &:first-child {
       border-top: none !important;
     }
+  }
+}
+
+#bedrock_model_select {
+  width: initial;
+}
+
+#model_select_list li {
+  justify-content: space-between;
+
+  > p {
+    line-break: anywhere;
+  }
+
+  > label {
+    white-space: nowrap;
   }
 }
 
@@ -5774,7 +5834,7 @@ dialog#brush_options .dialog_content > :is(:nth-child(6), :nth-child(10)) {
   display: flex;
   align-items: center;
   padding: 8px;
-  background-color: #303338;
+  background-color: #313338;
   border: none;
   box-shadow: #02020233 0px 1px 0px 0px, #0606070C 0px 1.5px 0px 0px, #0202020C 0px 2px 0px 0px;
   margin: -8px -16px 16px;
@@ -5864,4 +5924,122 @@ dialog#message_box {
 
 dialog#model_stats .form_bar:not(:last-child) {
   margin-bottom: 16px;
+}
+
+dialog#edit_bedrock_binding .dialog_bar {
+  gap: 8px;
+  margin: 0;
+
+  .tool {
+    min-width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+dialog#error_log p {
+  font-family: var(--font-code);
+  padding: 7px 7px 7px 24px;
+  position: relative;
+  user-select: text;
+  &:not(:last-child) {
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &:not(:first-child) {
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  &::before {
+    content: "∟";
+    position: absolute;
+    left: 5px;
+    transform: translate(1px) rotate(-135deg);
+  }
+}
+
+dialog#select_texture .search_bar {
+  height: 34px !important;
+  margin-bottom: 16px;
+}
+
+#import_texture_list {
+  overflow-y: auto;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  & * {
+    cursor: pointer;
+  }
+
+  > li {
+    border-radius: 8px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: flex-end;
+    border: none;
+    min-width: 150px;
+    min-height: 150px;
+    flex: 1;
+
+    &:hover {
+      background-color: #393C41;
+    }
+
+    &.selected {
+      background-color: #43444B;
+    }
+
+    &::after {
+      display: none;
+    }
+
+    &::before {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+    }
+  }
+
+  & label {
+    color: var(--color-text) !important;
+    text-shadow: 0 0 3px black;
+    margin: 0 !important;
+    padding: 8px;
+  }
+}
+
+#texture_menu_thumbnail {
+  width: 128px;
+  border-radius: 8px;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.project_thumbnail {
+  border-radius: 8px;
+  transform: translateY(6px);
+  box-shadow: #0000003D 0px 8px 16px 0px;
+}
+
+.form_input_tool {
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > i {
+    margin: 0;
+  }
 }
