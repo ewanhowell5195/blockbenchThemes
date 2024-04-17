@@ -2790,7 +2790,7 @@ bb-select {
     padding: 2px 7px;
     height: 38px;
     min-width: 78px;
-    background-color: transparent;
+    background-color: transparent !important;
     text-decoration: none;
 
     &:hover {
@@ -2801,17 +2801,29 @@ bb-select {
       order: 1;
       padding: 2px 16px;
       min-width: 96px;
-      background-color: var(--color-accent);
+      background-color: var(--color-accent) !important;
       border-radius: 3px;
       text-decoration: none;
       transition: background-color .17s;
 
       &:hover {
-        background-color: #4752C4;
+        background-color: #4752C4 !important;
       }
 
       &:active {
-        background-color: #3C45A5;
+        background-color: #3C45A5 !important;
+      }
+
+      &.cancel_btn {
+        background-color: var(--color-button) !important;
+
+        &:hover {
+          background-color: var(--color-selected) !important;
+        }
+
+        &:active {
+          background-color: #80848E !important;
+        }
       }
     }
 
@@ -2833,7 +2845,7 @@ bb-select {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  column-gap: 10px;
+  column-gap: 8px;
 
   &:not(:last-child) {
     margin-bottom: 16px;
@@ -2939,7 +2951,7 @@ bb-select {
     }
   }
 
-  .input_wrapper:has(#path, #texture) {
+  &.form_bar_file .input_wrapper {
     cursor: pointer;
 
     & input {
@@ -5507,7 +5519,7 @@ dialog#adjust_curves {
   justify-content: flex-start;
 }
 
-#predicate_override_add button, #predicate_override_generator  > .tool, .dialog_form_buttons a {
+#predicate_override_add button, #predicate_override_generator  > .tool, .dialog_form_buttons a, .dialog_message_box_command {
   height: 36px;
   color: var(--color-light) !important;
   display: flex !important;
@@ -5829,4 +5841,27 @@ dialog#brush_options .dialog_content > :is(:nth-child(6), :nth-child(10)) {
 
 dialog#toolbar_edit .search_bar {
   margin: 8px 0;
+}
+
+dialog#message_box {
+  & ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.message_box_icon {
+  border-radius: 8px;
+  padding: 0 !important;
+  margin: 0 8px 2px 0;
+  width: 54px;
+}
+
+.dialog_message_box_command {
+  justify-content: space-between;
+}
+
+dialog#model_stats .form_bar:not(:last-child) {
+  margin-bottom: 16px;
 }
