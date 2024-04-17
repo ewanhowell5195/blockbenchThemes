@@ -5386,7 +5386,7 @@ select {
   cursor: pointer;
 }
 
-#view_backups_list, #model_select_list {
+#view_backups_list, #model_select_list, .unsaved_models_list {
   max-height: calc(100vh - 288px) !important; 
   background-color: #313338;
   margin: 16px -8px 0 0 !important;
@@ -5418,6 +5418,10 @@ select {
 
     &:first-child {
       border-top: none !important;
+    }
+
+    & i {
+      font-size: 22px;
     }
   }
 }
