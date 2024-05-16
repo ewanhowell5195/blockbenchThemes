@@ -5342,7 +5342,7 @@ body:has(.toast_notification) {
     border-radius: 0;
   }
 
-  &:not(:has(#left_bar[style="display: flex;"])) #main_toolbar {
+  &:not(:has(#work_screen:not([style^="grid-template-columns: 0px"]))) #main_toolbar {
     border-radius: 0;
   }
 }
@@ -6080,7 +6080,7 @@ dialog#select_texture .search_bar {
   z-index: 9999;
 }
 
-body:has(#left_bar[style="display: flex;"]) :is(#center, #status_bar, #main_toolbar) {
+body:has(#work_screen:not([style^="grid-template-columns: 0px"])) :is(#center, #status_bar, #main_toolbar) {
   margin-left: 8px;
 }
 
