@@ -86,6 +86,8 @@
   --color-axis-x: var(--color-error) !important;
   --color-axis-y: var(--color-confirm) !important;
   --color-axis-z: var(--color-accent) !important;
+  scrollbar-width: initial;
+  scrollbar-color: initial;
 }
 
 #corner_logo > img, .project_tab.new_tab, .project_tab:not(.selected) .project_tab_close_button, .project_tab .unsaved_icon, .start_screen_close_button, #start_files li.format_entry.selected::after {
@@ -135,10 +137,6 @@
   border: none;
   height: calc(100% - 22px);
   transition: scale .25s;
-}
-
-#start_screen, #work_screen {
-  border-top-left-radius: 8px;
 }
 
 #tab_bar {
@@ -411,11 +409,9 @@ body:has(#page_wrapper)::after {
 
 .project_tab > .icon, #search_tab_button > i, #new_tab_button > i, #title_bar_home_button > i {
   font-size: 30px;
-  translate: -3px;
-}
-
-#new_tab_button > i, #search_tab_button > i {
-  translate: -4px;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
 }
 
 #start_screen {
@@ -435,7 +431,7 @@ body:has(#page_wrapper)::after {
       display: flex;
       width: 240px;
       height: 135px;
-      background-image: linear-gradient(#0006, #0000 43%), url("assets/splash_art/1.png");
+      background-image: linear-gradient(#0006, #0000 43%), url("assets/splash_art/1.webp");
       background-size: cover;
       background-position: 50% 50%;
     }
@@ -1071,6 +1067,7 @@ body:has(#page_wrapper)::after {
   padding: 0;
   font-size: 0;
   flex-wrap: wrap;
+  line-height: 1.5;
 }
 
 .start_screen_format_page .format_target::before {
@@ -2552,7 +2549,7 @@ input:is([type="text"], [type="password"], :not([type])) {
   }
 }
 
-input[type="checkbox"], #import_texture_list > li {
+:not(.setting_element) > input[type="checkbox"], #import_texture_list > li {
   min-width: 24px;
   padding: 0 !important;
   cursor: pointer;
@@ -2864,6 +2861,18 @@ bb-select {
     line-height: 16px;
     flex: 100%;
     height: 16px;
+
+    &:empty {
+      pointer-events: none;
+
+      ~ * {
+        margin-top: -32px;
+      }
+
+      ~ .dialog_form_description {
+        display: none;
+      }
+    }
   }
 
   & input {
@@ -3212,6 +3221,10 @@ dialog#action_selector {
       > i {
         font-size: 16px;
         width: 20px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
       }
 
       > span {
@@ -3638,7 +3651,7 @@ dialog#cem_template_loader {
   }
 }
 
-.prism-editor-wrapper, textarea, dialog#error_log p {
+.prism-editor-wrapper, textarea {
   background-color: var(--color-ui) !important;
   border-radius: 4px;
   padding: 0;
@@ -3677,7 +3690,7 @@ dialog#cem_template_loader {
   padding: 7px;
 }
 
-.panel .prism-editor-wrapper, textarea {
+.panel .prism-editor-wrapper, textarea, .panel dialog#error_log p {
   background-color: var(--color-border) !important;
 
   .prism-editor__line-numbers, .prism-editor__line-number, pre {
@@ -3695,7 +3708,7 @@ dialog#cem_template_loader {
 }
 
 #thumbnail_editor {
-  height: calc(100vh - 347px);
+  height: calc(100vh - 363px);
   min-height: 128px;
 }
 
@@ -4433,7 +4446,7 @@ dialog#about div.socials a:hover i {
 }
 
 dialog#plugins {
-  height: calc(100vh - 128px); 
+  height: calc(100vh - 128px) !important; 
 
   .dialog_handle {
     margin-left: 38.2%;
@@ -4787,6 +4800,8 @@ dialog#plugins {
       > i {
         font-size: 19px;
         width: 19px;
+        overflow: visible;
+        margin: 0;
       }
 
       &:first-child:not(:last-child) {
@@ -5188,7 +5203,10 @@ dialog#plugins {
   font-size: 256px;
   width: initial;
   height: 100%;
-  text-align: center;
+  margin: 0;
+  display: flex;
+  align-items: safe center;
+  justify-content: center;
 }
 
 #plugin_browser_details {
@@ -5318,9 +5336,15 @@ dialog#plugins {
   }
 }
 
-body:has(.toast_notification) #work_screen {
-  margin-top: 36px;
-  border-radius: 0;
+body:has(.toast_notification) {
+  #work_screen {
+    margin-top: 36px;
+    border-radius: 0;
+  }
+
+  &:not(:has(#left_bar[style="display: flex;"])) #main_toolbar {
+    border-radius: 0;
+  }
 }
 
 #toast_notification_list {
@@ -5328,7 +5352,6 @@ body:has(.toast_notification) #work_screen {
   top: 22px;
   left: 72px;
   height: 36px;
-  background-color: red;
 
   &:not(:has(*)) {
     display: none;
@@ -5707,6 +5730,15 @@ dialog#predicate_overrides:has(.predicate_drag_handle[style="display: none;"]) .
     > input {
       width: initial !important;
     }
+
+    > .tool {
+      width: initial !important;
+
+      > i {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
   }
 
   > .tool {
@@ -5717,6 +5749,14 @@ dialog#predicate_overrides:has(.predicate_drag_handle[style="display: none;"]) .
   + .tool {
     width: 32px;
     margin-top: 10px !important;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+
+    > i {
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 
   .numeric_input {
@@ -5795,18 +5835,6 @@ hr {
 .form_bar_reset .dialog_form_buttons a::before {
   content: "replay";
   font-family: "Material Icons";
-}
-
-dialog#brush_options .dialog_content > :is(:nth-child(6), :nth-child(10)) {
-  margin-top: -32px;
-
-  > label {
-    pointer-events: none;
-  }
-
-  .dialog_form_description {
-    display: none;
-  }
 }
 
 .add_brush_preset {
@@ -6046,4 +6074,34 @@ dialog#select_texture .search_bar {
   > i {
     margin: 0;
   }
+}
+
+.dialog_resize_handle {
+  z-index: 9999;
+}
+
+body:has(#left_bar[style="display: flex;"]) :is(#center, #status_bar, #main_toolbar) {
+  margin-left: 8px;
+}
+
+#resizer_left {
+  width: 8px;
+  opacity: 1 !important;
+  margin-left: -2px;
+  background-color: var(--color-border);
+  position: relative;
+}
+
+#start_screen, #work_screen, #main_toolbar {
+  border-top-left-radius: 8px;
+}
+
+#left_bar {
+  border-top-right-radius: 8px;
+  overflow: hidden;
+  border-bottom-right-radius: 8px;
+}
+
+#status_bar {
+  border-bottom-left-radius: 8px;
 }
