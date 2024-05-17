@@ -1434,214 +1434,211 @@ blockquote {
   box-shadow: #0000003D 0px 8px 16px 0px;
   z-index: 99;
   min-width: 188px !important;
-}
 
-.contextMenu > li {
-  padding: 1px 16px !important;
-  align-items: center;
-  line-height: normal;
-  font-size: 14px;
-  font-weight: 500;
-  color: #B5BAC1 !important;
-  cursor: pointer;
-  position: relative;
-  background-color: transparent !important;
-  height: 32px;
-  box-sizing: initial;
-}
+  > li {
+    padding: 1px 16px !important;
+    align-items: center;
+    line-height: normal;
+    font-size: 14px;
+    font-weight: 500;
+    color: #B5BAC1 !important;
+    cursor: pointer;
+    position: relative;
+    background-color: transparent !important;
+    height: 32px;
+    box-sizing: initial;
 
-.contextMenu > :first-child {
-  padding-top: 8px !important;
-}
+    &:is(.focused, .opened):not(:has(> .menu_more_button).opened) {
+      color: var(--color-light) !important;
 
-.contextMenu > :last-child {
-  padding-bottom: 8px !important;
-}
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 1px 8px;
+        background-color: var(--color-accent);
+        border-radius: 2px;
+        z-index: -1;
+      }
+    }
 
-.contextMenu > li:is(.focused, .opened):not(:has(> .menu_more_button).opened) {
-  color: var(--color-light) !important;
-}
+    &:active:not(:has(:active)) {
+      color: var(--color-light) !important;
 
-.contextMenu > li:is(.focused, .opened):not(:has(> .menu_more_button).opened)::before {
-  content: "";
-  position: absolute;
-  inset: 1px 8px;
-  background-color: var(--color-accent);
-  border-radius: 2px;
-  z-index: -1;
-}
+      &::before {
+        background-color: #3C45A5 !important;
+      }
+    }
 
-.contextMenu > :first-child:is(.focused, .opened):not(:has(> .menu_more_button).opened)::before {
-  inset: 8px 8px 1px 8px;
-}
+    &::after {
+      font-size: 12px !important;
+      width: 18px;
+      margin: 0 0 0 8px !important;
+      display: flex !important;
+      justify-content: center;
+    }
 
-.contextMenu > :last-child:is(.focused, .opened):not(:has(> .menu_more_button).opened)::before {
-  inset: 1px 8px 8px 8px;
-}
+    &:not(:is(.menu_separator, .menu_search_bar)) > :first-child {
+      order: 1;
+      width: 18px;
+      height: 18px;
+      margin: 0 0 0 8px;
+      font-size: 18px;
+      padding: 0;
+    }
 
-.contextMenu > :only-child:is(.focused, .opened):not(:has(> .menu_more_button).opened)::before {
-  inset: 8px;
-}
+    > :first-child.fa_big {
+      font-size: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-.contextMenu > li:active:not(:has(:active)) {
-  color: var(--color-light) !important;
-}
+    > .sub {
+      transform: translate(4px, -4px);
+      align-self: flex-start;
 
-.contextMenu > li:active:not(:has(:active))::before {
-  background-color: #3C45A5 !important;
-}
+      &[style*="left: -"] {
+        transform: translate(-4px, -4px);
 
-.contextMenu > li::after {
-  font-size: 12px !important;
-  width: 18px;
-  margin: 0 0 0 8px !important;
-  display: flex !important;
-  justify-content: center;
-}
+        &[style*="margin-top: -"] {
+          transform: translate(-4px, 14px);
+        }
+      }
 
-.contextMenu > li:not(:is(.menu_separator, .menu_search_bar)) > :first-child {
-  order: 1;
-  width: 18px;
-  height: 18px;
-  margin: 0 0 0 8px;
-  font-size: 18px;
-  padding: 0;
-}
+      &[style*="margin-top: -"] {
+        transform: translate(4px, 14px);
+      }
+    }
 
-.contextMenu > li > :first-child.fa_big {
-  font-size: 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    &:has(.menu_more_button) > :first-child {
+      display: none !important;
+    }
 
-.contextMenu > .parent > :first-child {
-  display: none !important;
-}
+    > .menu_more_button {
+      width: 40px;
+      height: 34px;
+      cursor: pointer;
+      margin: 0 -16px 0 8px !important;
+      position: relative;
+      display: flex;
+      align-items: center;
+      background-color: transparent !important;
 
-.contextMenu > li > .keybinding_label {
-  display: none;
-}
+      > i {
+        margin-left: 5px;
+      }
+    }
+  }
 
-.contextMenu > .menu_separator {
-  padding: 0 !important;
-  margin: 3px 12px !important;
-  border-bottom: 1px solid #2E2F34;
-  height: 0;
-  width: initial;
-  border-radius: 0;
-  display: flex;
-  justify-content: center;
-}
+  > :first-child {
+    padding-top: 8px !important;
 
-.contextMenu > li > .sub {
-  transform: translate(4px, -4px);
-  align-self: flex-start;
-}
+    &:is(.focused, .opened):not(:has(> .menu_more_button).opened)::before {
+      inset: 8px 8px 1px 8px;
+    }
+  }
 
-.contextMenu > li > .sub[style*="left: -"] {
-  transform: translate(-4px, -4px);
-}
+  > :last-child {
+    padding-bottom: 8px !important;
 
-.contextMenu > li > .sub[style*="margin-top: -"] {
-  transform: translate(4px, 14px);
-}
+    &:is(.focused, .opened):not(:has(> .menu_more_button).opened)::before {
+      inset: 1px 8px 8px 8px;
+    }
+  }
 
-.contextMenu > li > .sub[style*="left: -"][style*="margin-top: -"] {
-  transform: translate(-4px, 14px);
-}
+  > :only-child:is(.focused, .opened):not(:has(> .menu_more_button).opened)::before {
+    inset: 8px;
+  }
 
-.contextMenu > .menu_separator.has_label > label {
-  background-color: #111214;
-  color: #B5BAC1;
-  font-size: 10px;
-  text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 0.22px;
-  height: 6px;
-  line-height: 6px;
-  margin: 1px 0 0 0;
-}
+  > .parent > :first-child {
+    display: none !important;
+  }
 
-.contextMenu > .menu_search_bar {
-  background-color: transparent !important;
-  color: #B5BAC1 !important;
-  position: relative;
-}
+  .keybinding_label {
+    display: none;
+  }
 
-.contextMenu > .menu_search_bar > :first-child {
-  order: 0;
-}
+  > .menu_separator {
+    padding: 0 !important;
+    margin: 3px 12px !important;
+    border-bottom: 1px solid #2E2F34;
+    height: 0;
+    width: initial;
+    border-radius: 0;
+    display: flex;
+    justify-content: center;
 
-.contextMenu > .menu_search_bar > div {
-  width: 26px;
-  cursor: pointer;
-  padding: 8px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  box-sizing: initial;
-  display: flex;
-  align-items: flex-end;
-}
+    &.has_label > label {
+      background-color: #111214;
+      color: #B5BAC1;
+      font-size: 10px;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.22px;
+      height: 6px;
+      line-height: 6px;
+      margin: 1px 0 0 0;
+    }
+  }
 
-.contextMenu > .menu_search_bar i {
-  font-size: 18px;
-}
+  > .menu_search_bar {
+    background-color: transparent !important;
+    color: #B5BAC1 !important;
+    position: relative;
+    padding: 0 !important;
+    height: initial;
 
-.contextMenu > .menu_search_bar {
-  padding: 0 !important;
-  height: initial;
-}
+    > :first-child {
+      order: 0;
+    }
 
-.contextMenu > .menu_search_bar > input {
-  padding: 1px 16px !important;
-  margin: 0;
-  font-size: 14px !important;
-  font-weight: 500;
-  height: 32px;
-  background-color: transparent;
-}
+    > div {
+      width: 26px;
+      cursor: pointer;
+      padding: 8px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      box-sizing: initial;
+      display: flex;
+      align-items: flex-end;
+    }
 
-.contextMenu > .menu_search_bar:first-child > input {
-  padding-top: 8px !important;
-}
+    & i {
+      font-size: 18px;
+    }
 
-.contextMenu > li:has(.menu_more_button) > :first-child {
-  display: none !important;
-}
+    > input {
+      padding: 1px 16px !important;
+      margin: 0;
+      font-size: 14px !important;
+      font-weight: 500;
+      height: 32px !important;
+      background-color: transparent !important;
+    }
 
-.contextMenu > li > .menu_more_button {
-  width: 40px;
-  height: 34px;
-  cursor: pointer;
-  margin: 0 -16px 0 8px !important;
-  position: relative;
-  display: flex;
-  align-items: center;
-  background-color: transparent !important;
-}
+    &:first-child > input {
+      padding-top: 8px !important;
+    }
+  }
 
-.contextMenu > li > .menu_more_button > i {
-  margin-left: 5px;
-}
+  > .opened > .menu_more_button {
+    color: var(--color-light);
 
-.contextMenu > .opened > .menu_more_button {
-  color: var(--color-light);
-}
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 1px 8px 1px 0;
+      background-color: var(--color-accent);
+      z-index: -1;
+      border-radius: 2px;
+    }
 
-.contextMenu > .opened > .menu_more_button::before {
-  content: "";
-  position: absolute;
-  inset: 1px 8px 1px 0;
-  background-color: var(--color-accent);
-  z-index: -1;
-  border-radius: 2px;
-}
-
-.contextMenu > .opened > .menu_more_button:active::before {
-  background-color: #3C45A5;
+    &:active::before {
+      background-color: #3C45A5;
+    }
+  }
 }
 
 .contextMenu::-webkit-scrollbar-track {
@@ -6104,4 +6101,68 @@ body:has(#work_screen:not([style^="grid-template-columns: 0px"])) :is(#center, #
 
 #status_bar {
   border-bottom-left-radius: 8px;
+}
+
+.select_menu {
+  background-color: var(--color-ui);
+  box-shadow: none;
+  border: 1px solid var(--color-border);
+  border-radius: 0 0 4px 4px;
+
+  > li {
+    font-size: 16px;
+    line-height: 16px;
+    padding: 12px !important;
+    height: initial;
+
+    &:is(:first-child, :not(:first-child)):not(.menu_search_bar, .menu_separator) {
+      padding: 12px !important;
+    }
+
+    &:has(.fa-dot-circle) {
+      background-color: #404249 !important;
+      color: var(--color-light) !important;
+    }
+
+    &:is(.focused, .opened):not(:has(> .menu_more_button).opened):not(:has(.fa-dot-circle)) {
+      background-color: #35373C !important;
+      color: var(--color-text) !important;
+    }
+
+    .fa-circle {
+      display: none !important;
+    }
+
+    .fa-dot-circle {
+      width: 20px !important;
+      height: 20px !important;
+      margin: 0 !important;
+      position: relative;
+
+      &::before {
+        content: "";
+        width: 20px;
+        height: 20px;
+        background-color: var(--color-accent);
+        border-radius: 50%;
+      }
+
+      &::after {
+        content: "check";
+        font-family: "Material Icons";
+        position: absolute;
+        left: 3px;
+        font-size: 16px;
+      }
+    }
+
+    > span {
+      margin-right: 8px;
+    }
+
+    &.menu_separator {
+      border-bottom: 1px solid var(--color-border);
+      margin: 7px 0 0 !important;
+    }
+  }
 }
