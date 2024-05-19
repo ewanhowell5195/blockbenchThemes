@@ -6134,15 +6134,11 @@ dialog#select_texture .search_bar {
   }
 }
 
-#work_screen:has(.toast_notification) {
-  margin-top: 36px;
-
-  #left_bar {
-    border-top-left-radius: 0;
-  }
+#work_screen {
+  border-top-left-radius: 8px;
 }
 
-#left_bar {
-  border-top-left-radius: 8px;
-  overflow: hidden;
+#work_screen:has(.toast_notification) {
+  margin-top: 36px;
+  border-top-left-radius: 0;
 }
