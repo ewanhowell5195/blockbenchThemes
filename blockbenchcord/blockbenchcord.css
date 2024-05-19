@@ -1818,16 +1818,6 @@ body {
   }
 }
 
-body:has(> #dialog_wrapper > dialog:is(#settings, #keybindings)) {
-  #page_wrapper > *, #title_bar_home_button {
-    scale: 0.9;
-  }
-
-  #blackout {
-    opacity: 0 !important;
-  }
-}
-
 @keyframes discord-dialog-show {
   from {
     opacity: 0;
