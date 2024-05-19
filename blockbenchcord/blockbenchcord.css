@@ -1784,35 +1784,6 @@ body:not(:has(#page_wrapper))::before {
   }
 }
 
-html:not(:has(#page_wrapper))::before {
-  content: "DID YOU KNOW";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 103px);
-  font-family: "gg sans";
-  font-weight: 600;
-  font-size: 12px;
-  color: #F2F3F5;
-}
-
-body:not(:has(#page_wrapper))::after {
-  content: "Blockbench was briefly named Blockify before it released. The name Blockbench was chosen by the community!";
-  display: block;
-  max-width: 300px;
-  text-align: center;
-  line-height: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 133px);
-  color: var(--color-text);
-}
-
-body:has(#page_wrapper) {
-  background-color: var(--color-border);
-}
-
 #blackout {
   background-color: #000000B2 !important;
   opacity: 1;
@@ -3691,7 +3662,7 @@ dialog#cem_template_loader {
   padding: 7px;
 }
 
-.panel .prism-editor-wrapper, textarea, .panel dialog#error_log p {
+.panel .prism-editor-wrapper, textarea {
   background-color: var(--color-border) !important;
 
   .prism-editor__line-numbers, .prism-editor__line-number, pre {
@@ -5895,7 +5866,7 @@ hr {
   > li {
     overflow: hidden;
     padding: 6px 8px;
-    height: 34px;
+    min-height: 34px;
     border-radius: 4px;
 
     > i {
@@ -5965,6 +5936,10 @@ dialog#error_log p {
   padding: 7px 7px 7px 24px;
   position: relative;
   user-select: text;
+  background-color: var(--color-ui);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+
   &:not(:last-child) {
     border-bottom: none;
     border-bottom-left-radius: 0;
