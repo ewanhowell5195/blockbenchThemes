@@ -1856,7 +1856,7 @@ dialog {
   box-shadow: 0px 0px 0px 1px #1E1F2299, #00000033 0px 2px 10px 0px;
   overflow: hidden;
   animation: discord-dialog-show .2s forwards;
-  max-height: calc(100% - 40px);
+  max-height: calc(100% - 43px) !important;
 
   .dialog_handle {
     background: none;
@@ -2124,6 +2124,10 @@ dialog#settings, dialog#keybindings {
     margin: 0;
     width: initial;
   }
+}
+
+.profile_is_selected {
+  color: var(--color-accent_text) !important;
 }
 
 .settings_list {
@@ -5333,17 +5337,6 @@ dialog#plugins {
   }
 }
 
-body:has(.toast_notification) {
-  #work_screen {
-    margin-top: 36px;
-    border-radius: 0;
-  }
-
-  &:not(:has(#work_screen:not([style^="grid-template-columns: 0px"]))) #main_toolbar {
-    border-radius: 0;
-  }
-}
-
 #toast_notification_list {
   position: fixed;
   top: 22px;
@@ -6077,32 +6070,6 @@ dialog#select_texture .search_bar {
   z-index: 9999;
 }
 
-body:has(#work_screen:not([style^="grid-template-columns: 0px"])) :is(#center, #status_bar, #main_toolbar) {
-  margin-left: 8px;
-}
-
-#resizer_left {
-  width: 8px;
-  opacity: 1 !important;
-  margin-left: -2px;
-  background-color: var(--color-border);
-  position: relative;
-}
-
-#start_screen, #work_screen, #main_toolbar {
-  border-top-left-radius: 8px;
-}
-
-#left_bar {
-  border-top-right-radius: 8px;
-  overflow: hidden;
-  border-bottom-right-radius: 8px;
-}
-
-#status_bar {
-  border-bottom-left-radius: 8px;
-}
-
 .select_menu {
   background-color: var(--color-ui);
   box-shadow: none;
@@ -6165,4 +6132,17 @@ body:has(#work_screen:not([style^="grid-template-columns: 0px"])) :is(#center, #
       margin: 7px 0 0 !important;
     }
   }
+}
+
+#work_screen:has(.toast_notification) {
+  margin-top: 36px;
+
+  #left_bar {
+    border-top-left-radius: 0;
+  }
+}
+
+#left_bar {
+  border-top-left-radius: 8px;
+  overflow: hidden;
 }
