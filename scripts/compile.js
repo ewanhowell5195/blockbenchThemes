@@ -10,7 +10,7 @@ for (const folder of fs.readdirSync("../")) {
     if (fs.existsSync(css)) {
       const themeData = JSON.parse(fs.readFileSync(theme))
       const cssData = fs.readFileSync(css, "utf-8")
-      themeData.css = `/*\n\nBlockbenchcord\nBy Ewan Howell - https://ewanhowell.com/\n\n*/\n` + transform({
+      themeData.css = `/*\n\n${themeData.name}\nBy ${themeData.author} - https://ewanhowell.com/\n\n*/\n` + transform({
         code: Buffer.from(cssData),
         minify: true
       }).code.toString()
