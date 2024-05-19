@@ -136,7 +136,6 @@
   background-color: var(--color-border);
   border: none;
   height: calc(100% - 22px);
-  transition: scale .25s;
 }
 
 #tab_bar {
@@ -155,7 +154,7 @@
   overflow: visible !important;
 }
 
-#search_tab_button, #new_tab_button, .project_tab, body:has(#page_wrapper)::before {
+#search_tab_button, #new_tab_button, .project_tab, #title_bar_home_button > i::before {
   width: 48px !important;
   height: 48px !important;
   color: #23A559;
@@ -175,7 +174,7 @@
   border-radius: 16px;
 }
 
-#search_tab_button:active, #new_tab_button:active, .project_tab:active, body:has(#title_bar_home_button:active)::before, body:has(#title_bar_home_button:active) #title_bar_home_button > i {
+#search_tab_button:active, #new_tab_button:active, .project_tab:active, #title_bar_home_button:active > i {
   transform: translateY(1px);
 }
 
@@ -225,7 +224,7 @@
   color: #DADDE0;
 }
 
-#search_tab_button::before, #new_tab_button::before, .project_tab::before, body:has(#page_wrapper)::after {
+#search_tab_button::before, #new_tab_button::before, .project_tab::before, #title_bar_home_button > i::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -240,7 +239,7 @@
   opacity: 0;
 }
 
-#search_tab_button:hover::before, #new_tab_button:hover::before, .project_tab:hover::before, body:has(#title_bar_home_button:hover)::after {
+#search_tab_button:hover::before, #new_tab_button:hover::before, .project_tab:hover::before {
   height: 20px;
   opacity: 1;
 }
@@ -249,7 +248,23 @@
   opacity: 1;
 }
 
-.project_tab.selected::before, body:has(.project_tab.new_tab.selected)::after {
+body:has(> #page_wrapper > #tab_bar > #tab_bar_list > .project_tab.new_tab.selected) #title_bar_home_button {
+  color: var(--color-light) !important;
+
+  > i {
+    &::before {
+      border-radius: 16px;
+      background-color: var(--color-accent) !important;
+    }
+
+    &::after {
+      height: 40px !important;
+      opacity: 1;
+    }
+  }
+}
+
+.project_tab.selected::before {
   height: 40px !important;
   opacity: 1;
 }
@@ -258,16 +273,16 @@ header {
   overflow: visible !important;
   height: 22px;
   position: relative;
-}
 
-header > * {
-  z-index: 99;
+  > * {
+    z-index: 99;
+  }
 }
 
 #title_bar_home_button {
   display: flex !important;
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   top: 26px;
   left: 12px;
   color: #DADDE0;
@@ -278,30 +293,39 @@ header > * {
   cursor: pointer;
   margin: 0;
   transition: color .15s ease-out;
-}
 
-body:has(#page_wrapper)::before {
-  content: "";
-  position: absolute;
-  z-index: 2;
-  top: 26px;
-  left: 12px;
-  margin: 0 !important;
-}
+  &:hover {
+    color: var(--color-light) !important;
 
-body:has(#title_bar_home_button:hover)::before, body:has(.project_tab.new_tab.selected)::before {
-  border-radius: 16px;
-  background-color: var(--color-accent) !important;
-}
+    > i {
+      &::before {
+        border-radius: 16px;
+        background-color: var(--color-accent) !important;
+      }
 
-body:has(#title_bar_home_button:hover) #title_bar_home_button, body:has(.project_tab.new_tab.selected) #title_bar_home_button {
-  color: var(--color-light) !important;
-}
+      &::after {
+        height: 20px;
+        opacity: 1;
+      }
+    }
+  }
 
-body:has(#page_wrapper)::after {
-  top: 52px;
-  left: -4px;
-  z-index: 2;
+  > i {
+    z-index: 2;
+
+    &::before {
+      content: "";
+      position: absolute;
+      margin: 0 !important;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: -1;
+    }
+
+    &::after {
+      left: -27px;
+    }
+  }
 }
 
 .project_tab_close_button {
@@ -416,6 +440,7 @@ body:has(#page_wrapper)::after {
 
 #start_screen {
   padding: 0;
+  border-top-left-radius: 8px;
 }
 
 #start_screen > content {
@@ -593,12 +618,12 @@ body:has(#page_wrapper)::after {
   color: var(--color-subtle_text);
 }
 
-.format_entry:hover, body:has(.format_page_close_button:hover) #start_files > .start_screen_left::before {
+.format_entry:hover, #start_files:has(> .start_screen_right .format_page_close_button:hover) > .start_screen_left::before {
   background-color: #35373C;
   color: var(--color-text) !important;
 }
 
-.format_entry.selected, body:not(:has(.format_page_close_button)) #start_files > .start_screen_left::before {
+.format_entry.selected, #start_files:not(:has(> .start_screen_right .format_page_close_button)) > .start_screen_left::before {
   background-color: #404249 !important;
   color: var(--color-light) !important;
 }
@@ -642,7 +667,7 @@ body:has(#page_wrapper)::after {
 
 .format_page_close_button {
   position: fixed !important;
-  top: 165px;
+  top: 161px;
   left: 82px;
   min-width: 224px;
   min-height: 32px;
@@ -1262,6 +1287,10 @@ blockquote {
       max-height: calc(100vh - 22px - 36px) !important;
     }
   }
+
+  .format_page_close_button {
+    top: 197px; 
+  }
 }
 
 #start_screen > content > section[style="background-color: var(--color-back);"] {
@@ -1752,36 +1781,8 @@ blockquote {
   }
 }
 
-
 body {
-  background-color: var(--color-ui);
-}
-
-body:not(:has(#page_wrapper)) {
-  background-image: none !important;
-}
-
-body:not(:has(#page_wrapper))::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(360deg);
-  display: block;
-  background-image: url("assets/logo_cutout.svg");
-  width: 90px;
-  height: 90px;
-  background-size: cover;
-  animation: discord-spin 1.2s infinite cubic-bezier(0.85, -0.1, 0.15, 1.1);
-}
-
-@keyframes discord-spin {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
+  background-color: var(--color-border);
 }
 
 #blackout {
@@ -1797,17 +1798,34 @@ body:not(:has(#page_wrapper))::before {
   position: fixed !important;
 }
 
-body:has(dialog):not(:has(dialog#settings, dialog#keybindings)) #blackout {
+#dialog_wrapper:has(> dialog:not(#settings):not(#keybindings)) ~ #page_wrapper #blackout {
   opacity: 1 !important;
   pointer-events: initial;
 }
 
-body:has(dialog#settings, dialog#keybindings) #page_wrapper {
-  scale: 0.9;
+#page_wrapper > *, #title_bar_home_button {
+  transform-origin: calc(50vw) calc(50vh);
+  transition: scale .25s;
 }
 
-body:has(dialog#settings, dialog#keybindings) #blackout {
-  opacity: 0 !important;
+#dialog_wrapper:has(> dialog:is(#settings, #keybindings)) {
+  ~ #page_wrapper > *, ~ header #title_bar_home_button {
+    scale: 0.9;
+  }
+
+  ~ #page_wrapper #blackout {
+    opacity: 0 !important;
+  }
+}
+
+body:has(> #dialog_wrapper > dialog:is(#settings, #keybindings)) {
+  #page_wrapper > *, #title_bar_home_button {
+    scale: 0.9;
+  }
+
+  #blackout {
+    opacity: 0 !important;
+  }
 }
 
 @keyframes discord-dialog-show {
@@ -1891,10 +1909,6 @@ dialog {
     opacity: 1;
     scale: 1;
   }
-}
-
-body:has(dialog#settings, dialog#keybindings) #title_bar_home_button {
-  display: none !important;
 }
 
 dialog#settings .dialog_sidebar_pages::before {
@@ -2110,6 +2124,8 @@ dialog#settings, dialog#keybindings {
     justify-content: space-between;
     padding: 24px 0 20px;
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
 
     &:not(:last-child)::after {
       content: "";
@@ -2121,69 +2137,84 @@ dialog#settings, dialog#keybindings {
       border-bottom: 1px solid #3F4147;
     }
 
-    &:has(> .setting_element) {
-      display: flex;
-    }
-
     > :is(.bar_select, input:is([type="text"], [type="password"])) {
       margin-top: 8px !important;
+      width: 100% !important;
 
       + .password_toggle {
-        float: right;
         margin-top: -40px;
+        margin-left: auto;
       }
     }
 
-    &:has(.setting_icon) {
-      background-color: #232428;
-      padding: 16px;
-      height: 68px;
-      border-radius: 8px;
-      margin: 24px 0 29px;
-      align-items: center;
+    .setting_icon {
+      position: absolute;
+      z-index: 2;
+      left: 16px;
+      margin: 0;
+      top: 37px;
       cursor: pointer;
-      transition: background-color .17s;
 
-      & * {
-        cursor: pointer;
+      > i {
+        display: flex;
+        width: 32px;
+        height: 32px;
+        font-size: 32px;
+        margin: 0;
+        transition: color .17s;
+        overflow: visible;
+        display: flex;
+        justify-content: center;
+        color: var(--color-text) !important;
       }
 
-      .setting_icon {
-        order: 0;
-        margin: 0;
+      + .setting_label {
+        z-index: 1;
+        padding: 16px;
+        height: 68px;
+        box-sizing: border-box;
+        position: relative;
+        margin: -4px 0 5px;
+        max-width: initial;
+        width: 100%;
+        cursor: pointer;
 
-        > i {
-          display: flex;
-          width: 32px;
-          height: 32px;
-          font-size: 32px;
-          margin: 0 16px 0 0;
-          transition: color .17s;
+        > * {
+          cursor: pointer;
         }
+
+        &::before {
+          position: absolute;
+          content: "";
+          inset: 0;
+          background-color: #232428;
+          z-index: -1;
+          border-radius: 8px;
+          transition: background-color .17s;
+        }
+
+        .setting_name {
+          font-weight: 600;
+          font-size: 16px;
+          transition: color .17s;
+          margin-left: 48px;
+        }
+
+        .setting_description {
+          font-size: 12px;
+          line-height: 16px;
+          margin: 0 0 0 48px;
+        }
+      }
+    }
+
+    &:hover .setting_icon + .setting_label {
+      &::before {
+        background-color: var(--color-border);
       }
 
       .setting_name {
-        font-weight: 600;
-        font-size: 16px;
-        transition: color .17s;
-      }
-
-      .setting_description {
-        font-size: 12px;
-        line-height: 16px;
-        margin: 0;
-      }
-
-      &:hover {
-        background-color: var(--color-border);
-
-        .setting_name {
-          color: var(--color-light);
-        }
-      }
-
-      &:not(:last-child)::after {
-        bottom: -25px;
+        color: var(--color-light);
       }
     }
   }
@@ -2196,6 +2227,7 @@ dialog#settings, dialog#keybindings {
 
   .setting_label {
     margin: 0 10px 0 0;
+    max-width: calc(100% - 95px);
   }
 
   & input:is([type="text"], [type="password"]) {
@@ -2256,10 +2288,6 @@ dialog#settings, dialog#keybindings {
       display: flex;
     }
 
-    &:has(.keybind_line > .keybindslot:empty) > .keybind_line > [title="Empty"] {
-      display: none;
-    }
-
     .keybind_line::after {
       content: "";
       display: flex;
@@ -2298,6 +2326,10 @@ dialog#settings, dialog#keybindings {
       line-height: 20px;
     }
   }
+
+  .keybindslot:empty ~ [title="Empty"] {
+    display: none !important;
+  }
 }
 
 .keybind_line .tool {
@@ -2322,6 +2354,9 @@ dialog#settings, dialog#keybindings {
 
   > i {
     font-size: 16px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &[title="Empty"] {
@@ -2441,7 +2476,7 @@ dialog#settings, dialog#keybindings {
     display: flex;
   }
 
-  &:has(.keybindslot:empty) [title="Empty"] {
+  .keybindslot:empty ~ [title="Empty"] {
     display: none;
   }
 }
@@ -2747,7 +2782,7 @@ bb-select {
   }
 }
 
-.dialog_bar.button_bar {
+dialog .dialog_bar.button_bar {
   background-color: var(--color-ui);
   margin: 0 !important;
   padding: 16px;
@@ -4082,11 +4117,11 @@ dialog#theme {
   }
 }
 
-body:has(#page_wrapper).is_mobile::before {
+#page_wrapper.is_mobile :is(#start_screen, #work_screen)::before {
   content: "MOBILE NOT SUPPORTED IN THIS THEME";
   inset: 0;
-  min-width: 100vw;
-  min-height: 100vh;
+  min-width: 100%;
+  min-height: 100%;
   font-size: 10vw;
   text-align: center;
   font-weight: 700;
@@ -4097,6 +4132,10 @@ body:has(#page_wrapper).is_mobile::before {
   pointer-events: none;
   opacity: .5;
   filter: drop-shadow(0 0 10px black);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #overlay_message_box[style="display: none;"] {
