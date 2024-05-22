@@ -5959,6 +5959,17 @@ hr {
 
   & li {
     cursor: grab;
+
+    &:nth-last-child(-n+3):nth-child(n+7) .tooltip {
+      transform: translateX(calc(-100% + 30px));
+
+      &::after {
+        left: initial;
+        right: 5px;
+        top: 0;
+        transform: translate(0, -100%);
+      }
+    }
   }
 
   .icon_wrapper[style="opacity: 0.4;"] {
@@ -5978,6 +5989,22 @@ hr {
     
     &::after {
       border-color: #B5BAC1 !important;
+    }
+  }
+
+  .tooltip {
+    transform: translateX(calc(-50% + 20px));
+    margin-top: 37px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translate(-50%, -100%);
+      border-bottom: 5px solid #111214;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
     }
   }
 }
@@ -6548,4 +6575,328 @@ dialog#select_texture .search_bar {
 
 .orbit_gizmo {
   margin: 0 8px 8px 0;
+}
+
+dialog#animated_texture_editor_code content > :last-child {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .code_editor_file_title {
+    order: 1;
+    background-color: var(--color-ui);
+    border: 1px solid var(--color-border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    color: #B5BAC1;
+    cursor: text;
+    height: 40px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .prism-editor-wrapper {
+    border-radius: 8px 8px 0 0;
+  }
+
+  > button {
+    order: 1;
+    position: absolute;
+    bottom: 6px;
+    right: 17px;
+    width: initial !important;
+    background-color: initial;
+    font-size: 0;
+    min-width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    justify-content: center;
+    text-decoration: none;
+
+    &::before {
+      font-size: 24px;
+      content: "content_copy";
+      font-family: "Material Icons";
+      color: #B5BAC1;
+    }
+
+    &:hover {
+      &::before {
+        color: #D9DCDF;
+      }
+
+      &::after {
+        content: "Copy";
+        font-size: 14px;
+        position: absolute;
+        font-weight: 500;
+        color: var(--color-text);
+        background-color: #111214;
+        border-radius: 5px;
+        padding: 8px 12px;
+        top: -8px;
+        transform: translateY(-100%);
+      }
+    }
+  }
+}
+
+#flipbook_editor  {
+  flex-direction: row-reverse;
+  gap: 16px;
+  position: relative;
+  max-height: 720px;
+
+  & button {
+    padding: 2px 16px;
+    min-width: 96px;
+    background-color: var(--color-button);
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background-color .17s;
+    color: var(--color-light) !important;
+    height: 38px;
+    font-size: 14px;
+    font-weight: 500;
+
+    &:hover {
+      background-color: var(--color-selected);
+    }
+
+    &:active {
+      background-color: #80848E;
+    }
+  }
+}
+
+.flipbook_frame_timeline {
+  background-color: var(--color-back);
+  border-radius: 8px 8px 0 0;
+  padding: 16px;
+  width: 288px;
+  margin-bottom: 71px;
+
+  > button {
+    position: relative;
+    margin-bottom: 27px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      height: 1px;
+      left: -16px;
+      right: -16px;
+      bottom: -17px;
+      background-color: #37393F;
+    }
+  }
+
+  > ul {
+    background-color: var(--color-border);
+    padding: 12px;
+    overflow-y: auto;
+    min-height: initial;
+    flex: initial;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  > div {
+    flex: 1;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    position: relative;
+    margin-top: 27px;
+    align-items: flex-end;
+
+    &::before {
+      content: "";
+      position: absolute;
+      height: 1px;
+      left: -16px;
+      right: -16px;
+      bottom: 54px;
+      background-color: #37393F;
+    }
+  }
+
+  .tool {
+    background-color: var(--color-button);
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background-color .17s;
+    color: var(--color-light) !important;
+    height: 38px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > i {
+      margin: 0;
+    }
+
+    &:hover {
+      background-color: var(--color-selected);
+    }
+
+    &:active {
+      background-color: #80848E;
+    }
+  }
+}
+
+.flipbook_frame {
+  padding: 7px;
+  border-radius: 6px;
+  background-color: var(--color-ui) !important;
+  color: #B5BAC1 !important;
+  gap: 8px;
+  border: 1px solid transparent;
+
+  &::before {
+    content: "drag_indicator";
+    font-family: "Material Icons";
+    width: 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  > label {
+    flex: initial;
+    order: 1;
+    width: initial;
+    width: 10px;
+  }
+
+  > img {
+    border-radius: 6px;
+    margin: auto;
+  }
+
+  &.viewing {
+    border: 1px solid var(--color-accent);
+  }
+}
+
+.flipbook_options {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: var(--color-back);
+  border-radius: 0 0 8px 8px;
+  padding: 16px !important;
+  width: 288px;
+  margin: 0 !important;
+  border-top: 1px solid #37393F !important;
+  justify-content: center;
+}
+
+.flipbook_frame_preview {
+  padding-bottom: 26px;
+  flex: 1;
+
+  > :first-child {
+    flex: 1;
+
+    > img {
+      width: initial;
+      max-height: initial;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+  }
+}
+
+#flipbook_editor_timeline {
+  min-height: 60px;
+  border: 2px solid var(--color-accent);
+  position: relative;
+  margin-left: 172px;
+  width: calc(100% - 138px - 18px - 34px * 2);
+  margin-top: 20px;
+  background-color: var(--color-ui);
+
+  &::before, &::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    top: -2px;
+    bottom: -2px;
+    background-color: var(--color-accent);
+    left: -20px;
+    border-radius: 8px 0 0 8px;
+  }
+
+  &::after {
+    left: initial;
+    right: -20px;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .frame {
+    height: 100%;
+    border: none;
+    margin-left: 4px;
+    position: relative;
+    
+    &:nth-last-child(2)::after {
+      content: "";
+      position: absolute;
+      right: -3px;
+      width: 3px;
+      top: 0;
+      bottom: 0;
+      background-color: var(--color-back);
+    }
+  }
+}
+
+#flipbook_editor_playhead {
+  width: 4px;
+  border: none !important;
+  min-height: 60px;
+  background-color: var(--color-text);
+  border-radius: 0 !important;
+  transform: translateX(7px);
+
+  &::before {
+    display: none;
+  }
+}
+
+.flipbook_controls {
+  height: 60px;
+  background-color: #111214;
+  border-radius: 8px;
+  gap: 8px;
+  align-self: flex-start;
+  padding: 25px;
+  margin-top: -60px;
+  margin-left: 34px;
+
+  .tool {
+    color: var(--color-text);
+    width: 24px;
+    height: 24px;
+
+    > i {
+      font-size: 32px !important;
+      margin: 0;
+      min-width: 18px;
+      min-height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }
