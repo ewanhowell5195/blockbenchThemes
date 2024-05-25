@@ -57,7 +57,7 @@
   border-radius: 50%;
   line-height: 400px;
   height: 13px;
-  padding-bottom: 1px;
+  padding-bottom: 2px;
   align-items: center;
   justify-content: center;
   background-color: #313338;
@@ -66,6 +66,7 @@
 
 .theme_preview_sidebar {
   position: initial;
+  flex: 0 0 38px;
 
   &:first-child {
     border-radius: 3px 3px 3px 0;
@@ -74,8 +75,8 @@
       background-color: #282A2E;
       top: 0;
       bottom: 0;
-      left: 43px;
-      right: 43px;
+      left: 41px;
+      right: 41px;
       height: initial;
       width: initial;
       border-radius: 3px;
