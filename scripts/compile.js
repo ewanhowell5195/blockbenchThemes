@@ -1,4 +1,4 @@
-import { transform } from "lightningcss"
+import { transform, Features } from "lightningcss"
 import path from "node:path"
 import fs from "node:fs"
 
@@ -23,7 +23,8 @@ for (const folder of fs.readdirSync("../")) {
         const thumbnailData = fs.readFileSync(thumbnail, "utf-8")
         themeData.thumbnail = transform({
           code: Buffer.from(thumbnailData),
-          minify: true
+          minify: true,
+          include: Features.Nesting
         }).code.toString()
       }
       fs.writeFileSync(output, JSON.stringify(themeData, null, 2))
