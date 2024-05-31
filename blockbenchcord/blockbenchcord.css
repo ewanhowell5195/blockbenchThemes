@@ -91,6 +91,10 @@
   scrollbar-color: initial;
 }
 
+code, pre {
+  font-family: gg mono;
+}
+
 #corner_logo > img, .project_tab.new_tab, .project_tab:not(.selected) .project_tab_close_button, .project_tab .unsaved_icon, .start_screen_close_button, #start_files li.format_entry.selected::after {
   display: none !important;
 }
@@ -1205,6 +1209,28 @@ header {
 
 .markdown {
   padding: 0 !important;
+
+  & p {
+    margin: 0;
+  }
+
+  & ul, & ol {
+    margin: 4px 0 0 16px;
+    padding: 0;
+    line-height: 22px !important;
+  }
+
+  & li {
+    margin: 0 0 4px;
+  }
+
+  & code {
+    background-color: var(--color-ui);
+    border: 1px solid var(--color-border);
+    padding: 0 2.72px;
+    border-radius: 4px;
+    font-size: 13.6px;
+  }
 }
 
 h1.markdown, .markdown h1, dialog#plugins #about-content h1 {
@@ -1268,20 +1294,6 @@ div.markdown > * {
   &:first-child {
     padding-top: 0;
   }
-}
-
-.markdown p {
-  margin: 0;
-}
-
-.markdown ul, .markdown ol {
-  margin: 4px 0 0 16px;
-  padding: 0;
-  line-height: 22px !important;
-}
-
-.markdown li {
-  margin: 0 0 4px;
 }
 
 .markdown a, p a {
@@ -1497,6 +1509,7 @@ blockquote {
         height: 20px;
         font-size: 20px;
         color: var(--color-light) !important;
+        width: initial;
       }
 
       > .fab {
