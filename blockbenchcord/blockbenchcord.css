@@ -5450,6 +5450,8 @@ dialog#plugins {
     line-height: 32px;
     color: #B5BAC1;
     font-size: 0;
+    display: flex !important;
+    align-items: center;
 
     &::before {
       content: "keyboard_arrow_down";
@@ -6495,12 +6497,17 @@ dialog#select_texture .search_bar {
       position: absolute;
       width: 20px;
       height: 20px;
+      min-height: 20px;
       border-radius: 50%;
       bottom: 0;
       right: 8px;
       margin: 0;
       background-color: var(--color-ui);
       transition: background-color .15s ease-in-out, color .15s ease-in-out;
+
+      &::before {
+        translate: 0 1px;
+      }
     }
 
     &.side_menu_tool > i:nth-child(2) {
