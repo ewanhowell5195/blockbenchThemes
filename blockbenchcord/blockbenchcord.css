@@ -1424,7 +1424,7 @@ blockquote {
     display: none;
   }
 
-  & * {
+  * {
     font-size: 14px;
     color: var(--color-light);
     font-weight: 500;
@@ -2816,10 +2816,9 @@ input:is([type="text"], [type="password"], :not([type])) {
 bb-select {
   background-color: var(--color-border);
   color: var(--color-text) !important;
-  padding: 0 24.8px 0 12.8px;
+  padding: 0 26.8px 0 12.8px;
   height: 18px;
   box-sizing: initial;
-  font-weight: 500;
   display: flex;
   align-items: center;
   border-radius: 4px;
@@ -2830,11 +2829,12 @@ bb-select {
   &::before {
     content: "expand_more";
     font-family: "Material Icons";
-    right: 12px;
+    right: 8px;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
     align-items: center;
+    font-weight: 500;
   }
 }
 
@@ -5393,13 +5393,13 @@ dialog#plugins {
   margin: 0;
   display: flex;
 
+  &:hover {
+    color: var(--color-text);
+  }
+
   &.enabled {
     color: var(--color-light);
     border: none;
-  }
-
-  &:hover {
-    color: var(--color-text);
   }
 
   & i {
@@ -5443,6 +5443,19 @@ dialog#plugins {
     border-radius: 5px;
     transform: translateX(-7px);
   }
+
+  &.side_menu_tool > .action_more_options {
+    min-width: 20px;
+    margin: 0 0 0 -10px !important;
+    line-height: 32px;
+    color: #B5BAC1;
+    font-size: 0;
+
+    &::before {
+      content: "keyboard_arrow_down";
+      font-size: 20px;
+    }
+  }
 }
 
 .dialog_message_box_checkboxes {
@@ -5459,7 +5472,7 @@ dialog#plugins {
     padding-left: 8px;
   }
 
-  & * {
+  * {
     cursor: pointer;
   }
 }
@@ -5540,7 +5553,7 @@ select {
     border-top: 1px solid #3F4147 !important;
     padding: 0 12px !important;
 
-    & * {
+    * {
       color: var(--color-text) !important;
       font-weight: 500;
       font-size: 14px;
@@ -6060,7 +6073,7 @@ hr {
     }
   }
 
-  & * {
+  * {
     cursor: pointer;
   }
 
@@ -6148,7 +6161,7 @@ dialog#select_texture .search_bar {
   gap: 8px;
   flex-wrap: wrap;
 
-  & * {
+  * {
     cursor: pointer;
   }
 
@@ -6290,6 +6303,10 @@ dialog#select_texture .search_bar {
   border-top-left-radius: 8px;
   grid-gap: 8px;
   grid-template-rows: 48px minmax(200px, 5000px) 26px;
+
+  & .bar_select {
+    margin: 0 4px;
+  }
 
   & bb-select {
     height: 32px;
@@ -6543,8 +6560,10 @@ dialog#select_texture .search_bar {
   box-shadow: var(--header-shadow);
   z-index: 2;
   border-top-left-radius: 8px;
+  display: flex !important;
+  align-items: center;
 
-  .toolbar, .content {
+  .content {
     display: flex;
     align-items: center;
   }
@@ -7457,6 +7476,14 @@ dialog#animated_texture_editor_code content > :last-child {
     display: flex;
     align-items: center;
   }
+
+  > .toolbar {
+    padding: 8px;
+
+    > .content {
+      padding-right: 8px;
+    }
+  }
 }
 
 .panel_handle {
@@ -7481,4 +7508,193 @@ dialog#animated_texture_editor_code content > :last-child {
   &:hover {
     color: var(--color-text);
   }
+}
+
+#texture_list {
+  padding-bottom: 13px;
+}
+
+.texture {
+  position: relative;
+  padding: 1px 8px 1px 16px;
+  z-index: 1;
+  background-color: initial !important;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 60px;
+
+  * {
+    cursor: pointer !important;
+    margin: 0 !important;
+  }
+
+  &::after {
+    content: "";
+    inset: 1px 0 1px 8px;
+    position: absolute;
+    z-index: -1;
+    border-radius: 4px;
+  }
+
+  &:hover {
+    &::after {
+      background-color: #35373C;
+    }
+
+    .texture_name, .texture_res {
+      color: var(--color-text);
+    }
+  }
+
+  &.selected {
+    &::after {
+      background-color: #404249;
+    }
+
+    .texture_name, .texture_res {
+      color: var(--color-text);
+    }
+  }
+
+  & i {
+    color: #AAACB0;
+    max-width: 16px;
+    font-size: 16px !important;
+    margin-left: 4px !important;
+
+    &.fa, &.far, &.fas {
+      font-size: 13px !important;
+    }
+
+    &:hover {
+      color: var(--color-text) !important;
+    }
+
+    &:not(.clickable) {
+      color: #949BA4 !important;
+    }
+
+    &.texture_multi_select_icon {
+      color: #23A559 !important;
+    }
+  }
+}
+
+div.texture_icon_wrapper {
+  border-radius: 3px;
+  margin-right: 12px !important;
+}
+
+.texture_name {
+  line-height: 20px;
+  font-weight: 500;
+  color: #949BA4; 
+}
+
+.texture_res {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+}
+
+.texture[order]::before {
+  background-color: #23A559;
+  min-height: 4px;
+  translate: 0 -1px;
+  border-radius: 2px;
+  width: calc(100% - 8px);
+  margin-left: 8px;
+  box-shadow: 0px 0px 3px #00000066;
+}
+
+.toolbar {
+  overflow: visible;
+
+  > .content {
+    row-gap: 8px;
+  }
+
+  &.no_wrap {
+    overflow: hidden;
+    max-height: 32px;
+  }
+}
+
+.toolbar_menu {
+  color: #B5BAC1 !important;
+
+  &:hover {
+    color: var(--color-text) !important;
+  }
+}
+
+.nslide_tool {
+  margin: 0 4px;
+  position: relative;
+  padding: 0 !important;
+  width: 80px !important;
+
+  &.is_colored {
+    > .nslide {
+      padding-left: 2px !important;
+    }
+
+    .na_left {
+      left: 2px;
+    }
+  } 
+}
+
+.nslide {
+  background-color: var(--color-border) !important;
+  border-radius: 4px;
+  height: 100% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  color: var(--color-text);
+  padding: 0 !important;
+
+  &::before {
+    left: 0;
+    right: initial !important;
+    border-width: 0 !important;
+    border-right-width: 4px !important;
+    bottom: 0;
+  }
+}
+
+.nslide_arrow {
+  margin: 0 !important;
+  overflow: visible;
+  width: initial !important;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+
+  > i {
+    min-width: 32px;
+    max-width: initial;
+    margin: 0;
+  }
+
+  &:hover {
+    color: var(--color-light);
+  }
+}
+
+.na_left {
+  left: 0;
+}
+
+.na_right {
+  right: 0;
+}
+
+.toolbar_separator.border {
+  margin-bottom: 4px !important;
+  width: 1px !important;
+  background-color: #3F4147 !important;
 }
