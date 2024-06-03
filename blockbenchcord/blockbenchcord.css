@@ -3430,7 +3430,6 @@ dialog#scale .dialog_bar:first-child {
 .form_bar_pivot_options .dialog_form_buttons {
   transform: translateY(-16px);
   width: 66.1%;
-  margin-top: -16px;
 
   > a {
     flex: 1;
@@ -6167,6 +6166,11 @@ dialog#message_box {
 
 .dialog_message_box_command {
   justify-content: space-between;
+  flex-direction: row-reverse;
+
+  &::before {
+    display: none;
+  }
 }
 
 dialog#model_stats .form_bar:not(:last-child) {
@@ -7881,7 +7885,7 @@ div.texture_icon_wrapper {
     cursor: pointer;
 
     &:not(:hover):not(.selected) {
-      background-color: transparent; !important;
+      background-color: transparent !important;
     }
 
     &:hover {
