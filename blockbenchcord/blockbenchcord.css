@@ -154,7 +154,7 @@ code, pre {
     }
 
     .tooltip {
-      margin-top: -43px;
+      margin-top: -43px !important;
       transform: translateX(calc(-50% + 12px));
 
       &::before {
@@ -169,7 +169,7 @@ code, pre {
       }
 
       .tooltip_description {
-        margin-top: -61px;
+        margin-top: -61px !important;
       }
     }
   }
@@ -189,7 +189,7 @@ code, pre {
   display: flex !important;
   padding: 0 0 12px;
   min-width: 72px;
-  z-index: 1;
+  z-index: 3;
 }
 
 #tab_bar_list {
@@ -327,7 +327,7 @@ header {
 #title_bar_home_button {
   display: flex !important;
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   top: 26px;
   left: 12px;
   color: #DADDE0;
@@ -421,10 +421,6 @@ header {
   line-height: 20px;
 }
 
-#search_tab_button > i::before, #new_tab_button > i::before {
-  right: -35px;
-}
-
 .project_tab label::before, #title_bar_home_button::after, #search_tab_button > i::after, #new_tab_button > i::after {
   pointer-events: none;
   content: "";
@@ -442,10 +438,6 @@ header {
   right: -30px;
   opacity: 0;
   scale: 0.95;
-}
-
-#search_tab_button > i::after, #new_tab_button > i::after {
-  right: -45px;
 }
 
 .project_tab:hover label, #title_bar_home_button:hover::before, #search_tab_button:hover > i::before, #new_tab_button:hover > i::before, #title_bar_home_button:hover::after, #search_tab_button:hover > i::after, #new_tab_button:hover > i::after {
@@ -1558,7 +1550,7 @@ blockquote {
   text-decoration: none;
 
   &:hover {
-    background-color: #6D6F78;
+    background-color: var(--color-selected);
   }
 
   &:active {
@@ -1786,7 +1778,7 @@ blockquote {
 #menu_bar > li {
   font-size: 12px;
   font-weight: 700;
-  color: #949BA4;
+  color: var(--color-subtle_text);
   cursor: pointer;
   background-color: transparent !important;
   position: relative;
@@ -1814,7 +1806,7 @@ blockquote {
   justify-content: center;
 
   > i {
-    color: #949BA4;
+    color: var(--color-subtle_text);
     font-size: 14px !important;
     height: 16px;
     width: 100%;
@@ -2489,7 +2481,7 @@ dialog#settings, dialog#keybindings {
 
   &:empty::before {
     content: "No Keybind Set";
-    color: #949BA4;
+    color: var(--color-subtle_text);
     font-size: 14px;
     line-height: 22px;
   }
@@ -3686,7 +3678,7 @@ dialog:not(#settings):not(#keybindings) {
       display: flex;
       align-items: center;
       padding: 6px 8px !important;
-      color: #949BA4;
+      color: var(--color-subtle_text);
       line-height: 22px;
       font-weight: 500;
 
@@ -3708,7 +3700,7 @@ dialog:not(#settings):not(#keybindings) {
       > i {
         font-size: 20px;
         margin: 0 6px 0 0;
-        color: #949BA4;
+        color: var(--color-subtle_text);
         width: 20px;
         height: 20px;
 
@@ -3746,7 +3738,7 @@ dialog#cem_template_loader {
 }
 
 #web_download_button {
-  color: #949BA4;
+  color: var(--color-subtle_text);
   font-weight: 700;
   font-size: 12px;
   margin-top: 1px;
@@ -4705,7 +4697,7 @@ dialog#plugins {
 
     &.disabled_plugin {
       .title, .author, .description, .plugin_icon_area > i {
-        color: #949BA4 !important;
+        color: var(--color-subtle_text) !important;
       }
     }
   }
@@ -5135,7 +5127,7 @@ dialog#plugins {
     }
 
     .tooltip {
-      margin-top: 73px;
+      margin-top: 73px !important;
     }
   }
 
@@ -5486,7 +5478,7 @@ dialog#plugins {
     padding: 8px 12px;
     border-radius: 5px;
     height: initial;
-    margin-top: 35px;
+    margin-top: 35px !important;
 
     .keybinding_label:empty {
       display: none;
@@ -5494,7 +5486,7 @@ dialog#plugins {
   }
 
   .tooltip_description {
-    margin-top: 13px;
+    margin-top: 13px !important;
     font-weight: 600;
     padding: 4px 10px;
     border: none;
@@ -5797,7 +5789,7 @@ dialog#adjust_curves {
   justify-content: flex-start;
 }
 
-#predicate_override_add button, #predicate_override_generator  > .tool, .dialog_form_buttons a, .dialog_message_box_command {
+#predicate_override_add button, #predicate_override_generator  > .tool, .dialog_form_buttons a, .dialog_message_box_command, #animation_controller_presets li {
   height: 36px;
   color: var(--color-light) !important;
   display: flex !important;
@@ -6095,7 +6087,7 @@ hr {
 
   .tooltip {
     transform: translateX(calc(-50% + 20px));
-    margin-top: 37px;
+    margin-top: 37px !important;
 
     &::after {
       content: "";
@@ -6533,7 +6525,7 @@ dialog#select_texture .search_bar {
     }
 
     .tooltip {
-      margin-top: 66px;
+      margin-top: 66px !important;
 
       &::before {
         content: "";
@@ -6585,7 +6577,7 @@ dialog#select_texture .search_bar {
     }
 
     &.side_menu_tool > i:nth-child(2) {
-      clip-path: path("M 0 0 H 56 V 56 H 0 Z m 28 44 a 14 14 0 1 0 32 0 a 14 14 0 1 0 -32 0");
+      clip-path: path("M 0 0 H 56 V 56 H 0 Z m 32 45 a 14 14 0 1 0 28 1 a 14 14 0 1 0 -28 -1");
     }
 
     > i:hover {
@@ -7359,7 +7351,7 @@ dialog#animated_texture_editor_code content > :last-child {
 
   & input {
     background-color: initial !important;
-    color: #949BA4;
+    color: var(--color-subtle_text);
     padding: 0 !important;
   }
 }
@@ -7387,7 +7379,7 @@ dialog#animated_texture_editor_code content > :last-child {
     max-width: 16px;
     padding: 0 2px !important;
     font-size: 8px;
-    color: #949BA4;
+    color: var(--color-subtle_text);
     height: 100%;
     display: flex;
     justify-content: center;
@@ -7484,19 +7476,36 @@ dialog#animated_texture_editor_code content > :last-child {
   display: none;
 }
 
-.outliner_toggle {
+.outliner_toggle, #panel_animations .in_list_button > i, .channel_head > .text_button:not(:first-child) > i {
   color: #D8DBDD !important;
   max-width: 16px !important;
   font-size: 16px !important;
-  margin-left: 4px;
+  margin: 0 0 0 4px !important;
   overflow: visible !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &.fa, &.far, &.fas {
     font-size: 13px !important;
   }
 
   &.icon_off {
-    color: #949BA4 !important;
+    color: var(--color-subtle_text) !important;
+  }
+}
+
+#panel_animations .in_list_button {
+  width: initial;
+  height: initial;
+}
+
+.channel_head > .text_button:not(:first-child) {
+  width: initial;
+  height: initial;
+
+  &.off > i {
+    color: var(--color-subtle_text) !important;
   }
 }
 
@@ -7558,7 +7567,7 @@ dialog#animated_texture_editor_code content > :last-child {
     align-items: center;
   }
 
-  > .toolbar {
+  & .toolbar {
     padding: 8px;
 
     > .content {
@@ -7579,6 +7588,7 @@ dialog#animated_texture_editor_code content > :last-child {
     font-weight: 600;
     color: #F2F3F5 !important;
     text-transform: initial !important;
+    line-height: 20px;
   }
 }
 
@@ -7653,7 +7663,7 @@ dialog#animated_texture_editor_code content > :last-child {
     }
 
     &:not(.clickable) {
-      color: #949BA4 !important;
+      color: var(--color-subtle_text) !important;
     }
 
     &.texture_multi_select_icon {
@@ -7670,7 +7680,7 @@ div.texture_icon_wrapper {
 .texture_name {
   line-height: 20px;
   font-weight: 500;
-  color: #949BA4; 
+  color: var(--color-subtle_text); 
 }
 
 .texture_res {
@@ -7699,6 +7709,10 @@ div.texture_icon_wrapper {
   &.no_wrap {
     overflow: hidden;
     max-height: 32px;
+  }
+
+  .tool > input[type="range"] {
+    margin: 0 4px;
   }
 }
 
@@ -7780,7 +7794,7 @@ div.texture_icon_wrapper {
   background-color: #3F4147 !important;
 }
 
-#panel_element, #panel_color {
+#panel_element, #panel_color, #panel_variable_placeholders, #panel_bone {
   > :nth-child(2) {
     margin-top: 8px !important;
   }
@@ -8131,5 +8145,509 @@ kbd {
     & img {
       border-radius: 4px;
     }
+  }
+}
+
+#placeholder_buttons {
+  padding: 0 8px 8px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  > li {
+    height: 26px;
+    background-color: var(--color-back);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    flex-direction: row-reverse;
+    padding: 0;
+    overflow: hidden;
+    margin: 0;
+
+    & label {
+      background-color: #111214;
+      margin: 0 !important;
+      padding: 0 8px;
+      color: var(--color-text) !important;
+    }
+
+    .numeric_input {
+      height: 24px !important;
+      padding: 0 8px;
+      border: none;
+      min-width: 60px;
+
+      > input {
+        height: 24px !important;
+        padding: 0 !important;
+        margin: 0;
+        width: 26px;
+        background-color: initial !important;
+        border: none;
+      }
+
+      .tool {
+        height: 24px !important;
+        width: 24px !important;
+      }
+    }
+
+    > i {
+      padding: 0 !important;
+      display: flex;
+      align-items: center;
+    }
+
+    > input {
+      scale: .75;
+    }
+  }
+}
+
+#keyframe_type_label {
+  padding: 0;
+  height: initial;
+  padding: 0 8px;
+  margin-bottom: 8px;
+}
+
+.keyframe_data_point_header {
+  padding: 0;
+  align-items: center;
+  height: initial;
+
+  .flex_fill_line {
+    opacity: 0;
+  }
+
+  .in_list_button {
+    cursor: pointer;
+  }
+}
+
+.keyframe_data_point {
+  padding: 8px;
+  gap: 8px;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  .bar {
+    min-height: 34px !important;
+    margin: 0 !important;
+
+    > label {
+      background-color: #111214 !important;
+      border-radius: 4px 0 0 4px;
+      width: 26px;
+      margin-right: -26px;
+      z-index: 1;
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    & pre {
+      margin-left: 26px;
+    }
+  }
+}
+
+#animations_list {
+  padding-top: 8px;
+}
+
+.animation_file_head {
+  height: 24px;
+  padding: 0 8px 0 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  > * {
+    cursor: pointer;
+  }
+
+  > i {
+    font-size: 8px;
+    padding: 0 2px;
+    margin: 0 !important;
+    width: 16px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  > label {
+    text-overflow: ellipsis;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .24px;
+  }
+}
+
+.animation {
+  height: 34px;
+  position: relative;
+  padding: 0 8px 0 0;
+  z-index: 1;
+  background-color: initial !important;
+  align-items: center;
+  cursor: pointer;
+
+  > * {
+    cursor: pointer;
+  }
+
+  &::before {
+    content: "";
+    inset: 1px 0 1px 8px;
+    position: absolute;
+    z-index: -1;
+    border-radius: 4px;
+  }
+
+  &:hover {
+    & label {
+      color: var(--color-text);
+    }
+
+    &::before {
+      background-color: #35373C;
+    }
+  }
+
+  &.selected{
+    & label {
+      color: var(--color-light);
+    }
+
+    &::before {
+      background-color: #404249;
+    }
+  }
+
+  > :first-child {
+    color: #80848E;
+    margin-right: 6px;
+  }
+
+  > label {
+    font-weight: 500;
+    text-overflow: ellipsis;
+    color: var(--color-subtle_text);
+  }
+}
+
+#timeline_vue {
+  margin-bottom: -2px;
+}
+
+.animator_head_bar .channel_head {
+  padding-right: 16px;
+
+  > :first-child {
+    font-size: 8px;
+    padding: 0 2px;
+    width: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-subtle_text) !important;
+  }
+
+  > span {
+    color: var(--color-subtle_text);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &:hover > :first-child, &:hover > span {
+    color: var(--color-text) !important;
+  }
+}
+
+.channel_head {
+  border: none;
+  cursor: pointer;
+  box-shadow: none;
+  align-items: center;
+  border-right: 8px solid var(--color-border);
+
+  > * {
+    cursor: pointer;
+  }
+}
+
+.animator_channel_bar .channel_head {
+  padding: 0 16px !important;
+  background-color: var(--color-ui) !important;
+  height: 34px;
+
+  > :first-child {
+    color: #80848E;
+    width: 22px;
+    margin-right: 6px;
+  }
+
+  &::before {
+    content: "";
+    inset: 1px 8px;
+    position: absolute;
+    z-index: -1;
+    border-radius: 4px;
+  }
+
+  &:hover {
+    & span {
+      color: var(--color-text);
+    }
+
+    &::before {
+      background-color: #35373C;
+    }
+  }
+
+  &:has(+ .keyframe_section > .selected) {
+    & span {
+      color: var(--color-light);
+    }
+
+    &::before {
+      background-color: #404249;
+    }
+  }
+
+  > span {
+    font-weight: 500;
+    text-overflow: ellipsis;
+    color: var(--color-subtle_text);
+  }
+}
+
+.animator.selected {
+  .channel_head {
+    background-color: #34373D !important;
+  }
+
+  .animator_head_bar .channel_head {
+    > :first-child, > span {
+      color: var(--color-light) !important;
+    }
+  }
+}
+
+.keyframe_section .keyframe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100% !important;
+  margin-left: -5px !important;
+  position: relative;
+}
+
+#resizer_timeline_head {
+  translate: -78px -2px;
+  bottom: 38px !important;
+  width: 8px;
+  opacity: 0 !important;
+}
+
+#timeline_playhead {
+  border: none;
+  width: 4px;
+  background-color: var(--color-light);
+  border-radius: 0;
+  translate: 7px;
+
+  &::after {
+    width: 4px;
+    background-color: var(--color-light);
+    margin: 0;
+    height: calc(var(--timeline-height) - 11px);
+  }
+}
+
+#timeline_endbracket {
+  background-color: var(--color-accent);
+  border-radius: 0 4px 4px 0;
+  height: 26px;
+
+  &::after {
+    width: 10000px !important;
+    left: 0;
+    height: 26px !important;
+    transform: translate(calc(-100% + 2px), -1px);
+    pointer-events: none;
+    border: 2px solid var(--color-accent);
+    border-left: none;
+    border-right: none;
+  }
+}
+
+.timeline_timecode {
+  display: flex;
+
+  > span {
+    transform: translate(calc(-50% + 3px), 5px);
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 10px;
+  }
+
+  .substeps > div {
+    border-left-width: 2px;
+  }
+}
+
+.timeline_marker {
+  background-color: black;
+  width: 20px;
+  height: 20px;
+  background-color: var(--color);
+  border-radius: 50%;
+  translate: 0 3px;
+  z-index: 1;
+
+  > i {
+    display: none;
+  }
+
+  &::before {
+    content: "flag";
+    position: absolute;
+    font-family: "Material Icons";
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    color: var(--color-light);
+  }
+
+  &[style*="--color: #58C0FF;"] {
+    background-color: #669ffa;
+  }
+
+  &[style*="--color: #C7D5F6;"] {
+    background-color: #8e9199;
+  }
+}
+
+#timeline_corner > * {
+  font: var(--font-main);
+  font-weight: 600;
+}
+
+#animation_controller_presets {
+  > h4 {
+    font-weight: 700;
+    margin: 16px 0 32px;
+    text-align: center;
+  }
+
+  > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+#panel_animation_controllers {
+  & input, & bb-select {
+    min-height: 42px;
+    text-overflow: ellipsis;
+  }
+}
+
+.controller_state {
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px #1e1f2299, 0 2px 10px #0003;
+  border: none !important;
+}
+
+.controller_state_title_bar {
+  margin: -8px -8px 0 -8px;
+  border-radius: 4px 4px 0 0;
+  height: 62px;
+  font-size: 24px;
+  line-height: 30px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > label {
+    text-decoration: none !important;
+    color: #F2F3F5;
+    padding: 0;
+  }
+
+  .tool {
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    color: var(--color-text);
+    transition: color .2s ease-in-out;
+
+    > i {
+      margin: 0;
+
+      &::before {
+        content: "menu";
+      }
+    }
+
+    &:hover {
+      color: var(--color-light);
+    }
+  }
+}
+
+.controller_state_section_title {
+  height: 24px;
+  padding: 0 8px 0 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  > * {
+    cursor: pointer;
+  }
+
+  > i {
+    font-size: 8px;
+    padding: 0 2px;
+    margin: 0 !important;
+    width: 16px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  > label, > span {
+    text-overflow: ellipsis;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .24px;
+  }
+
+  &:hover > :is(i, label, span) {
+    color: var(--color-text);
+  }
+}
+
+.controller_item_drag_handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+
+  &::before {
+    content: "drag_indicator";
+    font-family: "Material Icons";
+    color: #B5BAC1;
   }
 }
