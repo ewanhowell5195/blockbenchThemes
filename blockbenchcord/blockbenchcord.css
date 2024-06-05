@@ -7476,7 +7476,7 @@ dialog#animated_texture_editor_code content > :last-child {
   display: none;
 }
 
-.outliner_toggle, #panel_animations .in_list_button > i, .channel_head > .text_button:not(:first-child) > i {
+.outliner_toggle, #panel_animations .in_list_button > i, .channel_head > .text_button:not(:first-child) > i, .controller_state_section_title > .text_button > i {
   color: #D8DBDD !important;
   max-width: 16px !important;
   font-size: 16px !important;
@@ -7485,6 +7485,7 @@ dialog#animated_texture_editor_code content > :last-child {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
 
   &.fa, &.far, &.fas {
     font-size: 13px !important;
@@ -7495,14 +7496,9 @@ dialog#animated_texture_editor_code content > :last-child {
   }
 }
 
-#panel_animations .in_list_button {
+#panel_animations .in_list_button, .channel_head > .text_button:not(:first-child), .controller_state_section_title .text_button {
   width: initial;
-  height: initial;
-}
-
-.channel_head > .text_button:not(:first-child) {
-  width: initial;
-  height: initial;
+  height: 100%;
 
   &.off > i {
     color: var(--color-subtle_text) !important;
@@ -7525,6 +7521,8 @@ dialog#animated_texture_editor_code content > :last-child {
 }
 
 .panel {
+  z-index: 2;
+
   .list {
     background-color: initial;
     &::-webkit-scrollbar-track {
@@ -8252,6 +8250,11 @@ kbd {
     & pre {
       margin-left: 26px;
     }
+
+    &[id*="uniform"] > label {
+      font-size: 12px;
+      font-weight: 700;
+    }
   }
 }
 
@@ -8446,6 +8449,11 @@ kbd {
   height: 100% !important;
   margin-left: -5px !important;
   position: relative;
+
+  &::after {
+    top: 10px !important;
+    translate: -.5px;
+  }
 }
 
 #resizer_timeline_head {
@@ -8474,6 +8482,7 @@ kbd {
   background-color: var(--color-accent);
   border-radius: 0 4px 4px 0;
   height: 26px;
+  translate: 8px;
 
   &::after {
     width: 10000px !important;
@@ -8509,7 +8518,6 @@ kbd {
   background-color: var(--color);
   border-radius: 50%;
   translate: 0 3px;
-  z-index: 1;
 
   > i {
     display: none;
@@ -8540,6 +8548,29 @@ kbd {
   font-weight: 600;
 }
 
+#timeline_time::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 0;
+  bottom: -1px;
+  width: 6px;
+  border-radius: 4px 0 0 4px;
+  z-index: 3;
+  background-color: var(--color-accent);
+}
+
+#timeline_time::after {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 0;
+  bottom: -1px;
+  width: 6px;
+  z-index: 2;
+  background-color: var(--color-back);
+}
+
 #animation_controller_presets {
   > h4 {
     font-weight: 700;
@@ -8554,18 +8585,86 @@ kbd {
   }
 }
 
-#panel_animation_controllers {
-  & input, & bb-select {
-    min-height: 42px;
-    text-overflow: ellipsis;
-  }
-}
-
 .controller_state {
   padding: 8px;
   border-radius: 4px;
-  box-shadow: 0 0 0 1px #1e1f2299, 0 2px 10px #0003;
+  filter: drop-shadow(0 0 2px #1e1f22) drop-shadow(0 2px 10px #0003);
+  box-shadow: none !important;
   border: none !important;
+
+  > .prism-editor-component {
+    background-color: #383A40;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: none !important;
+  }
+
+  .prism-editor-wrapper {
+    min-height: 36px;
+
+    & code {
+      min-height: initial;
+    }
+  }
+
+  > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  } 
+
+  & li, .controller_state_input_bar {
+    box-shadow: none !important;
+
+    &.controller_state_input_bar:not(:first-child) {
+      margin-top: 8px;
+    }
+
+    &:not(:has(> .bar)), .bar {
+      background-color: #383A40;
+      padding: 8px;
+      border-radius: 4px;
+      margin: 0;
+      gap: 8px;
+    }
+
+    &:has(> .bar) {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    & bb-select {
+      min-height: 36px;
+      text-overflow: ellipsis;
+    }
+
+    & input {
+      min-width: 0;
+      height: 36px !important;
+    }
+
+    & input[type="checkbox"] {
+      align-items: center;
+      display: flex;
+    }
+
+    .tool {
+      height: 36px;
+      display: flex;
+      align-items: center;
+      margin: 0 -4px;
+    }
+
+    & label {
+      height: 36px;
+      display: flex;
+      align-items: center;
+      padding: 4px !important;
+      color: var(--color-text);
+      background-color: initial;
+    }
+  }
 }
 
 .controller_state_title_bar {
@@ -8608,10 +8707,11 @@ kbd {
 
 .controller_state_section_title {
   height: 24px;
-  padding: 0 8px 0 0;
+  padding: 0;
   display: flex;
   align-items: center;
   cursor: pointer;
+  margin: 4px 0;
 
   > * {
     cursor: pointer;
@@ -8637,17 +8737,78 @@ kbd {
   &:hover > :is(i, label, span) {
     color: var(--color-text);
   }
+
+  .controller_state_section_info {
+    margin: 0 0 0 4px;
+
+    &::before {
+      content: "(";
+    }
+
+    &::after {
+      content: ")";
+    }
+  }
 }
 
 .controller_item_drag_handle {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 0;
+  justify-content: flex-end;
+  margin: -8px 0 -8px -8px;
+  align-self: stretch;
+  width: 18px;
+  border-radius: 4px 0 0 4px;
 
   &::before {
     content: "drag_indicator";
     font-family: "Material Icons";
     color: #B5BAC1;
+  }
+}
+
+.controller_state_gate {
+  box-shadow: none;
+  width: 20px !important;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  translate: 0 -5px;
+}
+
+.controller_state_gate_bottom {
+  background-color: var(--color-button) !important;
+  translate: 0 5px;
+  height: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.controller_add_column {
+  height: 62px;
+  background-color: var(--color-button);
+  margin: 0;
+  border-radius: 4px;
+  width: 32px;
+  position: relative;
+  transition: background-color .17s;
+
+  > i {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    min-width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &:hover {
+    background-color: var(--color-selected);
+  }
+
+  &:active {
+    background-color: #80848E;
   }
 }
