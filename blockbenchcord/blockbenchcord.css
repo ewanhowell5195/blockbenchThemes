@@ -1447,6 +1447,8 @@ blockquote {
     font-weight: 500;
     margin: 0;
     z-index: 1;
+    text-align: center;
+    line-height: 100%;
   }
 
   & button {
@@ -1603,6 +1605,10 @@ blockquote {
     height: 32px;
     box-sizing: initial;
 
+    &[menu_item="delete"], &[menu_item="reset_layout"], &[menu_item="reset_layout"] + li, &[menu_item="reload"] {
+      color: #F23F42 !important;
+    }
+
     &:is(.focused, .opened):not(.hybrid_parent.opened) {
       color: var(--color-light) !important;
 
@@ -1613,6 +1619,10 @@ blockquote {
         background-color: var(--color-accent);
         border-radius: 2px;
         z-index: -1;
+      }
+
+      &[menu_item="delete"]::before, &[menu_item="reset_layout"]::before, &[menu_item="reset_layout"] + li::before, &[menu_item="reload"]::before {
+        background-color: #DA363C !important;
       }
     }
 
