@@ -8975,6 +8975,10 @@ kbd {
     box-shadow: none;
     transition: box-shadow .2s ease-out, transform .2s ease-out, border .2s ease-out;
     display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    padding: 8px;
+    gap: 8px;
 
     &:hover {
       border: 1px solid #3A3D42;
@@ -9054,7 +9058,7 @@ kbd {
   padding-top: 22px;
 
   > :first-child {
-    margin-top: auto;
+    margin-top: auto !important;
   }
 
   > :last-child {
