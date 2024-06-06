@@ -9072,12 +9072,19 @@ kbd {
     min-height: 26px;
     position: relative;
     flex-shrink: 0;
+    z-index: 1;
 
     &:hover {
-      background-color: #2E3035;
-
       > b::after {
         background-color: #2E3035;
+      }
+
+      .text::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: #2E3035;
+        z-index: -1;
       }
 
       .timestamp:nth-child(2) {
@@ -9088,8 +9095,12 @@ kbd {
       }
     }
 
-    &:has(> b), &:has(> .text[style*="color: rgb"]) {
-      margin-top: 17px;
+    > b, > .text[style*="color: rgb"] {
+      margin-top: 17px !important;
+
+      &.text::after, + .text::after {
+        top: 17px;
+      }
     }
   }
 
@@ -9105,6 +9116,7 @@ kbd {
     font-weight: 500;
     line-height: 22px;
     margin: 0 0 0 4px !important;
+    translate: 0 18px;
 
     &:nth-child(2) {
       display: none;
@@ -9119,7 +9131,7 @@ kbd {
     padding: 0 !important;
     font-weight: 500;
     line-height: 22px;
-    height: 22px;
+    min-height: 22px;
 
     &.self {
       color: #26AFFF !important;
@@ -9131,11 +9143,10 @@ kbd {
 
     &::after {
       content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
+      display: inline-flex;
       width: 4px;
+      height: 8px;
+      margin-left: -4px;
       background-color: #313338;
     }
 
@@ -9160,14 +9171,12 @@ kbd {
   .text:is([style="color: rgb(0, 235, 59);"], [style="color: rgb(255, 65, 88);"], [style="color: rgb(255, 209, 0);"]) {
     min-width: initial;
     color: var(--color-subtle_text) !important;
-    position: relative;
 
     + .timestamp {
       display: initial;
       position: initial !important;
       order: 1;
       font-size: 12px;
-      translate: 0 1px;
     }
 
     &::before {
@@ -9175,7 +9184,7 @@ kbd {
       font-family: "Material Icons";
       position: absolute;
       color: var(--color-confirm);
-      left: -48px;
+      left: 24px;
       font-size: 24px;
     }
 
