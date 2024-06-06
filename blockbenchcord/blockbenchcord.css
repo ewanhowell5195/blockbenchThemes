@@ -1,75 +1,75 @@
 @font-face{
   font-family: "gg sans";
-  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggsans400.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/ewanhowell5195/blockbenchThemes/fonts/ggsans400.woff2") format("woff2");
 }
 @font-face{
   font-family: "gg sans";
   font-style: italic;
-  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggsans400italic.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/ewanhowell5195/blockbenchThemes/fonts/ggsans400italic.woff2") format("woff2");
 }
 @font-face{
   font-family: "gg sans";
   font-weight: 500;
-  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggsans500.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/ewanhowell5195/blockbenchThemes/fonts/ggsans500.woff2") format("woff2");
 }
 @font-face{
   font-family: "gg sans";
   font-style: italic;
   font-weight: 500;
-  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggsans500italic.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/ewanhowell5195/blockbenchThemes/fonts/ggsans500italic.woff2") format("woff2");
 }
 @font-face{
   font-family: "gg sans";
   font-weight: 600;
-  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggsans600.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/ewanhowell5195/blockbenchThemes/fonts/ggsans600.woff2") format("woff2");
 }
 @font-face{
   font-family: "gg sans";
   font-style: italic;
   font-weight: 600;
-  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggsans600italic.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/ewanhowell5195/blockbenchThemes/fonts/ggsans600italic.woff2") format("woff2");
 }
 @font-face{
   font-family: "gg sans";
   font-weight: 700;
-  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggsans700.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/ewanhowell5195/blockbenchThemes/fonts/ggsans700.woff2") format("woff2");
 }
 @font-face{
   font-family: "gg sans";
   font-style: italic;
   font-weight: 700;
-  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggsans700italic.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/ewanhowell5195/blockbenchThemes/fonts/ggsans700italic.woff2") format("woff2");
 }
 @font-face{
   font-family: "gg sans";
   font-weight: 800;
-  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggsans800.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/ewanhowell5195/blockbenchThemes/fonts/ggsans800.woff2") format("woff2");
 }
 @font-face{
   font-family: "gg sans";
   font-style: italic;
   font-weight: 800;
-  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggsans800italic.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/ewanhowell5195/blockbenchThemes/fonts/ggsans800italic.woff2") format("woff2");
 }
 @font-face{
   font-family: "gg mono";
-  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggmono400.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/ewanhowell5195/blockbenchThemes/fonts/ggmono400.woff2") format("woff2");
 }
 @font-face{
   font-family: "gg mono";
   font-weight: 700;
-  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/ggmono700.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/ewanhowell5195/blockbenchThemes/fonts/ggmono700.woff2") format("woff2");
 }
 @font-face{
   font-family: "ABC Ginto Nord";
   font-weight: 800;
-  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/abcgintonord800.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/ewanhowell5195/blockbenchThemes/fonts/abcgintonord800.woff2") format("woff2");
 }
 @font-face{
   font-family: "ABC Ginto Nord";
   font-style: italic;
   font-weight: 800;
-  src: url("https://github.com/ewanhowell5195/blockbenchThemes/raw/main/fonts/abcgintonord800italic.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/ewanhowell5195/blockbenchThemes/fonts/abcgintonord800italic.woff2") format("woff2");
 }
 
 :root {
