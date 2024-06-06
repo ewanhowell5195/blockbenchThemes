@@ -6642,6 +6642,10 @@ dialog#select_texture .search_bar {
 
   .toolbar_menu {
     order: 1;
+
+    .tooltip {
+      margin-top: 112px !important;
+    }
   }
 
   &:hover {
