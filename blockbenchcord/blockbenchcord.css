@@ -213,7 +213,7 @@ code, pre {
   display: flex !important;
   padding: 0 0 12px;
   min-width: 72px;
-  z-index: 3;
+  z-index: 4;
 }
 
 #tab_bar_list {
@@ -351,7 +351,7 @@ header {
 #title_bar_home_button {
   display: flex !important;
   position: absolute;
-  z-index: 4;
+  z-index: 5;
   top: 26px;
   left: 12px;
   color: #DADDE0;
@@ -2705,7 +2705,6 @@ input:is([type="text"], [type="password"], :not([type])), .cem_animation_range_n
     min-width: 24px;
     height: 24px;
     background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path d="M6.5 0A6.5 6.5 0 0 0 0 6.5v11A6.5 6.5 0 0 0 6.5 24h11a6.5 6.5 0 0 0 6.5-6.5v-11A6.5 6.5 0 0 0 17.5 0zm0 1h11C20.556 1 23 3.444 23 6.5v11c0 3.056-2.444 5.5-5.5 5.5h-11C3.444 23 1 20.556 1 17.5v-11C1 3.444 3.444 1 6.5 1z" fill="%2380848e"/></svg>');
-    background-color: #313338;
     border-radius: 6px;
   }
 
@@ -9296,14 +9295,6 @@ kbd {
   min-width: 24px;
 }
 
-.cube_uv_face.selected:not(.unselected) {
-  z-index: 2;
-}
-
-.cube_box_uv {
-  z-index: 1;
-}
-
 .comment_plugin-styles_cem-template-loader {}
 
 dialog#cem_template_loader {
@@ -9352,6 +9343,10 @@ dialog#cem_template_loader {
 #cem_animation_controller_variables {
   margin: 0 0 8px;
 
+  &:empty {
+    display: none;
+  }
+
   > div {
     background-color: #383A40;
     padding: 8px;
@@ -9368,6 +9363,8 @@ dialog#cem_template_loader {
 .cem_animation_range_number {
   min-width: 70px !important;
   height: 32px !important;
+  color: var(--color-text) !important;
+  cursor: text;
 }
 
 .cem_animation_range {
@@ -9383,7 +9380,7 @@ dialog#cem_template_loader {
   gap: 4px !important;
 
   > div {
-    height: 40px;
+    height: 32px;
   }
 }
 
