@@ -3709,13 +3709,13 @@ dialog:not(#settings):not(#keybindings) {
     background-color: var(--color-ui); 
   }
 
-  .dialog_sidebar_pages, .dialog_sidebar_actions {
+  .dialog_sidebar_pages, .dialog_sidebar_actions, #cem-report-issues {
     gap: 2px;
     display: flex;
     flex-direction: column;
     margin: 8px 0 !important;
 
-    > li {
+    > li, > a {
       min-height: 34px;
       margin: 0 8px;
       width: initial !important;
@@ -3727,6 +3727,8 @@ dialog:not(#settings):not(#keybindings) {
       color: var(--color-subtle_text);
       line-height: 22px;
       font-weight: 500;
+      justify-content: flex-start;
+      gap: 0;
 
       &:hover {
         color: var(--color-text) !important;
@@ -3754,13 +3756,19 @@ dialog:not(#settings):not(#keybindings) {
           font-size: 18px;
         }
       }
+
+      > * {
+        text-decoration: none;
+      }
     }
   }
 
-  .dialog_sidebar_actions {
+  .dialog_sidebar_actions, #cem-report-issues {
     margin-top: auto !important;
     padding: 8px 0 0;
     border-top: 1px solid var(--color-border);
+    min-height: 63px;
+    justify-content: center;
   }
 }
 
@@ -5208,6 +5216,7 @@ dialog#plugins {
 #plugin_browser_page_tab_bar {
   margin: 24px 0 16px;
   width: initial;
+  min-height: 39px;
 }
 
 .plugin_browser_page_header {
@@ -9305,6 +9314,87 @@ dialog#cem_template_loader {
   #cem-report-issues {
     width: 176px;
   }
+
+  #cem-footer {
+    min-height: 70px;
+    background-color: var(--color-ui);
+    align-items: center;
+    padding: 16px;
+    border-left: 1px solid var(--color-border);
+    font-size: 14px;
+  }
+
+  & h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+    font-weight: 700;
+    margin-top: -6px;
+  }
+
+  #load-texture {
+    gap: 8px;
+  }
+
+  #cem-search {
+    height: 34px;
+
+    > input {
+      height: 34px !important;
+    }
+
+    > i {
+      min-width: 34px;
+      height: 34px;
+      font-size: 25px;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+#cem-details {
+  margin-right: 8px;
+}
+
+#cem-buttons {
+  gap: 0 !important;
+
+  > button {
+    min-width: 96px;
+    height: 38px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background-color .17s;
+    color: var(--color-light) !important;
+    font-weight: 500;
+    background-color: var(--color-accent) !important;
+
+    &:first-child {
+      order: 1;
+
+      &:hover:not(:disabled) {
+        background-color: #4752C4 !important;
+      }
+
+      &:active:not(:disabled) {
+        background-color: #3C45A5 !important;
+      }
+    }
+
+    &:last-child {
+      background-color: initial !important;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.cem-models {
+  margin: 0 16px 16px 0 !important;
 }
 
 #cem_animation_title {
