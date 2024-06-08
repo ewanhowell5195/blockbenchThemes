@@ -960,7 +960,7 @@ header {
 #start_files > .start_screen_right .recent_project {
   background-color: #313338 !important;
   border-radius: 12px !important;
-  transition: box-shadow .2s ease-out, transform .2s ease-out, background-color .2s ease-out, border .2s ease-out;
+  transition: box-shadow .2s ease-out, transform .2s ease-out, border .2s ease-out;
   border: 1px solid transparent;
   padding: 14px 12px 12px;
   height: initial !important;
@@ -971,7 +971,6 @@ header {
 }
 
 #start_files > .start_screen_right .recent_project:hover {
-  background-color: #33353A !important;
   box-shadow: var(--box-shadow);
   transform: translateY(-2px);
   border: 1px solid #4E50584C;
@@ -9395,6 +9394,28 @@ dialog#cem_template_loader {
 
 .cem-models {
   margin: 0 16px 16px 0 !important;
+  gap: 8px !important;
+
+  > div {
+    background-color: var(--color-ui) !important;
+    border: none !important;
+    padding: 8px 16px 8px 16px !important;
+    border-radius: 8px;
+    height: 108px;
+
+    &:hover {
+      background-color: var(--color-button) !important;
+    }
+
+    &.selected {
+      background-color: var(--color-accent) !important;
+    }
+
+    > div {
+      margin: 0 !important;
+      font-weight: 600;
+    }
+  }
 }
 
 #cem_animation_title {
