@@ -5878,7 +5878,8 @@ dialog#adjust_curves {
 .minecraft-title-button-row > button,
 #minecraft-title-custom-overlay > button,
 #minecraft-title-preset-export-buttons > button,
-#minecraft-title-presets-container button {
+#minecraft-title-presets-container button,
+.tracker-row > button {
   height: 36px;
   color: var(--color-light) !important;
   display: flex !important;
@@ -9941,4 +9942,47 @@ body[mode="minecraft_title_render"] {
 .minecraft-title-preset-date {
   margin: 0 !important;
   font-size: 12px !important;
+}
+
+.comment_plugin-styles_activity-tracker {}
+
+#tracker-container {
+  gap: 16px;
+
+  & h1 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+  }
+
+  & h2 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 27.5px;
+  }
+
+  > :last-child {
+    gap: 8px !important;
+  }
+}
+
+#project-tracker {
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tracker-row {
+  gap: 16px !important;
+  margin: 0;
+}
+
+.tracker-line {
+  margin: 0;
+  border-top: 1px solid #3B3D44;
+}
+
+.tracker-col > p {
+  font-size: 1.25rem;
 }
