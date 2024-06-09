@@ -5663,14 +5663,18 @@ select {
   cursor: pointer;
 }
 
-#view_backups_list, #model_select_list, .unsaved_models_list, #uv_face_properties > ul {
+#view_backups_list,
+#model_select_list,
+.unsaved_models_list,
+#uv_face_properties > ul,
+#minecraft-title-presets {
   max-height: calc(100vh - 288px) !important; 
   background-color: #303338;
   margin: 16px -8px 0 0 !important;
   padding-right: 8px;
   overflow-y: auto;
 
-  > li {
+  > li, > div {
     min-height: 50px;
     display: flex;
     align-items: center;
@@ -5689,7 +5693,7 @@ select {
       border-top: 1px solid transparent !important;
       border-radius: 8px;
 
-      + li {
+      + li, + div {
         border-top: 1px solid transparent !important;
       }
     }
@@ -5701,6 +5705,10 @@ select {
     & i {
       font-size: 22px;
     }
+  }
+
+  &#minecraft-title-presets i:hover {
+    color: var(--color-light) !important;
   }
 }
 
@@ -5868,7 +5876,9 @@ dialog#adjust_curves {
 #animation_controller_presets li,
 .cem_animation_button > button,
 .minecraft-title-button-row > button,
-#minecraft-title-custom-overlay > button {
+#minecraft-title-custom-overlay > button,
+#minecraft-title-preset-export-buttons > button,
+#minecraft-title-presets-container button {
   height: 36px;
   color: var(--color-light) !important;
   display: flex !important;
@@ -9779,7 +9789,7 @@ dialog#new_minecraft_title_text {
   margin: 16px 0 0 !important;
 }
 
-#minecraft-title-custom-gradient-customiser {
+#minecraft-title-custom-gradient-customiser, #minecraft-title-preset-export-buttons, #minecraft-title-preset-buttons {
   gap: 8px !important;
 }
 
@@ -9863,7 +9873,7 @@ body[mode="minecraft_title_render"] {
   border-radius: 4px;
 }
 
-.minecraft-title-render-controls-row {
+.minecraft-title-render-controls-row, #minecraft-title-preset-export, #minecraft-title-presets-container {
   gap: 16px !important;
 }
 
@@ -9916,4 +9926,19 @@ body[mode="minecraft_title_render"] {
       transform: translate(-7px, -74px);
     }
   }
+}
+
+#minecraft-title-preset-export-text {
+  padding: 7px !important;
+  border-radius: 4px;
+  background-color: var(--color-ui) !important;
+}
+
+.minecraft-title-preset {
+  gap: 8px !important;
+}
+
+.minecraft-title-preset-date {
+  margin: 0 !important;
+  font-size: 12px !important;
 }
