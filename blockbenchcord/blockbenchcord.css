@@ -227,7 +227,7 @@ code, pre {
   width: 48px !important;
   height: 48px !important;
   color: #23A559;
-  background-color: #313338 !important;
+  background-color: #303338 !important;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -274,7 +274,7 @@ code, pre {
   content: "";
   height: 2px;
   width: 32px;
-  background-color: #313338;
+  background-color: #303338;
   position: absolute;
   top: -10px;
 }
@@ -747,7 +747,7 @@ header {
   min-height: initial !important;
 
   > div:nth-child(2):not(#start_screen_view_menu) {
-    background-color: #313338;
+    background-color: #303338;
     font-weight: 700;
     font-size: 0;
     margin: 24px;
@@ -816,7 +816,7 @@ header {
 }
 
 #start_files > .start_screen_format_page::before {
-  background-color: #313338;
+  background-color: #303338;
 }
 
 #start_screen_view_menu {
@@ -843,7 +843,7 @@ header {
 
 #start_screen_view_menu input {
   width: 100%;
-  background-color: #313338 !important;
+  background-color: #303338 !important;
   height: 58px !important;
   border-radius: 12px;
   font-size: 20px;
@@ -958,7 +958,7 @@ header {
 }
 
 #start_files > .start_screen_right .recent_project {
-  background-color: #313338 !important;
+  background-color: #303338 !important;
   border-radius: 12px !important;
   transition: box-shadow .2s ease-out, transform .2s ease-out, border .2s ease-out;
   border: 1px solid transparent;
@@ -1058,7 +1058,7 @@ header {
   .recent_project {
     margin: 0 !important;
     border: none !important;
-    background-color: #313338 !important;
+    background-color: #303338 !important;
 
     :is(.icon_wrapper, .recent_favorite_button) {
       bottom: initial !important;
@@ -1089,7 +1089,7 @@ header {
 }
 
 #start_files > .start_screen_format_page {
-  background-color: #313338 !important;
+  background-color: #303338 !important;
   display: grid !important;
   grid-template-columns: auto 1fr;
   grid-template-rows: 1fr;
@@ -1147,7 +1147,7 @@ header {
   left: -16px;
   bottom: -24px;
   right: -18px;
-  background-color: #313338;
+  background-color: #303338;
   z-index: -1;
   pointer-events: none;
   margin: 0 !important;
@@ -1975,7 +1975,7 @@ body {
 }
 
 dialog {
-  background-color: #313338;
+  background-color: #303338;
   border-radius: 4px;
   box-shadow: var(--dialog-shadow);
   overflow: hidden;
@@ -2161,7 +2161,7 @@ dialog#settings, dialog#keybindings {
   }
 
   .dialog_content {
-    background-color: #313338;
+    background-color: #303338;
     padding: 0;
     max-width: calc(740px + (100vw - 221px - 740px) / 2);
     max-height: calc(100vh - 22px);
@@ -2689,6 +2689,10 @@ input:is([type="text"], [type="password"], :not([type])), .cem_animation_range_n
     &:hover {
       color: var(--color-text);
     }
+  }
+
+  &.minecraft-texture-search i {
+    top: 50% !important;
   }
 }
 
@@ -3499,7 +3503,7 @@ dialog#scale .dialog_bar:first-child {
 }
 
 .sp-container {
-  background-color: #313338;
+  background-color: #303338;
   box-shadow: var(--box-shadow);
   padding: 16px;
   border-radius: 4px;
@@ -4326,7 +4330,7 @@ body.is_mobile #page_wrapper :is(#start_screen, #work_screen)::before {
 
   > div {
     margin: 0 !important;
-    background-color: #313338;
+    background-color: #303338;
     padding: 16px;
     box-shadow: var(--dialog-shadow);
     border-radius: 4px;
@@ -5108,7 +5112,7 @@ dialog#plugins {
       }
 
       & label {
-        background-color: #313338;
+        background-color: #303338;
         padding: 10px 12px;
         border: 1px solid #4E50587A;
         color: #F2F3F5;
@@ -5130,13 +5134,13 @@ dialog#plugins {
   }
 }
 
-#plugin_browser_sidebar .tab_bar, #plugin_browser_page_tab_bar, .contrast_graph_selector, #brush_preset_bar, .bar.tabs_small, #uv_cube_face_bar, #skin_pose_selector {
+#plugin_browser_sidebar .tab_bar, #plugin_browser_page_tab_bar, .contrast_graph_selector, #brush_preset_bar, .bar.tabs_small, #uv_cube_face_bar, #skin_pose_selector, #minecraft-title-tabs, #minecraft_title_generator .form_inline_select {
   margin: 24px 16px 16px;
   border-bottom: 1px solid #3F4147;
-  gap: 32px;
+  gap: 32px !important;
   width: calc(100% - 32px);
   height: initial;
-  padding: 0;
+  padding: 0 !important;
   background-color: transparent !important;
   height: 39px;
   overflow: hidden;
@@ -5152,17 +5156,18 @@ dialog#plugins {
     height: 38px;
     width: initial;
     margin: 0 !important;
+    border: none !important;
+    background-color: initial;
 
     &:hover {
       color: var(--color-text);
-      border-bottom: 2px solid var(--color-accent);
+      border-bottom: 2px solid var(--color-accent) !important;
     }
 
     &.open, &.selected {
-      border-bottom: 2px solid #949CF7;
+      border-bottom: 2px solid #949CF7 !important;
       color: var(--color-light);
       cursor: default;
-      background-color: transparent;
     }
 
     > i {
@@ -5195,7 +5200,7 @@ dialog#plugins {
     }
   }
 
-  &.bar.tabs_small, &#uv_cube_face_bar {
+  &.bar.tabs_small, &#uv_cube_face_bar, &.form_inline_select {
     margin: 12px 8px 8px;
     height: 31px;
     width: calc(100% - 16px);
@@ -5283,7 +5288,7 @@ dialog#plugins {
     border-radius: 24px;
     background-color: #404249;
     overflow: hidden;
-    border: 6px solid #313338;
+    border: 6px solid #303338;
     box-sizing: initial;
     height: 92px;
     width: 92px;
@@ -5492,7 +5497,7 @@ dialog#plugins {
     align-items: center;
 
     &:first-child {
-      background-color: #313338;
+      background-color: #303338;
       padding: 10px 12px;
       border: 1px solid #4E50587A;
       color: #F2F3F5;
@@ -5660,7 +5665,7 @@ select {
 
 #view_backups_list, #model_select_list, .unsaved_models_list, #uv_face_properties > ul {
   max-height: calc(100vh - 288px) !important; 
-  background-color: #313338;
+  background-color: #303338;
   margin: 16px -8px 0 0 !important;
   padding-right: 8px;
   overflow-y: auto;
@@ -5856,7 +5861,14 @@ dialog#adjust_curves {
 
 .comment_button {}
 
-#predicate_override_add button, #predicate_override_generator  > .tool, .dialog_form_buttons a, .dialog_message_box_command, #animation_controller_presets li, .cem_animation_button > button {
+#predicate_override_add button,
+#predicate_override_generator  > .tool,
+.dialog_form_buttons a,
+.dialog_message_box_command,
+#animation_controller_presets li,
+.cem_animation_button > button,
+.minecraft-title-button-row > button,
+#minecraft-title-custom-overlay > button {
   height: 36px;
   color: var(--color-light) !important;
   display: flex !important;
@@ -6082,7 +6094,7 @@ dialog#adjust_curves {
 }
 
 hr {
-  border-top-color: #3F4146;
+  border-top-color: #3F4147;
 }
 
 .form_bar_reset .dialog_form_buttons a::before {
@@ -6119,7 +6131,7 @@ hr {
   display: flex;
   align-items: center;
   padding: 8px;
-  background-color: #313338;
+  background-color: #303338;
   border: none;
   box-shadow: var(--header-shadow);
   margin: -8px -16px 16px;
@@ -6720,7 +6732,7 @@ dialog#select_texture .search_bar {
 .toolbar_wrapper.tool_options {
   grid-area: toolbar;
   min-width: 100%;
-  background-color: #313338;
+  background-color: #303338;
   padding: 0 256px 0 16px;
   box-shadow: var(--header-shadow);
   z-index: 2;
@@ -6751,6 +6763,7 @@ dialog#select_texture .search_bar {
   height: 100%;
   gap: 16px;
   padding: 0 16px;
+  justify-content: flex-end;
 
   > li {
     padding: 2px 8px;
@@ -7152,7 +7165,7 @@ dialog#animated_texture_editor_code content > :last-child {
     position: absolute;
     inset: 0;
     z-index: -1;
-    background-color: #313338;
+    background-color: #303338;
     box-shadow: var(--dialog-shadow);
     border-radius: 4px;
   }
@@ -7248,7 +7261,7 @@ dialog#animated_texture_editor_code content > :last-child {
   }
 
   &:last-child > div {
-    background-color: #313338;
+    background-color: #303338;
     border: 1px solid #B4B9C0;
   }
 
@@ -7271,7 +7284,7 @@ dialog#animated_texture_editor_code content > :last-child {
       content: "";
       position: absolute;
       inset: 0;
-      background-color: #313338;
+      background-color: #303338;
       border-radius: 50%;
       z-index: -1;
     }
@@ -9229,7 +9242,7 @@ kbd {
       width: 4px;
       height: 8px;
       margin-left: -4px;
-      background-color: #313338;
+      background-color: #303338;
     }
 
     &::before {
@@ -9283,7 +9296,7 @@ kbd {
 
 #panel_chat {
   flex: 1;
-  background-color: #313338;
+  background-color: #303338;
   position: relative;
   min-height: 256px;
 
@@ -9301,6 +9314,23 @@ kbd {
 
 #panel_display .tabs_small label {
   min-width: 24px;
+}
+
+#plugin_browser_changelog {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  & h3 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  > li {
+    padding: 0;
+  }
 }
 
 .comment_plugin-styles_cem-template-loader {}
@@ -9397,7 +9427,6 @@ dialog#cem_template_loader {
   gap: 8px !important;
 
   > div {
-    background-color: var(--color-ui) !important;
     border: none !important;
     padding: 8px 16px 8px 16px !important;
     border-radius: 8px;
@@ -9580,5 +9609,311 @@ dialog#cem_template_loader {
   & td {
     line-height: 22px;
     margin-bottom: 4px;
+  }
+}
+
+.comment_plugin-styles_minecraft-title-generator {}
+
+dialog#new_minecraft_title_text {
+  .dialog_content {
+    padding: 0;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 8px;
+    height: 70px;
+    background-color: var(--color-ui);
+    z-index: -8;
+  }
+}
+
+#minecraft_title_generator {
+  > :first-child {
+    right: 48px !important;
+  }
+
+  > :nth-child(2) {
+    right: 80px !important;
+  }
+}
+
+#minecraft-title-tabs {
+  box-sizing: initial;
+  height: 38px;
+  margin-top: 8px;
+  top: 8px !important;
+  position: relative;
+  overflow: visible;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -8px 0 -17px;
+    z-index: -1;
+    background-color: #303338;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 38px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #3F4147;
+  }
+}
+
+#minecraft-title-preview-container {
+  width: calc(100% - 32px) !important;
+  margin-left: 16px;
+  top: 63px !important;
+  position: relative;
+  padding-bottom: 16px;
+  background-color: #303338;
+
+  > i {
+    translate: 0 -16px;
+  }
+}
+
+#minecraft-title-preview {
+  border-radius: 8px;
+}
+
+.minecraft-title-contents {
+  padding: 0 16px 16px !important;
+
+  .form_inline_select {
+    margin: 4px 0 8px !important;
+    width: 100% !important;
+  }
+
+  & h2 {
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  .slider_input_combo {
+    height: 36px;
+    margin-bottom: 8px !important;
+
+    > :first-child {
+      margin: 0;
+    }
+  }
+
+  & p {
+    margin-bottom: 8px;
+  }
+
+  .checkbox-row {
+    margin-bottom: 8px;
+
+    > div {
+      margin: 0 0 0 8px !important;
+    }
+  }
+}
+
+.minecraft-title-list {
+  gap: 8px !important;
+  padding-right: 8px;
+
+  > div {
+    outline: none !important;
+    border-radius: 8px;
+
+    &.selected {
+      background-color: var(--color-accent);
+    }
+
+    > :nth-child(2) {
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+}
+
+#minecraft-title-buttons {
+  gap: 0 !important;
+  position: relative;
+  padding: 16px 8px 16px 16px !important;
+
+  > button {
+    min-width: 96px;
+    height: 38px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background-color .17s;
+    color: var(--color-light) !important;
+    font-weight: 500;
+    background-color: var(--color-accent) !important;
+    font-size: 14px;
+
+    &:last-child {
+      &:hover:not(:disabled) {
+        background-color: #4752C4 !important;
+      }
+
+      &:active:not(:disabled) {
+        background-color: #3C45A5 !important;
+      }
+    }
+
+    &:not(:last-child) {
+      background-color: initial !important;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+#minecraft-title-custom-gradient > label {
+  margin: 16px 0 0 !important;
+}
+
+#minecraft-title-custom-gradient-customiser {
+  gap: 8px !important;
+}
+
+#minecraft-title-gradient-preview {
+  border-radius: 8px;
+  height: 182px !important;
+}
+
+#minecraft-title-gradient-colours {
+  gap: 8px;
+
+  > div {
+    gap: 8px !important;
+    align-items: center;
+  }
+
+  .sp-preview::after {
+    border-radius: 4px;
+  }
+}
+
+#minecraft-title-custom-texture > canvas, #minecraft-title-custom-overlay > canvas {
+  border-radius: 8px; 
+}
+
+.minecraft-title-button-row > button {
+  height: 36px !important;
+}
+
+.minecraft-title-item-author::after {
+  background-color: #111214 !important;
+  padding: 8px 12px !important;
+  border-radius: 5px;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%) !important;
+  font-size: 16px;
+  color: var(--color-text);
+  font-weight: 600;
+  line-height: 20px;
+  box-shadow: var(--box-shadow);
+  margin: 0 !important;
+}
+
+.minecraft-title-item {
+  &:nth-child(3n - 2) .minecraft-title-item-author:hover::after {
+    left: 0;
+    transform: initial !important;
+  }
+}
+
+.tileable-preview {
+  border-radius: 4px;
+}
+
+body[mode="minecraft_title_render"] {
+  #center {
+    margin-bottom: -40px !important;
+  }
+
+  #mode_selector {
+    width: calc(100% + 8px);
+    background-color: #303338;
+    margin-left: -8px;
+    box-shadow: var(--header-shadow);
+  }
+}
+
+#minecraft-title-render-controls {
+  box-shadow: var(--box-shadow) !important;
+  border-radius: 8px;
+  gap: 16px !important;
+  padding: 16px !important;
+
+  & input {
+    margin-left: 8px;
+  }
+}
+
+#minecraft-title-render-resolutions {
+  border-radius: 4px;
+}
+
+.minecraft-title-render-controls-row {
+  gap: 16px !important;
+}
+
+#minecraft-title-render-buttons {
+  gap: 8px !important;
+
+  .tool {
+    padding: 0 30px;
+    height: 100% !important;
+    height: 34px !important;
+
+    &::before {
+      border-radius: 3px;
+      transition: background-color .17s;
+    }
+
+    &:last-child::before {
+      background-color: #DA373C;
+    }
+
+    &:hover {
+      &::before {
+        filter: initial;
+      }
+
+      &:first-child::before {
+        background-color: #4752C4;
+      }
+
+      &:last-child::before {
+        background-color: #A12828;
+      }
+    }
+
+    &:active {
+      &:first-child::before {
+        background-color: #3C45A5;
+      }
+
+      &:last-child::before {
+        background-color: #8F2022;
+      }
+    }
+
+    .tooltip {
+      transform: translate(calc(20px - 50%), -81px);
+    }
+
+    .tooltip_description {
+      transform: translate(-7px, -74px);
+    }
   }
 }
