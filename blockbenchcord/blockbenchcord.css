@@ -77,6 +77,7 @@
   --header-shadow: #02020233 0 1px 0 0, #0606070C 0 1.5px 0 0, #0202020C 0 2px 0 0;
   --dialog-shadow: 0 0 0 1px #1E1F2299, #00000033 0 2px 10px 0;
   --box-shadow: #0000003D 0 8px 16px 0;
+  --color-link: #00A8FC;
 }
 
 * {
@@ -699,7 +700,7 @@ header {
   gap: 6px;
   align-items: center;
   border-radius: 4px;
-  color: var(--color-subtle_text);
+  color: var(--color-subtle_text) !important;
 }
 
 .format_entry:hover, #start_files:has(> .start_screen_right .format_page_close_button:hover) > .start_screen_left::before {
@@ -726,6 +727,12 @@ header {
 
 .format_entry label {
   flex: 1;
+}
+
+.format_entry img {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
 }
 
 .format_entry.start_screen_link::after {
@@ -1200,7 +1207,7 @@ header {
 }
 
 .start_screen_format_page content {
-  margin: 8px 0 64px 72px;
+  margin: 8px 0 64px 72px !important;
   padding: 0 48px 22px 0;
   position: relative;
 }
@@ -1262,7 +1269,7 @@ header {
     margin: 0 0 4px;
   }
 
-  & code, & pre {
+  & code, & pre, & table {
     background-color: var(--color-ui);
     border: 1px solid var(--color-border);
     padding: 0 2.72px;
@@ -1277,6 +1284,23 @@ header {
 
   & pre {
     padding: 7px !important;
+  }
+
+  & table {
+    padding: 0 !important;
+    border-spacing: 0;
+
+    & td {
+      padding: 7px;
+    }
+
+    > :first-child > tr:first-child > * {
+      border-top: none;
+    }
+
+    & code, & pre {
+      background-color: var(--color-border);
+    }
   }
 }
 
@@ -1344,7 +1368,7 @@ div.markdown > * {
 }
 
 .markdown a, p a {
-  color: #00A8FC !important;
+  color: var(--color-link) !important;
   text-decoration: none !important;
 
   &:hover {
@@ -1379,7 +1403,7 @@ blockquote {
       width: 40px;
       height: 40px;
       position: absolute;
-      background-image: url("data:image/png;base64,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");
+      background-image: var(--bb-avatar);
       background-size: cover;
       top: -23px;
       left: -56px;
@@ -1596,9 +1620,8 @@ blockquote {
   background-color: var(--color-button);
   color: var(--color-light) !important;
   flex-direction: row;
-  padding: 8px 16px 16px 12px;
   flex-grow: initial;
-  padding: 2px 14px 2px 16px;
+  padding: 2px 16px;
   border-radius: 3px;
   font-size: 14px;
   font-weight: 500;
@@ -5153,6 +5176,10 @@ dialog#plugins {
       }
     }
   }
+
+  .about li {
+    margin-left: 1px;
+  }
 }
 
 #plugin_browser_sidebar .tab_bar, #plugin_browser_page_tab_bar, .contrast_graph_selector, #brush_preset_bar, .bar.tabs_small, #uv_cube_face_bar, #skin_pose_selector, #minecraft-title-tabs, #minecraft_title_generator .form_inline_select {
@@ -5473,8 +5500,7 @@ dialog#plugins {
   padding: 0;
   font-size: 256px;
   width: initial;
-  height: 100%;
-  margin: 0;
+  margin: 32px 0 0;
   display: flex;
   align-items: safe center;
   justify-content: center;
@@ -5482,6 +5508,7 @@ dialog#plugins {
 
 #plugin_browser_details {
   overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   background-color: var(--color-ui);
   border-radius: 8px;
@@ -5900,7 +5927,12 @@ dialog#adjust_curves {
 #minecraft-title-custom-overlay > button,
 #minecraft-title-preset-export-buttons > button,
 #minecraft-title-presets-container button,
-.tracker-row > button {
+.tracker-row > button,
+#item_wizard_wrapper button,
+#block_wizard_wrapper button,
+#block_wizard_loot_list button,
+#block_wizard_loot_list + button,
+#entity_wizard_page button {
   height: 36px;
   color: var(--color-light) !important;
   display: flex !important;
@@ -9594,7 +9626,7 @@ dialog#cem_template_loader {
 
   .cem-doc-tab-link {
     text-decoration: none !important;
-    color: #00A8FC !important;
+    color: var(--color-link) !important;
 
     &:hover {
       text-decoration: underline !important;
@@ -10008,4 +10040,624 @@ body[mode="minecraft_title_render"] {
 
 .tracker-col > p {
   font-size: 1.25rem;
+}
+
+.comment_plugin-about_ewan-links {}
+
+#about-markdown-links {
+  margin: 16px 0 0 !important;
+  gap: 8px;
+  grid-column: 1 / -1;
+  justify-content: flex-start !important;
+  flex-wrap: wrap;
+
+  > a {
+    background-color: var(--color-button);
+    color: var(--color-light) !important;
+    flex-direction: row !important;
+    padding: 8px 16px 16px 12px;
+    flex-grow: initial !important;
+    padding: 2px 14px 2px 16px !important;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: pre;
+    transition: background-color .17s;
+    text-decoration: none !important;
+
+    &:hover {
+      background-color: var(--color-selected) !important;
+    }
+
+    &:active {
+      background-color: #80848E !important;
+    }
+
+    &:first-child {
+      background-color: #DA373C;
+
+      &:hover {
+        background-color: #A12828 !important;
+      }
+
+      &:active {
+        background-color: #8F2022 !important;
+      }
+    }
+
+    &:nth-child(2) {
+      background-color: var(--color-accent);
+
+      &:hover {
+        background-color: #4752C4 !important;
+      }
+
+      &:active {
+        background-color: #3C45A5 !important;
+      }
+    }
+
+    &::after {
+      content: "open_in_new";
+      font-family: "Material Icons";
+      font-size: 20px;
+      margin-left: 3px;
+    }
+
+    > i, > svg {
+      height: 20px !important;
+      font-size: 20px !important;
+      color: var(--color-light) !important;
+      width: initial !important;
+
+      & path {
+        stroke: var(--color-light);
+      }
+    }
+
+    > .fab {
+      margin-right: 5px;
+    }
+
+    > p {
+      flex: initial !important;
+    }
+  }
+}
+
+.comment_plugin-styles_wizards {}
+
+#format_page_minecraft_entity_wizard, #format_page_minecraft_item_wizard, #format_page_minecraft_block_wizard {
+  background-position: center calc(100% - 68px);
+  background-size: 100% auto;
+
+  & img {
+    margin-bottom: -40px;
+  }
+
+  #create_new_model_button::after {
+    box-shadow: var(--box-shadow);
+  }
+}
+
+#format_page_minecraft_item_wizard #create_new_model_button::before {
+  background-color: #B084C2;
+}
+
+#format_page_minecraft_block_wizard #create_new_model_button::before {
+  background-color: #A1701E;
+}
+
+#entity_wizard_start_page {
+  margin: 48px -214px 0 0;
+  padding: 0 19px 24px 16px;
+  translate: -214px;
+  position: relative;
+  width: calc(100% + 213px);
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 68px;
+    background-color: #276948;
+    z-index: -1;
+  }
+
+  > div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    > section {
+      margin: 0 !important;
+      text-align: left;
+      padding: 0 !important;
+
+      &:last-child {
+        min-width: 100%;
+      }
+
+      & label, & p {
+        color: var(--color-text) !important;
+      }
+
+      &:first-child {
+        position: relative;
+
+        &::before {
+          content: "";
+          width: 40px;
+          height: 40px;
+          position: absolute;
+          background-image: var(--bb-avatar);
+          background-size: cover;
+          top: -23px;
+          left: -56px;
+          border-radius: 50%;
+        }
+
+        &::after {
+          content: "Blockbenchcord";
+          position: absolute;
+          top: -25px;
+          font-weight: 500;
+        }
+      }
+
+      &:not(:last-child) {
+        margin-left: 56px !important;
+        padding-bottom: 32px !important;
+        min-width: calc(100% - 320px);
+        max-width: calc(100% - 320px) !important;
+      }
+    }
+  }
+
+  > img {
+    position: absolute;
+    bottom: 75px;
+    right: 16px;
+  }
+}
+
+#entity_wizard_start_button {
+  content: "";
+  border-radius: 8px !important;
+  background-color: var(--color-button) !important;
+  transition: background-color .17s;
+  box-shadow: var(--box-shadow);
+  width: 100% !important;
+  text-align: left;
+  margin: 0 !important;
+  font-size: 0;
+  height: 44px !important;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  color: var(--color-light) !important;
+  text-decoration: none;
+  gap: 8px;
+
+  &::before {
+    content: "arrow_forward";
+    font-size: 22px;
+    font-family: "Material Icons";
+  }
+
+  &::after {
+    content: "Create an Entity!";
+    font-size: 14px;
+  }
+
+  &:hover {
+    background-color: var(--color-selected) !important;
+  }
+
+  &:active {
+    background-color: #80848e !important;
+  }
+}
+
+.start_screen_format_page #create_new_model_button:hover::after {
+  background-color: var(--color-selected);
+}
+
+.start_screen_format_page #create_new_model_button:active::after {
+  background-color: #80848E;
+}
+
+.item_wizard_preset_list, .block_wizard_preset_list, .entity_wizard_mob_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-right: 8px;
+  margin-top: 8px;
+  overflow-y: auto !important;
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--color-back);
+  }
+
+  > li {
+    margin: 0 !important;
+    flex: 1;
+    min-width: 100px;
+    border: none !important;
+    border-radius: 8px;
+    font-weight: 600;
+    background-position-x: 50% !important;
+
+    &::after {
+      display: none;
+    }
+
+    &:hover {
+      background-color: var(--color-button) !important;
+    }
+
+    &.selected {
+      background-color: var(--color-accent) !important;
+    }
+
+    > label {
+      margin-bottom: 4px;
+    }
+  }
+}
+
+.entity_wizard_mob_list > li {
+  min-height: 100px;
+}
+
+dialog#minecraft_item_wizard, dialog#minecraft_block_wizard, dialog#minecraft_entity_wizard {
+  .required_message, #required_message {
+    padding: 0 0 0 16px;
+  }
+
+  .required::after, .required_message::before, #required_message::before {
+    color: var(--color-error);
+  }
+
+  & content {
+    & input[type="text"], bb-select {
+      margin-top: 8px;
+    }
+
+    & input[type="checkbox"] {
+      height: 24px;
+    }
+
+    & li {
+      align-items: center;
+      gap: 8px;
+
+      > label {
+        font-weight: 600;
+      }
+
+      .description {
+        margin: 0 0 0 auto !important;
+      }
+    }
+  }
+
+  & h2 {
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  .bar {
+    gap: 8px;
+    margin-top: 8px;
+
+    & input[type="number"] {
+      color: var(--color-text);
+      background-color: var(--color-border) !important;
+      height: 40px !important;
+      border-radius: 4px;
+      padding: 10px !important;
+      display: flex;
+      font-size: 16px;
+      box-sizing: border-box;
+      min-width: 80px;
+
+      &::-webkit-calendar-picker-indicator {
+        transform: translate(3px, -4px);
+      }
+    }
+  }
+
+  .search_bar {
+    margin: 8px 0;
+
+    > input {
+      margin: 0 !important;
+    }
+  }
+}
+
+.item_wizard_functionality_options {
+  margin-left: 10px;
+  width: 100%;
+}
+
+#item_durability_markers, #item_fuel_markers, #block_explosion_resistance_markers {
+  margin-left: 80px !important;
+  width: calc(100% - 75px);
+
+  > li {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+#block_friction_markers {
+  margin-left: 54px !important;
+  width: calc(100% - 50px);
+}
+
+#item_wizard_glint_input::after {
+  inset: -3px;
+}
+
+#item_wizard_pack_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  & li {
+    border-radius: 4px;
+    align-items: center;
+    display: flex;
+
+    &:hover {
+      background-color: var(--color-button);
+    }
+
+    &.selected {
+      background-color: var(--color-selected);
+      color: var(--color-light);
+    }
+
+    > img, > div {
+      border-radius: 4px;
+    }
+  }
+}
+
+#item_wizard_export_options, #block_wizard_export_options, #entity_wizard_export_options {
+  gap: 8px;
+
+  > div {
+    border-radius: 8px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+
+    &.selected {
+      background-color: var(--color-accent);
+
+      * {
+        color: var(--color-light) !important;
+      }
+    }
+  }
+}
+
+.item_wizard_icon_picker, .block_wizard_icon_picker, .entity_wizard_icon_picker {
+  margin-top: 8px;
+
+  .icon_picker_left {
+    border-radius: 4px;
+  }
+}
+
+#item_wizard_wrapper, #block_wizard_wrapper, #entity_wizard_page {
+  & button {
+    margin: 8px 0 !important;
+  }
+
+  & a {
+    text-decoration: none;
+    color: var(--color-link);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+#block_wizard_launch_vscode, #entity_wizard_launch_vscode {
+  color: var(--color-link) !important;
+  text-decoration: none;
+  margin-top: 8px;
+
+  & img {
+    margin-right: 8px;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+#block_wizard_loot_list, #entity_wizard_loot_list {
+  border-radius: 8px;
+
+  > li {
+    border-radius: 6px;
+    margin: 8px;
+    padding: 8px;
+  }
+
+  & p {
+    color: var(--color-text) !important;
+  }
+
+  & button {
+    display: inline-flex !important;
+    margin: 0 0 0 4px !important;
+  }
+
+  & label {
+    padding: 0 0 0 8px !important;
+  }
+
+  + button {
+    margin-top: 8px !important;
+  }
+}
+
+#block_wizard_loot_item_list, #entity_wizard_loot_item_list {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 8px 0 16px;
+
+  > li {
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  & bb-select {
+    margin: 0 !important;
+  }
+}
+
+#entity_wizard_egg_color_bar label {
+  margin-left: 8px;
+}
+
+#entity_wizard_egg_color_preview {
+  margin: 7px 16px 5px 0;
+  border-radius: 8px;
+}
+
+dialog#minecraft_entity_wizard {
+  .dialog_handle {
+    margin-left: 176px;
+  }
+
+  .dialog_content {
+    padding: 0;
+  }
+}
+
+#entity_wizard_page {
+  padding: 0 16px 70px 192px;
+
+  > :nth-last-child(2) {
+    margin-bottom: 16px;
+  }
+}
+
+#entity_wizard_navigation {
+  height: 70px;
+  background-color: var(--color-ui);
+  padding: 16px;
+  border-left: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 176px;
+
+  & button {
+    color: var(--color-light) !important;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 2px 7px;
+    height: 38px;
+    width: 96px;
+    background-color: transparent !important;
+    text-decoration: none;
+    box-sizing: border-box;
+
+    &:hover {
+      text-decoration: underline !important;
+    }
+
+    &.confirm_btn {
+      order: 1;
+      padding: 2px 16px;
+      min-width: 96px;
+      background-color: var(--color-accent) !important;
+      border-radius: 3px;
+      text-decoration: none !important;
+      transition: background-color .17s;
+
+      &:hover {
+        background-color: #4752C4 !important;
+      }
+
+      &:active {
+        background-color: #3C45A5 !important;
+      }
+    }
+  }
+}
+
+#entity_wizard_sidebar {
+  background-color: var(--color-ui);
+  width: 176px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  gap: 2px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0 0;
+  overflow-y: auto;
+
+  > li, & a {
+    margin: 0 8px;
+    width: initial;
+    border: none !important;
+    border-radius: 4px;
+    padding: 6px 8px;
+    color: var(--color-subtle_text);
+    line-height: 22px;
+    font-weight: 500;
+
+    &:hover {
+      color: var(--color-text);
+      background-color: #35373C;
+    }
+
+    &:active {
+      color: var(--color-text);
+      background-color: #3B3D44;
+    }
+
+    &.selected {
+      background-color: #404249;
+      color: var(--color-light);
+    }
+
+    & * {
+      text-decoration: none !important;
+    }
+  }
+}
+
+.entity_wizard_documentation {
+  display: contents;
+
+  &::before {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: -3px;
+  }
+
+  > a {
+    margin: 18px 8px !important;
+  }
 }
