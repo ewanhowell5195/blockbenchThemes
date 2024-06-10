@@ -398,7 +398,7 @@ header {
   }
 }
 
-.project_tab_close_button {
+.project_tab_close_button, .project_tab_session_badge {
   position: absolute;
   top: -4px;
   right: -4px;
@@ -408,21 +408,42 @@ header {
   background-color: var(--color-button);
   border-radius: 50%;
   transition: background-color .15s ease-out;
+
+  > i {
+    font-size: 13px !important;
+    position: absolute;
+    inset: -1px 0 0 0;
+    transition: color .15s ease-out;
+    display: initial !important;
+  }
+
+  &:hover {
+    background-color: var(--color-selected);
+  }
 }
 
-.project_tab_close_button > i {
-  font-size: 13px !important;
-  position: absolute;
-  inset: -1px 0 0 0;
-  transition: color .15s ease-out;
-  display: initial !important;
+.project_tab_session_badge {
+  font-size: 0 !important;
+  min-width: 24px;
+  top: initial;
+  bottom: -4px;
+  background-color: var(--color-accent);
+
+  > i {
+    color: var(--color-light);
+    max-width: 16px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px !important;
+  }
+
+  &::before {
+    display: none;
+  }
 }
 
-.project_tab_close_button:hover {
-  background-color: var(--color-selected);
-}
-
-.project_tab label, #title_bar_home_button::before, #search_tab_button > i::before, #new_tab_button > i::before {
+.project_tab label:not(.project_tab_session_badge), #title_bar_home_button::before, #search_tab_button > i::before, #new_tab_button > i::before {
   pointer-events: none;
   display: flex !important;
   position: absolute;
@@ -446,7 +467,7 @@ header {
   box-shadow: var(--box-shadow);
 }
 
-.project_tab label::before, #title_bar_home_button::after, #search_tab_button > i::after, #new_tab_button > i::after {
+.project_tab label:not(.project_tab_session_badge)::before, #title_bar_home_button::after, #search_tab_button > i::after, #new_tab_button > i::after {
   pointer-events: none;
   content: "";
   position: absolute;
@@ -465,7 +486,7 @@ header {
   scale: 0.95;
 }
 
-.project_tab:hover label, #title_bar_home_button:hover::before, #search_tab_button:hover > i::before, #new_tab_button:hover > i::before, #title_bar_home_button:hover::after, #search_tab_button:hover > i::after, #new_tab_button:hover > i::after {
+.project_tab:hover label:not(.project_tab_session_badge), #title_bar_home_button:hover::before, #search_tab_button:hover > i::before, #new_tab_button:hover > i::before, #title_bar_home_button:hover::after, #search_tab_button:hover > i::after, #new_tab_button:hover > i::after {
   opacity: 1;
   scale: 1;
 }
@@ -9343,6 +9364,8 @@ kbd {
     padding: 0;
   }
 }
+
+
 
 .comment_plugin-styles_cem-template-loader {}
 
