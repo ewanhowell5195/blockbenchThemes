@@ -8100,6 +8100,7 @@ div.texture_icon_wrapper {
   gap: 4px;
   min-height: 170px;
   max-height: 228px;
+  align-content: flex-start;
 
   > li {
     border-radius: 3px;
