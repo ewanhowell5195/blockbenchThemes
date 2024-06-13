@@ -5322,7 +5322,7 @@ dialog#plugins {
       }
     }
 
-    .description:not(:has(+ .plugin_dependencies)) {
+    .description {
       min-height: 63px;
     }
 
@@ -5679,11 +5679,6 @@ dialog#plugins {
   position: fixed;
   top: 22px;
   left: 72px;
-  height: 36px;
-
-  &:not(:has(> *)) {
-    display: none;
-  }
 }
 
 .toast_notification {
@@ -5695,6 +5690,7 @@ dialog#plugins {
   width: initial;
   border-top-left-radius: 8px;
   color: var(--color-text);
+  height: 36px;
 
   > span {
     position: absolute;
