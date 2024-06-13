@@ -77,6 +77,7 @@
   --header-shadow: #02020233 0 1px 0 0, #0606070C 0 1.5px 0 0, #0202020C 0 2px 0 0;
   --dialog-shadow: 0 0 0 1px #1E1F2299, #00000033 0 2px 10px 0;
   --box-shadow: #0000003D 0 8px 16px 0;
+  --drop-shadow: drop-shadow(#0000003D 0 8px 16px);
   --color-link: #00A8FC;
 }
 
@@ -5553,6 +5554,15 @@ dialog#plugins {
       border-radius: 4px;
     }
   }
+
+  & a {
+    color: var(--color-link);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .tool {
@@ -10043,7 +10053,11 @@ body[mode="minecraft_title_render"] {
   font-size: 1.25rem;
 }
 
-.comment_plugin-about_ewan-links {}
+.comment_plugin-about_ewan {}
+
+#about-content > img:first-child {
+  filter: var(--drop-shadow);
+}
 
 #about-markdown-links {
   margin: 16px 0 0 !important;
@@ -10660,5 +10674,61 @@ dialog#minecraft_entity_wizard {
 
   > a {
     margin: 18px 8px !important;
+  }
+}
+
+.comment_plugin-styles_colour-gradient-generator {}
+
+dialog#colour_gradient_generator {
+  .dialog_content > div > :first-child {
+    right: 48px !important
+  }
+
+  & h2 {
+    margin-bottom: 8px;
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  .checkbox-row {
+    display: flex;
+    align-items: center;
+
+    & div {
+      margin: 0 0 0 8px;
+      font-size: 14px;
+    }
+
+    &:last-child  {
+      margin-top: 8px;
+    }
+  }
+}
+
+#colour-gradient-preview {
+  filter: var(--drop-shadow) !important;
+
+  > :first-child {
+    border-radius: 8px 0 0 8px;
+  }
+
+  > :last-child {
+    border-radius: 0 8px 8px 0;
+  }
+}
+
+.about-colour-gradient {
+  filter: var(--drop-shadow) !important;
+
+  > :first-child {
+    border-radius: 8px 0 0 8px;
+  }
+
+  > :last-child {
+    border-radius: 0 8px 8px 0;
+  }
+
+  > :first-child:nth-last-child(2) {
+    border-radius: 8px;
   }
 }
