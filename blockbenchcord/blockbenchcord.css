@@ -6324,7 +6324,6 @@ dialog#message_box {
 }
 
 .dialog_message_box_command {
-  justify-content: space-between;
   flex-direction: row-reverse;
 
   &:has(> i)::before {
@@ -6333,6 +6332,7 @@ dialog#message_box {
 
   > i {
     margin: 0 0 0 4px !important;
+    order: -3;
   }
 
   &::before {
@@ -6341,6 +6341,19 @@ dialog#message_box {
     width: 19px;
     display: flex;
     justify-content: center;
+    order: -3;
+  }
+
+  &::after {
+    content: "";
+    flex: 1;
+    order: -2;
+  }
+
+  > label {
+    order: -1;
+    margin: 0 0 0 8px;
+    color: var(--color-subtle_text) !important;
   }
 }
 
