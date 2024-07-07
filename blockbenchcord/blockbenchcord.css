@@ -5949,7 +5949,8 @@ dialog#adjust_curves {
 #block_wizard_wrapper button,
 #block_wizard_loot_list button,
 #block_wizard_loot_list + button,
-#entity_wizard_page button {
+#entity_wizard_page button,
+#resource_pack_utilities button {
   height: 36px;
   color: var(--color-light) !important;
   display: flex !important;
@@ -6612,6 +6613,13 @@ dialog#select_texture .search_bar {
   > *:not(.hidden) {
     display: flex;
     align-items: center;
+  }
+
+  > div[title="Streamer Mode Enabled"] {
+    background-color: initial !important;
+    cursor: pointer;
+    color: var(--color-stream) !important;
+    filter: brightness(1.5) saturate(75%);
   }
 }
 
@@ -7517,8 +7525,26 @@ dialog#animated_texture_editor_code content > :last-child {
   }
 }
 
-#update_menu .tool > i {
-  font-size: 16px;
+#update_menu .tool {
+  height: 22px;
+  width: 28px !important;
+
+  > i {
+    font-size: 16px;
+    margin: 0;
+    min-width: 28px;
+    min-height: 22px;
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tooltip {
+    margin-top: 27px !important;
+    margin-left: 0 !important;
+    transform: translateX(calc(-50% + 14px));
+  }
 }
 
 #cubes_list {
@@ -9700,6 +9726,33 @@ dialog#cem_template_loader {
   }
 }
 
+#jem_restrictions_dialog {
+  & label {
+    gap: 8px !important;
+
+    + p {
+      margin: 8px 0 -8px;
+    }
+  }
+}
+
+#jem-restrictions-footer {
+  margin-left: -16px;
+
+  #cem-buttons button {
+    min-width: 96px !important;
+    background-color: var(--color-button) !important;
+
+    &:hover {
+      background-color: var(--color-selected) !important;
+    }
+
+    &:active {
+      background-color: #80848E !important;
+    }
+  }
+}
+
 .comment_plugin-styles_minecraft-title-generator {}
 
 dialog#new_minecraft_title_text {
@@ -10050,7 +10103,7 @@ body[mode="minecraft_title_render"] {
   width: 80px !important;
 }
 
-#minecraft-title-render-button-row {
+#minecraft-title-render-button-row, #jem-restrictions-footer {
   background-color: var(--color-ui);
   padding: 16px;
   width: calc(100% + 32px) !important;
@@ -10065,7 +10118,7 @@ body[mode="minecraft_title_render"] {
     height: 38px;
     width: 96px;
     background-color: transparent !important;
-    text-decoration: none;
+    text-decoration: none !important;
     box-sizing: border-box;
     min-width: 140px !important;
     border-radius: 3px;
@@ -10999,4 +11052,169 @@ dialog#colour_gradient_generator {
 .sidebar_explorer_is_open_icon {
   padding: 0 0 0 8px !important;
   width: initial !important;
+}
+
+.comment_plugin-styles_resource-pack-utilities {}
+
+#resource_pack_utilities {
+  #home {
+    .search_bar {
+      margin: 0;
+      width: 100%;
+    }
+
+    > :last-child {
+      margin: 16px 0 0;
+    }
+
+    > :nth-child(2):not(:last-child) {
+      margin: 16px 0;
+    }
+
+    > :not(:first-child) > div {
+      border-radius: 8px;
+    }
+  }
+
+  #header {
+    border-radius: 8px;
+  }
+
+  .utility {
+    margin: 16px 0 0 !important;
+
+    & h3, h2 {
+      font-weight: 600;
+    }
+
+    & input[type="text"] {
+      max-height: 36px;
+    }
+
+    & div[style="width: 120px;"] {
+      width: 126px !important;
+    }
+  }
+
+  .component-checkboxRow {
+    > label {
+      gap: 8px !important;
+    }
+
+    + .component-checkboxRow {
+      margin-top: -8px !important;
+    }
+  }
+
+  .folder-selector {
+    > button {
+      min-width: 36px !important;
+      font-size: 20px;
+      margin-left: 8px !important;
+    }
+  }
+
+  .component-ignoreList {
+    & input + button {
+      min-width: 36px !important;
+      font-size: 20px;
+      margin-left: 8px !important;
+    }
+
+    > ul {
+      border-radius: 4px;
+      background-color: var(--color-ui) !important;
+    }
+
+    & li {
+      background-color: #303338 !important;
+
+      & button {
+        font-size: 20px;
+      }
+    }
+  }
+
+  #back-button {
+    color: var(--color-text) !important;
+  }
+
+  #info-button {
+    font-size: 20px;
+  }
+
+  & code {
+    border-radius: 4px;
+    padding: 0 2.72px !important;
+    font-size: 13.6px;
+    background-color: var(--color-ui) !important;
+  }
+
+  .component-outputLog {
+    .log {
+      background-color: var(--color-ui) !important;
+
+      & code {
+        background-color: var(--color-back) !important;
+      }
+    }
+
+    .buttons {
+      padding: 8px;
+      background-color: var(--color-ui);
+      border-radius: 0 0 8px 8px;
+      margin-top: 0 !important;
+      border: 1px solid var(--color-border);
+      border-top: none;
+    }
+  }
+
+  .component-progressBar {
+    font-weight: 600;
+  }
+
+  .progress-bar-container {
+    border-radius: 4px;
+  }
+
+  .progress-bar {
+    border-radius: 3px;
+  }
+
+  .component-radioRow {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    > label {
+      padding: 10px;
+      background-color: var(--color-ui);
+      border-radius: 4px;
+      gap: 8px !important;
+      color: #B5BAC1;
+
+      &:hover {
+        background-color: #393C41;
+        color: var(--color-text);
+      }
+
+      &:active {
+        background-color: #3F4147;
+        color: var(--color-light);
+      }
+
+      &:has(> input:checked) {
+        background-color: #43444B;
+        color: var(--color-light);
+      }
+    }
+
+    & input {
+      min-width: 24px !important;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }
