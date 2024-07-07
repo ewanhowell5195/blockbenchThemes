@@ -8268,8 +8268,16 @@ div.texture_icon_wrapper {
 #UVEditor > .uv_painter_info + div {
   margin: 4px 8px 8px 8px;
 
+  &.joined_uv_bar > .uv_editor_sliders {
+    margin-bottom: 0 !important;
+  }
+
   .uv_editor_sliders {
     margin: 0 0 8px -4px !important;
+  }
+
+  .toolbar {
+    padding: 0;
   }
 }
 
