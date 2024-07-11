@@ -12,6 +12,7 @@ for (const folder of fs.readdirSync("../")) {
       fs.copyFileSync(theme, output)
     } else {
       const themeData = JSON.parse(fs.readFileSync(theme))
+      themeData.name = themeData.name.replace(/ Dev$/, "")
       if (fs.existsSync(css)) {
         const cssData = fs.readFileSync(css, "utf-8")
         themeData.css = `/*\n\n${themeData.name}\nBy ${themeData.author} - https://ewanhowell.com/\n\n*/\n` + transform({

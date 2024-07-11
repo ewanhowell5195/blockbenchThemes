@@ -5950,7 +5950,8 @@ dialog#adjust_curves {
 #block_wizard_loot_list button,
 #block_wizard_loot_list + button,
 #entity_wizard_page button,
-#resource_pack_utilities button {
+#resource_pack_utilities button,
+#no-ffmpeg button {
   height: 36px;
   color: var(--color-light) !important;
   display: flex !important;
@@ -11224,5 +11225,17 @@ dialog#colour_gradient_generator {
       align-items: center;
       justify-content: center;
     }
+  }
+}
+
+.comment_plugin-styles_scene-recorder {}
+
+#no-ffmpeg {
+  max-width: 592px !important;
+
+  & h1 {
+    margin: -6px 0 8px;
+    font-size: 28px;
+    font-weight: 700;
   }
 }
