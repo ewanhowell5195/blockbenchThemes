@@ -1799,8 +1799,10 @@ blockquote {
     background-color: transparent !important;
     color: #B5BAC1 !important;
     position: relative;
-    padding: 0 !important;
+    padding: 5px 0 8px !important;
     height: initial;
+    border-bottom: none;
+    margin-bottom: 3px;
 
     > :first-child {
       order: 0;
@@ -1809,14 +1811,15 @@ blockquote {
     > div {
       width: 26px;
       cursor: pointer;
-      padding: 8px;
       position: absolute;
-      right: 0;
+      right: 8px;
       top: 0;
       bottom: 0;
       box-sizing: initial;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
+      height: 30px;
+      margin-top: 8px;
     }
 
     & i {
@@ -1834,6 +1837,29 @@ blockquote {
 
     &:first-child > input {
       padding-top: 8px !important;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      background-color: #2E2F34;
+      height: 1px;
+      bottom: 0;
+      left: 4px;
+      width: calc(100% - 24px);
+    }
+
+    &:last-child {
+      margin-bottom: 44px;
+
+      &::before {
+        content: "No results…";
+        position: absolute;
+        bottom: -29px;
+        left: 16px;
+        opacity: 0.5;
+        pointer-events: none;
+      }
     }
   }
 
@@ -2663,6 +2689,31 @@ dialog#settings, dialog#keybindings {
   content: "subdirectory_arrow_right";
   font-family: "Material Icons";
   font-size: 18px;
+}
+
+.keybind_item_variations {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  & li {
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  & label {
+    padding: 0 0 0 26px !important;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .24px;
+    width: 60px !important;
+  }
+
+  & bb-select {
+    margin: 0 !important;
+  }
 }
 
 input:is([type="text"], [type="password"], :not([type])), .cem_animation_range_number {
@@ -4044,7 +4095,7 @@ dialog:not(#settings):not(#keybindings) {
     transform: translateY(-1px);
     box-shadow: var(--box-shadow);
 
-    &::before {
+    &::before, .theme_type_icon > .icon {
       background-color: var(--color-border);
     }
   }
@@ -4058,6 +4109,27 @@ dialog:not(#settings):not(#keybindings) {
   color: #F2F3F5;
   font-weight: 600;
   padding: 22px 16px 0;
+}
+
+.theme_type_icon > .icon:not(:empty) {
+  position: absolute;
+  top: 86px;
+  left: 16px;
+  z-index: 99;
+  min-width: 44px;
+  height: 44px;
+  display: flex;
+  background-color: var(--color-back);
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: #F2F3F5;
+  font-size: 26px;
+  transition: background-color .2s ease-out;
+}
+
+.theme_type_icon > .icon:empty {
+  display: none;
 }
 
 .theme_author {
@@ -4723,6 +4795,15 @@ dialog#plugins {
 
   .search_bar {
     margin: 0 8px;
+  }
+
+  + #plugin_list {
+    margin-top: 14px;
+    max-height: calc(100vh - 192px);
+
+    &.paginated_list {
+      max-height: calc(100vh - 192px - 54px);
+    }
   }
 }
 
@@ -7588,7 +7669,7 @@ dialog#animated_texture_editor_code content > :last-child {
 
 .outliner_object.group {
   height: 24px;
-  padding: 0 8px 0 0;
+  padding-right: 8px;
 
   & input {
     height: 16px !important;
@@ -7629,7 +7710,7 @@ dialog#animated_texture_editor_code content > :last-child {
 .outliner_object:not(.group) {
   height: 34px;
   position: relative;
-  padding: 0 24px 0 0;
+  padding-right: 24px;
   z-index: 1;
 
   &::before {
@@ -7931,6 +8012,10 @@ div.texture_icon_wrapper {
       border-radius: 50%;
       z-index: -1;
     }
+  }
+
+  & img {
+    background-color: var(--color-back);
   }
 
   > img + .texture_error {
@@ -9456,6 +9541,99 @@ kbd {
   min-width: 24px;
 }
 
+.texture_group_head {
+  padding: 0 8px 0 0;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  height: initial;
+  height: 24px;
+  align-items: center;
+  gap: 0;
+
+  * {
+    cursor: pointer;
+  }
+
+  > i {
+    font-size: 8px;
+    width: 16px !important;
+    margin: 0 !important;
+    opacity: 1;
+  }
+
+  .in_list_button {
+    width: initial;
+    display: flex;
+    align-items: center;
+
+    > i {
+      font-size: 16px;
+      color: #d8dbdd !important;
+    }
+  }
+
+  .texture_mini_icon {
+    border-radius: 4px;
+    background-color: var(--color-border);
+    margin-right: 0;
+  }
+
+  &:hover {
+    color: var(--color-text) !important;
+
+    > i {
+      color: var(--color-text) !important;
+    }
+  }
+}
+
+.texture_group_list {
+  margin-left: 8px;
+  padding: 0;
+}
+
+dialog#blend_transition_edit {
+  width: initial !important;
+
+  .dialog_form_buttons {
+    position: relative;
+    margin-bottom: 42px;
+
+    > :first-child {
+      position: absolute;
+      bottom: 0;
+      transform: translateY(calc(100% + 8px));
+      background-color: #DA373C;
+
+      &:hover {
+        background-color: #A12828;
+      }
+
+      &:active {
+        background-color: #8F2022;
+      }
+    }
+  }
+}
+
+.blend_transition_graph_wrapper {
+  margin: 0 !important;
+}
+
+.blend_transition_preview, #blend_transition_graph {
+  border-radius: 4px;
+  border: none;
+}
+
+#blend_transition_graph path:last-child {
+  transform: scaleX(2);
+}
+
+#blend_transition_graph path[d="M0 5 L340 5 M0 225 L340 225"] {
+  display: none;
+}
+
 .comment_plugin-styles_cem-template-loader {}
 
 dialog#cem_template_loader {
@@ -9472,7 +9650,7 @@ dialog#cem_template_loader {
     background-color: var(--color-ui);
     align-items: center;
     padding: 16px;
-    border-left: 1px solid var(--color-border);
+    border-left: 1px solid var(--color-back);
     font-size: 14px;
   }
 
@@ -10585,7 +10763,7 @@ dialog#minecraft_item_wizard, dialog#minecraft_block_wizard, dialog#minecraft_en
   inset: -3px;
 }
 
-#item_wizard_pack_list {
+#item_wizard_pack_list, #block_wizard_pack_list, #entity_wizard_pack_list {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -10594,6 +10772,7 @@ dialog#minecraft_item_wizard, dialog#minecraft_block_wizard, dialog#minecraft_en
     border-radius: 4px;
     align-items: center;
     display: flex;
+    color: var(--color-light);
 
     &:hover {
       background-color: var(--color-button);
