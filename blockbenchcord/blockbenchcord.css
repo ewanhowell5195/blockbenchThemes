@@ -1448,7 +1448,7 @@ blockquote {
   }
 }
 
-#start_screen > content > .start_screen_section:is([section_id="recover_backup"], [section_id="streamer_mode"], [section_id="update_notification"], [section_id="twitter_link"], [section_id="discord_link"]) {
+#start_screen > content > .start_screen_section:is([section_id="recover_backup"], [section_id="streamer_mode"], [section_id="update_notification"], [section_id="twitter_link"], [section_id="discord_link"], [section_id="bluesky_link"]) {
   position: absolute;
   height: 36px;
   top: 0;
@@ -1466,6 +1466,10 @@ blockquote {
 
   &[section_id="twitter_link"] {
     background-color: #1DA1F2 !important;
+  }
+
+  &[section_id="bluesky_link"] {
+    background-color: #208BFE !important;
   }
 
   .start_screen_close_button {
@@ -1532,6 +1536,12 @@ blockquote {
     font-weight: 600;
     margin: 0;
     overflow: visible;
+  }
+
+  .start_screen_left.graphic {
+    position: absolute;
+    scale: 0.3;
+    transform: translate(-32px, -108px);
   }
 
   & a {
@@ -4803,6 +4813,31 @@ dialog#plugins {
 
     &.paginated_list {
       max-height: calc(100vh - 192px - 54px);
+    }
+
+    .installed_plugin:has(> div:first-child > .plugin_installed_tag) .plugin_tag_list :first-child {
+      margin-left: 86.72px;
+    }
+
+    .plugin_installed_tag {
+      height: 24px;
+      border-radius: 12px;
+      padding: 0 8px;
+      gap: 3px;
+      top: 12px;
+      left: 4px;
+      right: initial;
+
+      &::before {
+        width: 12px;
+        font-size: 16px;
+        transform: translateX(-2px);
+      }
+
+      &::after {
+        font-size: 12px;
+        color: var(--color-text);
+      }
     }
   }
 }
@@ -11417,4 +11452,10 @@ dialog#colour_gradient_generator {
     font-size: 28px;
     font-weight: 700;
   }
+}
+
+.comment_plugin-styles_splash-art-customiser {}
+
+#custom-spash-art {
+  width: 100%;
 }
