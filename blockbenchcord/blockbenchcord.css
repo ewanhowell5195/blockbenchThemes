@@ -10527,9 +10527,8 @@ body[mode="minecraft_title_render"] {
 }
 
 #entity_wizard_start_page {
-  margin: 48px -214px 0 0;
   padding: 0 19px 24px 16px;
-  translate: -214px;
+  translate: unset;
   position: relative;
   width: calc(100% + 213px) !important;
 
@@ -10549,6 +10548,7 @@ body[mode="minecraft_title_render"] {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    height: calc(100% + 10px);
 
     > section {
       margin: 0 !important;
@@ -10600,6 +10600,10 @@ body[mode="minecraft_title_render"] {
     bottom: 75px;
     right: 16px;
   }
+}
+
+#start_files > .start_screen_right > #entity_wizard_start_page {
+  translate: -214px;
 }
 
 #entity_wizard_start_button {
@@ -10929,6 +10933,7 @@ dialog#minecraft_entity_wizard {
 
   .dialog_content {
     padding: 0;
+    overflow-x: hidden;
   }
 }
 
