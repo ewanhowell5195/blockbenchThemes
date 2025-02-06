@@ -1015,7 +1015,7 @@ header {
   object-fit: contain;
   border-radius: 8px;
   border: 1px solid #4E50587A;
-  image-rendering: ;
+  image-rendering: auto;
 }
 
 #start_files > .start_screen_right .recent_project_name {
