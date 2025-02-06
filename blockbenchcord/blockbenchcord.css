@@ -6048,8 +6048,6 @@ dialog#adjust_curves {
   justify-content: flex-start;
 }
 
-.comment_button {}
-
 #predicate_override_add button,
 #predicate_override_generator  > .tool,
 .dialog_form_buttons a,
@@ -9669,8 +9667,6 @@ dialog#blend_transition_edit {
   display: none;
 }
 
-.comment_plugin-styles_cem-template-loader {}
-
 dialog#cem_template_loader {
   .dialog_content {
     padding: 0 !important;
@@ -9974,8 +9970,6 @@ dialog#cem_template_loader {
     }
   }
 }
-
-.comment_plugin-styles_minecraft-title-generator {}
 
 dialog#new_minecraft_title_text {
   .dialog_content {
@@ -10385,8 +10379,6 @@ body[mode="minecraft_title_render"] {
   }
 }
 
-.comment_plugin-styles_activity-tracker {}
-
 #tracker-container {
   gap: 16px;
 
@@ -10427,8 +10419,6 @@ body[mode="minecraft_title_render"] {
 .tracker-col > p {
   font-size: 1.25rem;
 }
-
-.comment_plugin-about_ewan {}
 
 #about-content > img:first-child {
   filter: var(--drop-shadow);
@@ -10514,8 +10504,6 @@ body[mode="minecraft_title_render"] {
     }
   }
 }
-
-.comment_plugin-styles_wizards {}
 
 #format_page_minecraft_entity_wizard, #format_page_minecraft_item_wizard, #format_page_minecraft_block_wizard {
   background-position: center calc(100% - 68px);
@@ -11057,8 +11045,6 @@ dialog#minecraft_entity_wizard {
   }
 }
 
-.comment_plugin-styles_colour-gradient-generator {}
-
 dialog#colour_gradient_generator {
   .dialog_content > div > :first-child {
     right: 48px !important
@@ -11112,8 +11098,6 @@ dialog#colour_gradient_generator {
     border-radius: 8px;
   }
 }
-
-.comment_plugin-styles_explorer {}
 
 .sidebar_explorer_open_button {
   z-index: 1;
@@ -11276,8 +11260,6 @@ dialog#colour_gradient_generator {
   padding: 0 0 0 8px !important;
   width: initial !important;
 }
-
-.comment_plugin-styles_resource-pack-utilities {}
 
 #resource_pack_utilities {
   #home {
@@ -11442,8 +11424,6 @@ dialog#colour_gradient_generator {
   }
 }
 
-.comment_plugin-styles_scene-recorder {}
-
 #no-ffmpeg {
   max-width: 592px !important;
 
@@ -11453,8 +11433,6 @@ dialog#colour_gradient_generator {
     font-weight: 700;
   }
 }
-
-.comment_plugin-styles_splash-art-customiser {}
 
 #custom-spash-art {
   width: 100%;
