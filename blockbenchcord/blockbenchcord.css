@@ -10531,7 +10531,7 @@ body[mode="minecraft_title_render"] {
   padding: 0 19px 24px 16px;
   translate: -214px;
   position: relative;
-  width: calc(100% + 213px);
+  width: calc(100% + 213px) !important;
 
   &::before {
     content: "";
@@ -10933,7 +10933,7 @@ dialog#minecraft_entity_wizard {
 }
 
 #entity_wizard_page {
-  padding: 0 16px 70px 192px;
+  padding: 0 16px 16px 192px;
 
   > :nth-last-child(2) {
     margin-bottom: 16px;
