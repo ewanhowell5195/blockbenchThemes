@@ -1012,7 +1012,7 @@ header {
 #start_files > .start_screen_right .thumbnail_image {
   width: 100% !important;
   height: 210px !important;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 8px;
   border: 1px solid #4E50587A;
   image-rendering: auto;
@@ -10947,7 +10947,7 @@ dialog#minecraft_entity_wizard {
   border-left: 1px solid var(--color-border);
   display: flex;
   align-items: center;
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   right: 0;
   left: 176px;
