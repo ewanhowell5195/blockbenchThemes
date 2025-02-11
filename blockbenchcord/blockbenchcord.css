@@ -1540,8 +1540,6 @@ blockquote {
 
   .start_screen_left.graphic {
     position: absolute;
-    scale: 0.3;
-    transform: translate(-32px, -108px);
   }
 
   & a {
@@ -1664,7 +1662,7 @@ blockquote {
     height: 32px;
     box-sizing: initial;
 
-    &[menu_item="delete"], &[menu_item="reset_layout"], &[menu_item="reset_layout"] + li, &[menu_item="reload"] {
+    &[menu_item="delete"], &[menu_item="reset_layout"], &[menu_item="open_dev_tools"] + li, &[menu_item="reload"] {
       color: #F23F42 !important;
     }
 
@@ -3566,6 +3564,19 @@ dialog#scale .dialog_bar:first-child {
 
 .dialog_vector_group {
   gap: 8px;
+
+  > .tool {
+    min-width: 32px;
+
+    i {
+      min-width: 32px;
+      min-height: 36px;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }
 
 .form_bar_pivot_options .dialog_form_buttons {
@@ -6067,7 +6078,8 @@ dialog#adjust_curves {
 #block_wizard_loot_list + button,
 #entity_wizard_page button,
 #resource_pack_utilities button,
-#no-ffmpeg button {
+#no-ffmpeg button,
+#collection_properties_vue button {
   height: 36px;
   color: var(--color-light) !important;
   display: flex !important;
@@ -6775,7 +6787,7 @@ dialog#select_texture .search_bar {
     position: absolute;
     width: 100%;
     height: 88px;
-    z-index: 2;
+    z-index: 1;
     margin-top: -8px;
   }
 
@@ -7437,13 +7449,14 @@ dialog#animated_texture_editor_code content > :last-child {
   }
 
   .start_screen_right {
-    padding: 0 0 16px 0;
+    padding: 0 16px 16px;
     margin: 0 !important;
     box-shadow: none !important;
 
     &::before {
       content: "New Update";
       display: flex;
+      padding: 16px 0;
     }
 
     > h3 {
@@ -7459,9 +7472,17 @@ dialog#animated_texture_editor_code content > :last-child {
     }
 
     > :nth-last-child(2) {
-      margin-top: -12px;
+      margin-top: -4px;
+    }
+
+    > h1 {
+      line-height: 1;
     }
   }
+}
+
+#quick_setup {
+  padding-bottom: 8px !important;
 }
 
 .quick_setup_theme {
@@ -7577,6 +7598,7 @@ dialog#animated_texture_editor_code content > :last-child {
 .start_screen_features {
   overflow: auto;
   padding: 16px !important;
+  flex-wrap: wrap !important;
 
   > li {
     margin: 0 !important;
@@ -7584,6 +7606,7 @@ dialog#animated_texture_editor_code content > :last-child {
     display: flex;
     flex-direction: column;
     text-align: left !important;
+    order: 1;
 
     > * {
       order: 2;
@@ -7950,7 +7973,7 @@ dialog#animated_texture_editor_code content > :last-child {
 
 .texture {
   position: relative;
-  padding: 1px 8px 1px 16px;
+  padding: 1px 8px 1px 13px;
   z-index: 1;
   background-color: initial !important;
   cursor: pointer;
@@ -8003,8 +8026,6 @@ dialog#animated_texture_editor_code content > :last-child {
 
   & i {
     color: #AAACB0;
-    max-width: 16px;
-    font-size: 16px !important;
     margin-left: 4px !important;
 
     &.fa, &.far, &.fas {
@@ -9669,6 +9690,148 @@ dialog#blend_transition_edit {
   display: none;
 }
 
+#gif_recording_frame {
+  z-index: 1;
+}
+
+#gif_recording_controls {
+  border-radius: 4px;
+  transform: translateY(-16px);
+  height: 44px;
+
+  > .tool {
+    height: 44px;
+    padding: 10px 16px;
+    width: initial;
+
+    > i {
+      margin: 0;
+      font-size: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: translateX(1px);
+    }
+  }
+}
+
+.collection {
+  z-index: 1;
+  cursor: pointer;
+  padding: 1px 8px 1px 16px;
+  background-color: initial !important;
+  gap: 6px;
+
+  * {
+    cursor: pointer;
+  }
+
+  i:first-child {
+    color: #80848E;
+    width: 20px;
+    font-size: 20px;
+  }
+
+  label {
+    color: var(--color-subtle_text);
+  }
+
+  &::after {
+    content: "";
+    inset: 1px 0 1px 8px;
+    position: absolute;
+    z-index: -1;
+    border-radius: 4px;
+  }
+
+  &:hover::after {
+    background-color: #35373C;
+  }
+
+  &.selected::after {
+    background-color: #404249;
+  }
+
+  &:hover, &.selected {
+    label {
+      color: var(--color-text);
+    }
+
+    .collection_content_list li {
+      color: var(--color-text);
+
+      i {
+        color: var(--color-text);
+      }
+    }
+  }
+}
+
+.collection_center_wrapper {
+  height: initial;
+  padding: 4px 0;
+}
+
+.collection_content_list li {
+  background-color: var(--color-back);
+  border-radius: 8px;
+  padding: 2px 6px;
+  height: 28px;
+  gap: 6px;
+  color: #B5BAC1;
+
+  i {
+    scale: 1;
+    font-size: 20px;
+    color: #B5BAC1;
+  }
+}
+
+#collection_properties_vue {
+  margin-top: 16px;
+
+  .dialog_bar {
+    gap: 8px;
+    margin: 16px 0 0;
+    flex-wrap: wrap;
+  }
+
+  .list {
+    background-color: var(--color-border);
+    overflow: auto;
+    border-radius: 8px;
+    gap: 8px;
+    padding: 10px !important;
+
+    li {
+      margin: 0;
+      cursor: pointer;
+      border-radius: 6px;
+      height: 34px;
+      color: var(--color-subtle_text);
+      width: calc(100% / 3 - 16px / 3);
+
+      &:hover {
+        background-color: #34373D;
+        color: var(--color_text);
+      }
+
+      &.selected {
+        background-color: #404249;
+        color: var(--color_text);
+      }
+
+      i {
+        color: var(--color-subtle_text);
+      }
+    }
+  }
+}
+
+#animation_properties_vue {
+  margin-top: 16px;
+}
+
 .comment_plugin-styles_cem-template-loader {}
 
 dialog#cem_template_loader {
@@ -10540,10 +10703,10 @@ body[mode="minecraft_title_render"] {
 
 #entity_wizard_start_page {
   margin: 48px -214px 0 0;
-  padding: 0 19px 24px 16px;
+  padding: 0 19px 24px 16px !important;
   translate: -214px;
   position: relative;
-  width: calc(100% + 213px);
+  width: calc(100% + 213px) !important;
 
   &::before {
     content: "";
@@ -10558,7 +10721,7 @@ body[mode="minecraft_title_render"] {
 
   > div {
     height: 100%;
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     justify-content: flex-end;
 
@@ -10945,7 +11108,7 @@ dialog#minecraft_entity_wizard {
 }
 
 #entity_wizard_page {
-  padding: 0 16px 70px 192px;
+  padding: 0 16px 70px 192px !important;
 
   > :nth-last-child(2) {
     margin-bottom: 16px;
@@ -11000,23 +11163,23 @@ dialog#minecraft_entity_wizard {
 }
 
 #entity_wizard_sidebar {
-  background-color: var(--color-ui);
+  background-color: var(--color-ui) !important;
   width: 176px;
-  position: absolute;
+  position: absolute !important;
   top: 0;
   bottom: 0;
   gap: 2px;
   display: flex;
   flex-direction: column;
-  padding: 8px 0 0;
+  padding: 8px 0 0 !important;
   overflow-y: auto;
 
   > li, & a {
     margin: 0 8px;
-    width: initial;
+    width: initial !important;
     border: none !important;
     border-radius: 4px;
-    padding: 6px 8px;
+    padding: 6px 8px !important;
     color: var(--color-subtle_text);
     line-height: 22px;
     font-weight: 500;
