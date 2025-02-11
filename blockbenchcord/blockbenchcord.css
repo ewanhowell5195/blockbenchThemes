@@ -1448,7 +1448,7 @@ blockquote {
   }
 }
 
-#start_screen > content > .start_screen_section:is([section_id="recover_backup"], [section_id="streamer_mode"], [section_id="update_notification"], [section_id="twitter_link"], [section_id="discord_link"], [section_id="bluesky_link"]) {
+#start_screen > content > .start_screen_section:is([section_id="recover_backup"], [section_id="streamer_mode"], [section_id="update_notification"], [section_id="twitter_link"], [section_id="discord_link"], [section_id="bluesky_link"], [section_id="psa"]) {
   position: absolute;
   height: 36px;
   top: 0;
@@ -1545,6 +1545,16 @@ blockquote {
   & a {
     text-decoration: underline !important;
     color: var(--color-light) !important;
+  }
+
+  &[section_id="psa"] .graphic {
+    height: 16px !important;
+    background-size: auto 16px !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 10px;
+    left: 25px;
+    width: 32px !important;
   }
 }
 
