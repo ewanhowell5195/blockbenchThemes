@@ -1661,12 +1661,13 @@ blockquote {
     background-color: transparent !important;
     height: 32px;
     box-sizing: initial;
+    border: none !important;
 
-    &[menu_item="delete"], &[menu_item="reset_layout"], &[menu_item="open_dev_tools"] + li, &[menu_item="reload"] {
+    &[menu_item="delete"], &[menu_item="reset_layout"], &[menu_item="open_dev_tools"] ~ li, &[menu_item="open_dev_tools"] ~ li i {
       color: #F23F42 !important;
     }
 
-    &:is(.focused, .opened):not(.hybrid_parent.opened) {
+    &:is(.focused, .opened, .enabled):not(.hybrid_parent.opened) {
       color: var(--color-light) !important;
 
       &::before {
@@ -1678,9 +1679,21 @@ blockquote {
         z-index: -1;
       }
 
-      &[menu_item="delete"]::before, &[menu_item="reset_layout"]::before, &[menu_item="reset_layout"] + li::before, &[menu_item="reload"]::before {
-        background-color: #DA363C !important;
+      > i {
+        color: var(--color-light) !important;
       }
+    }
+
+    &.enabled::before {
+      background-color: var(--color-ui) !important;
+    }
+
+    &.enabled.focused::before {
+      background-color: var(--color-accent) !important;
+    }
+
+    &[menu_item="delete"]::before, &[menu_item="reset_layout"]::before, &[menu_item="open_dev_tools"] ~ li::before {
+      background-color: #DA363C !important;
     }
 
     &:active:not(:has(:active)) {
@@ -1755,16 +1768,16 @@ blockquote {
   > :first-child {
     padding-top: 8px !important;
 
-    &:is(.focused, .opened):not(.hybrid_parent.opened)::before {
-      inset: 8px 8px 1px 8px;
+    &:not(.hybrid_parent.opened)::before {
+      inset: 8px 8px 1px 8px !important;
     }
   }
 
   > :last-child {
     padding-bottom: 8px !important;
 
-    &:is(.focused, .opened):not(.hybrid_parent.opened)::before {
-      inset: 1px 8px 8px 8px;
+    &:not(.hybrid_parent.opened)::before {
+      inset: 1px 8px 8px 8px !important;
     }
   }
 
@@ -9925,7 +9938,7 @@ dialog#cem_template_loader {
   margin: 0 16px 16px 0 !important;
   gap: 8px !important;
 
-  > div {
+  > div:not(.cem-model-heading) {
     border: none !important;
     padding: 8px 16px 8px 16px !important;
     border-radius: 8px;
@@ -9944,6 +9957,11 @@ dialog#cem_template_loader {
       font-weight: 600;
     }
   }
+}
+
+.cem-model-heading {
+  font-weight: 700;
+  font-size: 20px !important;
 }
 
 #cem_animation_title {
