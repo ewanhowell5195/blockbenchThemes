@@ -11133,6 +11133,39 @@ dialog#minecraft_entity_wizard {
   .dialog_content {
     padding: 0;
   }
+
+  &:has(> .dialog_wrapper > .dialog_content > #entity_wizard_wrapper > #entity_wizard_start_page) .dialog_handle {
+    margin: 0;
+  }
+
+  #entity_wizard_start_page {
+    padding: 16px !important;
+    width: 100% !important;
+    translate: 0;
+
+    &::before {
+      display: none;
+    }
+
+    & img {
+      right: 56px;
+    }
+
+    > div {
+      & h2 {
+        width: calc(100% - 320px);
+        margin: 0 0 16px 56px;
+      }
+
+      & section {
+        text-align: center;
+      }
+
+      > section:nth-last-child(2) {
+        flex: 1;
+      }
+    }
+  }
 }
 
 #entity_wizard_page {
@@ -11146,9 +11179,8 @@ dialog#minecraft_entity_wizard {
 #entity_wizard_navigation {
   height: 70px;
   background-color: var(--color-ui);
-  padding: 16px;
+  padding: 16px !important;
   border-left: 1px solid var(--color-border);
-  display: flex;
   align-items: center;
   position: absolute;
   bottom: 0;
@@ -11223,7 +11255,7 @@ dialog#minecraft_entity_wizard {
     }
 
     &.selected {
-      background-color: #404249;
+      background-color: #404249 !important;
       color: var(--color-light);
     }
 
@@ -11245,6 +11277,35 @@ dialog#minecraft_entity_wizard {
 
   > a {
     margin: 18px 8px !important;
+  }
+}
+
+.item_wizard_target_selection,
+.entity_wizard_target_selection,
+.block_wizard_target_selection {
+  background-color: initial !important;
+
+  & p {
+    color: var(--color-text) !important;
+  }
+}
+
+#entity_wizard_wrapper {
+  position: initial !important;
+}
+
+.entity_wizard_target_selection {
+  top: 70px !important;
+}
+
+#minecraft_item_wizard_start,
+#minecraft_block_wizard_start {
+  .button_bar {
+    background-color: initial;
+  }
+
+  & button {
+    margin-top: 0 !important;
   }
 }
 
