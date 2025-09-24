@@ -5885,7 +5885,7 @@ select {
 #minecraft-title-presets {
   max-height: calc(100vh - 288px) !important; 
   background-color: #303338;
-  margin: 16px -8px 0 0 !important;
+  margin-right: -8px !important;
   padding-right: 8px;
   overflow-y: auto;
 

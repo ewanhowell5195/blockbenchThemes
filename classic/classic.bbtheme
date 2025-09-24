@@ -1,0 +1,25 @@
+/*
+name: Classic
+author: JannisX11 & Ewan Howell
+borders: false
+*/
+body {
+	--color-ui: #282c34;
+	--color-back: #21252b;
+	--color-dark: #17191d;
+	--color-border: #181a1f;
+	--color-selected: #474d5d;
+	--color-elevated: #313640;
+	--color-button: #3a3f4b;
+	--color-bright_ui: #f4f3ff;
+	--color-accent: #3e90ff;
+	--color-frame: #181a1f;
+	--color-text: #cacad4;
+	--color-light: #f4f3ff;
+	--color-accent_text: #000006;
+	--color-bright_ui_text: #000006;
+	--color-subtle_text: #848891;
+	--color-grid: #495061;
+	--color-wireframe: #576f82;
+	--color-checkerboard: #1c2026;
+}
